@@ -406,7 +406,7 @@ InputManager:
     axis: 9
     joyNum: 4
   - serializedVersion: 3
-    m_Name: P1_Action
+    m_Name: P2_Action
     descriptiveName: R1 - Action button for right player
     descriptiveNegativeName: 
     negativeButton: 
