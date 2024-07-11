@@ -14,13 +14,13 @@ public class Input_Manager : MonoBehaviour
     private float R_Hold;
     private bool L_Action;
     private bool R_Action;
-    
+
     public enum PlayerNumber
     {
         P1,
         P2
     }
-    
+
     public static Input_Manager Instance;
 
     void Awake()
@@ -84,6 +84,16 @@ public class Input_Manager : MonoBehaviour
         }
 
         return R_Hold > 0;
+    }
+
+    public bool Get_Action_Release(PlayerNumber player)
+    {
+        if (player == PlayerNumber.P1)
+        {
+            return Input.GetButtonUp("P1_Action");
+        }
+
+        return Input.GetButtonUp("P2_Action");
     }
 
     public Vector2 Get_Stick(PlayerNumber player)

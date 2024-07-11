@@ -6,9 +6,7 @@ public class PickUpItems : MonoBehaviour
 {
     [SerializeField]
     private HingeJoint2D hands;
-
-    [SerializeField]
-    private Rigidbody2D ConnectedRb;
+    
     [SerializeField]
     private float UpperAngle = 145f;
 
@@ -30,6 +28,25 @@ public class PickUpItems : MonoBehaviour
        
     }
 
+    public void Grab(Rigidbody2D ConnectedRb)
+    {
+        hands = gameObject.AddComponent<HingeJoint2D>();
+          
+
+        hands.connectedBody = ConnectedRb;
+        
+            
+        hands.useLimits = true;
+            
+        handLimit = hands.limits;
+        handLimit.max = UpperAngle;
+        hands.limits = handLimit;
+    }
+
+    public void Release()
+    {
+        Destroy(hands);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -39,18 +56,7 @@ public class PickUpItems : MonoBehaviour
             InRange == true)
         {
            
-            hands = gameObject.AddComponent<HingeJoint2D>();
-          
-
-            hands.connectedBody = ConnectedRb;
-
-            ///ChangeBool = ConnectedRb.gameObject.GetComponent<RockScript>();
             
-            hands.useLimits = true;
-            
-            handLimit = hands.limits;
-            handLimit.max = UpperAngle;
-            hands.limits = handLimit;
 
             //  ChangeBool.Beingheld = true;
             //ChangeBool.gameObject.transform.SetAsFirstSibling();
@@ -65,30 +71,9 @@ public class PickUpItems : MonoBehaviour
           
             
             //ChangeBool.RunOnce = true;
-            Destroy(hands);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-       if (collision.CompareTag("Rock"))
-        {
-            InRange = true;
-            ConnectedRb = collision.GetComponent<Rigidbody2D>();
             
         }
-       
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Rock"))
-        {
-            InRange = false;
-            ConnectedRb = null;
-           
-        }
 
-       
-    }
 }
