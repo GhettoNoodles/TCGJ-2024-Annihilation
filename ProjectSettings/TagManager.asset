@@ -8,6 +8,8 @@ TagManager:
   - Splatoon_Tile
   - SceneBehaviour
   - Beer
+  - BodyPart
+  - Rock
   layers:
   - Default
   - TransparentFX
