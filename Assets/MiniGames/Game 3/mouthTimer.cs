@@ -3,38 +3,52 @@ using UnityEngine;
 
 public class CrocodileMouthController : MonoBehaviour
 {
-    public float openDuration = 1.0f; 
-    public float closedDuration = 1.0f;
+    public GameObject crocodileClosed; 
+    public GameObject crocodileOpen; 
+    [SerializeField] float openDuration = 100.0f; 
+    [SerializeField] float closedDuration = 1.0f; 
+    public float knockbackForce = 10.0f; 
+    public float stunDuration = 1.0f; 
+    public GameObject playerOne;
+    public GameObject playerTwo;
 
-    [SerializeField] private GameObject open_mouth, closed_mouth;
     private void Start()
     {
         StartCoroutine(OpenCloseMouth());
-        open_mouth.SetActive(true);
-        closed_mouth.SetActive(false);
     }
 
     private IEnumerator OpenCloseMouth()
     {
         while (true)
         {
+            // Open mouth
+            crocodileClosed.SetActive(false);
+            crocodileOpen.SetActive(true);
             yield return new WaitForSeconds(openDuration);
-            CloseMouth();
+
+            // Close mouth
+            crocodileOpen.SetActive(false);
+            crocodileClosed.SetActive(true);
+            ApplyKnockbackToPlayers();
             yield return new WaitForSeconds(closedDuration);
-            OpenMouth();
         }
     }
 
-    private void OpenMouth()
+    private void ApplyKnockbackToPlayers()
     {
-        open_mouth.SetActive(true);
-        closed_mouth.SetActive(false);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(crocodileClosed.transform.position, crocodileClosed.GetComponent<Collider2D>().bounds.size, 0f);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject ==  playerOne || collider.gameObject == playerTwo)
+            {
+                Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    Vector2 knockbackDirection = (collider.transform.position - crocodileClosed.transform.position).normalized;
+                    rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+                    collider.GetComponent<playerScript>().StunPlayer(stunDuration);
+                }
+            }
+        }
     }
-    
-    private void CloseMouth()
-    {
-        open_mouth.SetActive(false);
-        closed_mouth.SetActive(true);
-    }
-    
 }
