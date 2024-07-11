@@ -8,6 +8,7 @@ public class SceneBehaviour : MonoBehaviour
     public static SceneBehaviour Instance { get; private set; }
 
     public List<Scene> gameScenes = new List<Scene>();
+    public List<Scene> loadedScenes = new List<Scene>();
     [SerializeField] private int gameSceneStartIndex;
 
     void Awake()
@@ -39,7 +40,6 @@ public class SceneBehaviour : MonoBehaviour
     {
         if( Input.GetKeyDown(KeyCode.Space) )
         {
-            Debug.Log("changed Game");
             ChangeGame();
         }
     }
@@ -54,8 +54,11 @@ public class SceneBehaviour : MonoBehaviour
 
     public void ChangeGame()
     {
-        int randNum = Random.Range(gameSceneStartIndex, gameScenes.Count + 1);
+        int randNum = Random.Range(gameSceneStartIndex, SceneManager.sceneCountInBuildSettings);
+
+        loadedScenes.Add(SceneManager.GetSceneByBuildIndex(randNum));
+        gameScenes.Remove(SceneManager.GetSceneByBuildIndex(randNum));
+
         SceneManager.LoadScene(randNum);
-        Debug.Log(SceneManager.GetActiveScene().name);
     }
 }
