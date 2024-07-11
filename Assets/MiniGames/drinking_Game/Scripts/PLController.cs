@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,12 @@ public class PLController : MonoBehaviour
     private SwayBehaviour sway;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Input_Manager.PlayerNumber playerNumber;
-    [SerializeField] private float speed;
-    [SerializeField] private Transform startpos, Pawposition, ConsumePos, SpawnPos;
-    [SerializeField] private bool CanGrab = false, CanMove = true;
-    [SerializeField] private GameObject Beer, BeerPrefab;
+    [SerializeField] private float speed, drinkspeed, TimerCountdown, TimerReset;
+    [SerializeField] private Transform startpos, SwayPos;
+    [SerializeField] private bool CanGrab = false, ThereIsBeer = true, TimerReseted = false;
+    [SerializeField] private GameObject Beer, BeerPrefab, CamParent;
+    [SerializeField]
+    private int minX, maxX, Ypos;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +28,8 @@ public class PLController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (CanMove == true)
-        {
+      
+        
             var velocity = _inputManager.Get_Stick(playerNumber);
 
             // rb.velocity = velocity.normalized * speed;
@@ -35,33 +38,62 @@ public class PLController : MonoBehaviour
             {
                 rb.AddForce(velocity * speed);
             }
-        }
+        
         
 
 
-        if (_inputManager.Get_Action(playerNumber))
+        if (_inputManager.Get_Action_Tap(playerNumber))
         {
             if (CanGrab == true)
             {
-                Beer.transform.position = Pawposition.position;
-                Beer.transform.parent = transform;
-                sway.DrankBeer();
-                CanMove = false;
-            }
-        }
-
-        if (CanMove == false)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, ConsumePos.position, speed * Time.deltaTime);
-
-            if (transform.position == ConsumePos.position)
-            {
-                CanMove = true;
-                CanGrab = false;
                 Destroy(Beer);
-                Instantiate(BeerPrefab, SpawnPos.position, Quaternion.identity);
+                sway.DrankBeer();
+                ThereIsBeer = false;
+                rb.drag -= 0.5f;
             }
         }
+        if (ThereIsBeer == false)
+        {
+            if (TimerReseted == false)
+            {
+                TimerCountdown = TimerReset;
+                TimerReseted = true;
+            }
+
+            TimerCountdown -= Time.deltaTime;
+
+            if (TimerCountdown <= 0)
+            {
+
+                SpawwnBeer();
+                
+                ThereIsBeer = true;
+                TimerReseted = false;
+            }
+        }
+        
+        
+    }
+
+    private void SpawwnBeer()
+    {
+        float checkX = CamParent.transform.position.x;
+        float RandomX;
+        if (checkX <= startpos.position.x)
+        {
+            RandomX = UnityEngine.Random.Range(CamParent.transform.position.x, maxX);
+
+        }
+
+        else
+        {
+            RandomX = UnityEngine.Random.Range(minX, CamParent.transform.position.x);
+        }
+
+        Vector2 SpawnPos = new Vector2(RandomX, Ypos);
+        GameObject SetLocation = Instantiate(BeerPrefab, SpawnPos, Quaternion.identity);
+        SwayPos.position = SetLocation.transform.position;
+        sway.PickSwayPos();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -81,5 +113,21 @@ public class PLController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Beer")
+        {
+            CanGrab = true;
+            Beer = collision.gameObject;
+        }
+    }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Beer")
+        {
+            CanGrab = true;
+            Beer = collision.gameObject;
+        }
+    }
 }

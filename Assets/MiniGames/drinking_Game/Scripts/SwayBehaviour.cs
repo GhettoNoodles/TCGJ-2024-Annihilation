@@ -13,54 +13,63 @@ public class SwayBehaviour : MonoBehaviour
     [SerializeField]
     private float AlcoholLevel;
     [SerializeField]
-    private int AmountBeersDrank, Range;
+    private int AmountBeersDrank, Range, MaxSpeed;
     [SerializeField]
     private float SwaySpeed, FormulaBase, TimerReset, TimerCountdown, radius;
     [SerializeField]
     private bool CanMove = true, numPicked = false;
-
+    [SerializeField]
+    private Camera PlCam;
+    
     
     // Start is called before the first frame update
     void Start()
     {
-        CamPos.position = SwayPositions[0].position;
+      //  CamPos.position = SwayPositions[0].position;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       if (CanMove == true)
+
+
+
+
+
+        if (CanMove == true)
         {
             Swaying(SwayPositions[Range]);
         }
-        
 
-        if (CamPos.position == SwayPositions[Range].position ||
-            CanMove == false)
-        {
-           
-            CanMove = false;
-            if (CanMove== false)
-            {
-                //HowerAroundPos(SwayPositions[Range]);
-                if (numPicked == false)
-                {
 
-                    TimerReset = UnityEngine.Random.Range(0.3f,0.8f);
-                    TimerCountdown = TimerReset;
-                    numPicked = true;
-                }
+        //if (CamPos.position == SwayPositions[Range].position ||
+        //    CanMove == false)
+        //{
 
-                TimerCountdown -= Time.deltaTime;
-                if(TimerCountdown <= 0)
-                {
-                    PickSwayPos();
-                }
-                
-            }
-            
-            
-        }
+        //    CanMove = false;
+        //    if (CanMove == false)
+        //    {
+        //        //HowerAroundPos(SwayPositions[Range]);
+        //        if (numPicked == false)
+        //        {
+
+        //            TimerReset = UnityEngine.Random.Range(0.3f, 0.8f);
+        //            TimerCountdown = TimerReset;
+        //            numPicked = true;
+        //        }
+
+        //        TimerCountdown -= Time.deltaTime;
+        //        if (TimerCountdown <= 0)
+        //        {
+        //            PickSwayPos();
+        //        }
+
+        //    }
+
+
+        //}
 
 
         if (Input.GetKeyDown(KeyCode.K))
@@ -93,6 +102,11 @@ public class SwayBehaviour : MonoBehaviour
         //SwaySpeed = 1f + (AlcoholLevel / 50);
         float Power = (2*AmountBeersDrank + 1);
         SwaySpeed = Mathf.Pow(FormulaBase, Power);
+
+        if (SwaySpeed > MaxSpeed)
+        {
+            SwaySpeed = MaxSpeed;
+        }
     } 
 
     public void PickSwayPos()
