@@ -17,9 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MiniGames/Splatoon/Splatoon_Game.unity
     guid: 795c02345a2156041bf50cc19ae7c9cb
-    path: Assets/Main Assets/test1_Game.unity
-    guid: b2d5b814aeee67142912a75282b6b3a1
-  - enabled: 1
-    path: Assets/Main Assets/test2_Game.unity
-    guid: c4759d945fa030647b7ea9e545ff53a1
   m_configObjects: {}
