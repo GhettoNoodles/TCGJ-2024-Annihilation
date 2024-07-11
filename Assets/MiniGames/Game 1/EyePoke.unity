@@ -265,7 +265,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.554717, g: 0.554717, b: 0.554717, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -650,7 +650,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameScenes: []
   loadedScenes: []
+  startHealth: 0
+  damagePerGame: 0
   gameSceneStartIndex: 0
+  recentWinner: 0
 --- !u!4 &1038337851
 Transform:
   m_ObjectHideFlags: 0
