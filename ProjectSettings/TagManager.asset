@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Input
+  - Splatoon_Tile
   layers:
   - Default
   - TransparentFX

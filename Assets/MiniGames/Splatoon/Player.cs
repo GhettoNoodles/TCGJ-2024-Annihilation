@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,11 @@ using UnityEngine.Serialization;
 public class Player : MonoBehaviour
 {
     private Input_Manager _inputManager;
+    [SerializeField] private Splatoongame game;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Input_Manager.PlayerNumber playerNumber;
     [SerializeField] private float speed;
+    [SerializeField] private Color playerColor;
 
     // Start is called before the first frame update
     void Start()
@@ -22,5 +25,15 @@ public class Player : MonoBehaviour
     {
         var velocity =_inputManager.Get_Stick(playerNumber);
         rb.velocity = velocity.normalized * speed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Splatoon_Tile"))
+        {
+            
+            other.GetComponent<Splatoon_Tile>().Paint(playerNumber);
+            game.UpdateScore();
+        }
     }
 }
