@@ -66,6 +66,16 @@ public class Input_Manager : MonoBehaviour
         return Input.GetButton("P2_Action");
     }
 
+    public bool Get_Action_Tap(PlayerNumber player)
+    {
+        if (player == PlayerNumber.P1)
+        {
+            return Input.GetButtonDown("P1_Action");
+        }
+
+        return Input.GetButtonDown("P2_Action");
+    }
+
     public bool Get_Hold(PlayerNumber player)
     {
         if (player == PlayerNumber.P1)
