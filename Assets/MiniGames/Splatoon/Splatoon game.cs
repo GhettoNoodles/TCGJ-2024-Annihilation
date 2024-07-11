@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class Splatoongame : MonoBehaviour
     [SerializeField] private float cellSize;
     [SerializeField] private int gridSizeY;
     [SerializeField] private Image imgP1;
+    [SerializeField] private TextMeshProUGUI texttimer;
     [SerializeField] private Image imgP2;
     [SerializeField] private Color p1;
     [SerializeField] private Color p2;
@@ -31,7 +33,8 @@ public class Splatoongame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        texttimer.text = Time.timeSinceLevelLoad.ToString("F0");
+
     }
 
     public void UpdateScore()
