@@ -5,22 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/MiniGames/Game 1/EyePoke.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/StartScene.unity
     guid: fd41bf2dd2309bc43825f7262baa8143
   - enabled: 1
     path: Assets/InBetweenScene.unity
     guid: 19762fe8ecb2c8543b736f1f1a66b715
+  - enabled: 1
+    path: Assets/MiniGames/Game 1/EyePoke.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/MiniGames/Splatoon/Game_Splatoon.unity
+    guid: 9b214611f747f8349bb8c0647aa30af5
   - enabled: 0
     path: Assets/Input Tester/Input Test.unity
     guid: 628c42f2cc6988e4baf60148787db7d7
   - enabled: 0
     path: Assets/Input Tester/Input Test 1.unity
     guid: 7f6e6c97e3631fe45b9a56ecf0a9dadc
-  - enabled: 1
-    path: Assets/MiniGames/Splatoon/Game_Splatoon.unity
-    guid: 9b214611f747f8349bb8c0647aa30af5
   m_configObjects: {}

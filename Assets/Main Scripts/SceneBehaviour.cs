@@ -41,6 +41,7 @@ public class SceneBehaviour : MonoBehaviour
         p1Health = startHealth;
         p2Health = startHealth;
         GetGameScenes();
+      
     }
 
     private void Update()
@@ -84,7 +85,7 @@ public class SceneBehaviour : MonoBehaviour
             SceneManager.LoadScene(1);
         }
     }
-
+    
     private void GameOver(Input_Manager.PlayerNumber loser)
     {
         
@@ -95,7 +96,11 @@ public class SceneBehaviour : MonoBehaviour
 
         loadedScenes.Add(SceneManager.GetSceneByBuildIndex(randNum));
         gameScenes.Remove(SceneManager.GetSceneByBuildIndex(randNum));
-
+        if (gameScenes.Count==0)
+        {
+            GetGameScenes();
+            loadedScenes.Clear();
+        }
         SceneManager.LoadScene(randNum);
     }
 }
