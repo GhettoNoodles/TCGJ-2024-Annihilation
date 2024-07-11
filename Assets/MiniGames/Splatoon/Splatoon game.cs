@@ -34,7 +34,15 @@ public class Splatoongame : MonoBehaviour
     void Update()
     {
         texttimer.text = (GameTime- Time.timeSinceLevelLoad).ToString("F0");
-
+        if (!(Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P1) &&
+              Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P2)))
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
     }
 
     public void UpdateScore()
