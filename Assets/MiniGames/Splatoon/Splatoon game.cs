@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Splatoongame : MonoBehaviour
 {
@@ -34,6 +36,23 @@ public class Splatoongame : MonoBehaviour
     void Update()
     {
         texttimer.text = (GameTime- Time.timeSinceLevelLoad).ToString("F0");
+        if (Time.timeSinceLevelLoad>=GameTime)
+        {
+            Input_Manager.PlayerNumber winner;
+            if (p1Score>p2Score)
+            {
+                winner = Input_Manager.PlayerNumber.P1;
+            }
+            else if (p1Score < p2Score)
+            {
+                winner = Input_Manager.PlayerNumber.P2;
+            }
+            else
+            {
+                winner = (Input_Manager.PlayerNumber)Random.Range(0, 2);
+            }
+            SceneBehaviour.Instance.EndGameSession(winner);
+        }
         if (!(Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P1) &&
               Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P2)))
         {
