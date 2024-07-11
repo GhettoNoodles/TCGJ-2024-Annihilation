@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Input
-  - SceneBehaviour
   - Splatoon_Tile
   layers:
   - Default
