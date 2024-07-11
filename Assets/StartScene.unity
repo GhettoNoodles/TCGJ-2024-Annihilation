@@ -246,7 +246,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameScenes: []
   loadedScenes: []
+  startHealth: 5
+  damagePerGame: 1
   gameSceneStartIndex: 0
+  recentWinner: 0
 --- !u!4 &771742472
 Transform:
   m_ObjectHideFlags: 0
