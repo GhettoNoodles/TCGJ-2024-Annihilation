@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -8,7 +9,7 @@ public class Balance_Player : MonoBehaviour
     private Input_Manager _inputManager;
     [SerializeField] private PickUpItems pickup;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Input_Manager.PlayerNumber playerNumber;
+    [SerializeField] public Input_Manager.PlayerNumber playerNumber;
     [SerializeField] private GameObject rockObject;
     [SerializeField] private Rigidbody2D handrb;
     [SerializeField] private float speed;
@@ -36,6 +37,7 @@ public class Balance_Player : MonoBehaviour
             currentRock = Instantiate(rockObject, handrb.position, quaternion.identity);
             currentRock.GetComponent<CircleCollider2D>().enabled = false;
             pickup.Grab(currentRock.GetComponent<Rigidbody2D>());
+            currentRock.GetComponent<Rigidbody2D>().mass = 1;
         }
 
         if (_inputManager.Get_Action(playerNumber))
@@ -56,7 +58,25 @@ public class Balance_Player : MonoBehaviour
             ShoulderMotor.motorSpeed = 0f;
             ShoulderHinge.motor = ShoulderMotor;
             pickup.Release();
+            currentRock.GetComponent<Rigidbody2D>().mass = 10;
             currentRock.GetComponent<CircleCollider2D>().enabled = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Kill"))
+        {
+            Debug.Log("Kill");
+            if (playerNumber ==Input_Manager.PlayerNumber.P1)
+            {
+                 SceneBehaviour.Instance.EndGameSession(Input_Manager.PlayerNumber.P2);
+            }
+            else
+            {
+                SceneBehaviour.Instance.EndGameSession(Input_Manager.PlayerNumber.P1);
+            }
+           
         }
     }
 }
