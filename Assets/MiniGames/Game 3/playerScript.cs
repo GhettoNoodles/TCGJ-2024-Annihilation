@@ -12,12 +12,14 @@ public class playerScript : MonoBehaviour
     [SerializeField] private Input_Manager.PlayerNumber playerNumber;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
+    [SerializeField] private bool InPickUpRange;
     public bool isStunned = false;
-    public GameObject tooth;
+    public GameObject tooth, pickingUptooth;
 
     void Start()
     {
         _inputManager = Input_Manager.Instance;
+        InPickUpRange = false;
     }
 
     void FixedUpdate()
@@ -27,6 +29,12 @@ public class playerScript : MonoBehaviour
             var velocity = _inputManager.Get_Stick(playerNumber);
             rb.velocity = velocity.normalized * speed;
         }
+
+        if (InPickUpRange)
+        {
+            PickUp();
+        }
+        
     }
 
     public void StunPlayer(float duration)
@@ -43,16 +51,31 @@ public class playerScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other == tooth.GetComponent<CircleCollider2D>());
+       if (other == tooth.GetComponent<CircleCollider2D>())
+       {
+           InPickUpRange = true;
+           pickingUptooth = other.gameObject;
+           Debug.Log("can pick up");
+       }
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other == tooth.GetComponent<CircleCollider2D>())
         {
-            Debug.Log("Tooth picked up!");
-            if (_inputManager.Get_Action(playerNumber))
-            {
-                Debug.Log("Action up!");
-            }
-            
-            // Perform additional actions as needed (e.g., increase score, play sound)
-            
+            InPickUpRange = false;
+            pickingUptooth = null;
+            Debug.Log("no more");
+        }
+    }
+    private void PickUp()
+    {
+        
+        if (pickingUptooth != null && _inputManager.Get_Action(playerNumber))
+        {
+            Debug.Log("Picking up tooth!");
+            pickingUptooth.transform.SetParent(this.transform);
+            pickingUptooth.transform.localPosition = Vector3.zero; 
         }
     }
     
