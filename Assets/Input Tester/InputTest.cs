@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InputTest : MonoBehaviour
@@ -25,34 +26,35 @@ public class InputTest : MonoBehaviour
 
     [SerializeField] private Color off;
     [SerializeField] private Color on;
-    
+
     void Start()
     {
-        on= new Color(1, 1, 1, 1);
+        on = new Color(1, 1, 1, 1);
         off = new Color(1, 1, 1, 0.2f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        L1.color = Input.GetButton("P1_Action") ? on : off;
-        R1.color = Input.GetButton("P2_Action") ? on : off;
-        
-        var LHold = Input.GetAxis("P1_Hold");
-        var RHold = Input.GetAxis("P2_Hold");
-        L2.color = LHold>0 ? on : off;
-        R2.color = RHold>0 ? on : off;
-        
-        LHorizontal = Input.GetAxis("P1_Horizontal");
-        LVertical = Input.GetAxis("P1_Vertical");
-        RHorizontal = Input.GetAxis("P2_Horizontal");
-        RVertical = Input.GetAxis("P2_Vertical");
-        if (LHorizontal>0.01)
+        L1.color = Input_Manager.Instance.GetL_Action() ? on : off;
+        R1.color = Input_Manager.Instance.GetR_Action() ? on : off;
+
+        var LHold = Input_Manager.Instance.GetL_Hold();
+        var RHold = Input_Manager.Instance.GetR_Hold();
+        L2.color = LHold ? on : off;
+        R2.color = RHold ? on : off;
+
+        LHorizontal = Input_Manager.Instance.GetL_stick().x;
+        LVertical = Input_Manager.Instance.GetL_stick().y;
+        RHorizontal = Input_Manager.Instance.GetR_stick().x;
+        RVertical = Input_Manager.Instance.GetR_stick().y;
+
+        if (LHorizontal > 0.01)
         {
             L_Left.color = off;
             L_Right.color = on;
         }
-        else if (LHorizontal<-0.01)
+        else if (LHorizontal < -0.01)
         {
             L_Left.color = on;
             L_Right.color = off;
@@ -62,13 +64,13 @@ public class InputTest : MonoBehaviour
             L_Left.color = off;
             L_Right.color = off;
         }
-        
-        if (LVertical>0.01)
+
+        if (LVertical > 0.01)
         {
             L_Down.color = off;
             L_up.color = on;
         }
-        else if (LVertical<-0.01)
+        else if (LVertical < -0.01)
         {
             L_Down.color = on;
             L_up.color = off;
@@ -78,13 +80,13 @@ public class InputTest : MonoBehaviour
             L_Down.color = off;
             L_up.color = off;
         }
-        
-        if (RHorizontal>0.01)
+
+        if (RHorizontal > 0.01)
         {
             R_Left.color = off;
             R_Right.color = on;
         }
-        else if (RHorizontal<-0.01)
+        else if (RHorizontal < -0.01)
         {
             R_Left.color = on;
             R_Right.color = off;
@@ -94,13 +96,13 @@ public class InputTest : MonoBehaviour
             R_Left.color = off;
             R_Right.color = off;
         }
-        
-        if (RVertical>0.01)
+
+        if (RVertical > 0.01)
         {
             R_Down.color = off;
             R_Up.color = on;
         }
-        else if (RVertical<-0.01)
+        else if (RVertical < -0.01)
         {
             R_Down.color = on;
             R_Up.color = off;
@@ -109,6 +111,11 @@ public class InputTest : MonoBehaviour
         {
             R_Down.color = off;
             R_Up.color = off;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene(1);
         }
     }
 }
