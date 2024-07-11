@@ -17,7 +17,7 @@ public class Splatoongame : MonoBehaviour
     [SerializeField] private Image imgP2;
     [SerializeField] private Color p1;
     [SerializeField] private Color p2;
-
+    private float GameTime = 60;
     private float p1Score =0 ;
     private float p2Score =0;
 
@@ -33,7 +33,7 @@ public class Splatoongame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        texttimer.text = Time.timeSinceLevelLoad.ToString("F0");
+        texttimer.text = (GameTime- Time.timeSinceLevelLoad).ToString("F0");
 
     }
 
