@@ -168,10 +168,10 @@ TextureImporter:
       name: SquidGame_2
       rect:
         serializedVersion: 2
-        x: 69
-        y: 380
-        width: 129
-        height: 125
+        x: 68
+        y: 329
+        width: 149
+        height: 148
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,10 +189,10 @@ TextureImporter:
       name: SquidGame_3
       rect:
         serializedVersion: 2
-        x: 253
-        y: 382
-        width: 128
-        height: 135
+        x: 255
+        y: 332
+        width: 170
+        height: 164
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,10 +210,10 @@ TextureImporter:
       name: SquidGame_6
       rect:
         serializedVersion: 2
-        x: 439
-        y: 370
-        width: 129
-        height: 130
+        x: 59
+        y: 129
+        width: 170
+        height: 176
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,13 +228,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SquidGame_13
+      name: SquidGame_4
       rect:
         serializedVersion: 2
-        x: 54
-        y: 222
-        width: 156
-        height: 131
+        x: 466
+        y: 340
+        width: 162
+        height: 140
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15b03afd3f8215c47b40bd0faf5624c1
-      internalID: -1102479145
+      spriteID: e16ed0e9b8a5c4e45920d464dbd52939
+      internalID: -1690863803
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SquidGame_14
+      name: SquidGame_7
       rect:
         serializedVersion: 2
-        x: 247
-        y: 236
-        width: 168
-        height: 119
+        x: 274
+        y: 135
+        width: 183
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e498fb18cd487814a91e2ee635bd994a
-      internalID: -1672154357
+      spriteID: 1024f30d2289edd4787b98c2994510ae
+      internalID: -291758695
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SquidGame_16
+      name: SquidGame_9
       rect:
         serializedVersion: 2
-        x: 436
-        y: 229
-        width: 129
-        height: 114
+        x: 469
+        y: 131
+        width: 171
+        height: 174
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,71 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c61d218e691a8d4487c2e3f5ded19e6
-      internalID: -1075432459
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SquidGame_17
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 48
-        width: 151
-        height: 147
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b1208a83591e46241922caf6d2dcf61b
-      internalID: -586581094
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SquidGame_18
-      rect:
-        serializedVersion: 2
-        x: 255
-        y: 51
-        width: 160
-        height: 137
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 92c35aece4ef902479d70a465119361f
-      internalID: -916512643
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SquidGame_19
-      rect:
-        serializedVersion: 2
-        x: 453
-        y: 66
-        width: 153
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af804ae4dc2b11b49971f5e5099b849c
-      internalID: 431051762
+      spriteID: e972fea8edbe81d4cb19d70534ded61d
+      internalID: 1395329989
       vertices: []
       indices: 
       edges: []
@@ -366,16 +303,6 @@ TextureImporter:
     nameFileIdTable:
       SquidGame_0: 2026368154
       SquidGame_1: -64249519
-      SquidGame_10: -223784219
-      SquidGame_11: 511941633
-      SquidGame_12: -408827634
-      SquidGame_13: -1102479145
-      SquidGame_14: -1672154357
-      SquidGame_15: 1731416835
-      SquidGame_16: -1075432459
-      SquidGame_17: -586581094
-      SquidGame_18: -916512643
-      SquidGame_19: 431051762
       SquidGame_2: 1624333614
       SquidGame_3: -325070359
       SquidGame_4: -1690863803

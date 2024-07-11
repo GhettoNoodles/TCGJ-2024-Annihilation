@@ -150,13 +150,10 @@ MonoBehaviour:
   scribbles:
   - {fileID: 1624333614, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
   - {fileID: -325070359, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
+  - {fileID: -1690863803, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
   - {fileID: -960946436, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
-  - {fileID: -1102479145, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
-  - {fileID: -1672154357, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
-  - {fileID: -1075432459, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
-  - {fileID: -586581094, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
-  - {fileID: -916512643, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
-  - {fileID: 431051762, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
+  - {fileID: -291758695, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
+  - {fileID: 1395329989, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
   gui: {fileID: 6316828343745682935}
   currentDominance: 0
 --- !u!1 &6946316317463413847
