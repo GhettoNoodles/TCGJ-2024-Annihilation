@@ -36,18 +36,18 @@ public class InputTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        L1.color = Input_Manager.Instance.GetL_Action() ? on : off;
-        R1.color = Input_Manager.Instance.GetR_Action() ? on : off;
+        L1.color = Input_Manager.Instance.Get_Action(Input_Manager.PlayerNumber.P1) ? on : off;
+        R1.color = Input_Manager.Instance.Get_Action(Input_Manager.PlayerNumber.P2) ? on : off;
 
-        var LHold = Input_Manager.Instance.GetL_Hold();
-        var RHold = Input_Manager.Instance.GetR_Hold();
+        var LHold = Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P1);
+        var RHold = Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P2);
         L2.color = LHold ? on : off;
         R2.color = RHold ? on : off;
 
-        LHorizontal = Input_Manager.Instance.GetL_stick().x;
-        LVertical = Input_Manager.Instance.GetL_stick().y;
-        RHorizontal = Input_Manager.Instance.GetR_stick().x;
-        RVertical = Input_Manager.Instance.GetR_stick().y;
+        LHorizontal = Input_Manager.Instance.Get_Stick(Input_Manager.PlayerNumber.P1).x;
+        LVertical = Input_Manager.Instance.Get_Stick(Input_Manager.PlayerNumber.P1).y;
+        RHorizontal = Input_Manager.Instance.Get_Stick(Input_Manager.PlayerNumber.P2).x;
+        RVertical = Input_Manager.Instance.Get_Stick(Input_Manager.PlayerNumber.P2).y;
 
         if (LHorizontal > 0.01)
         {
