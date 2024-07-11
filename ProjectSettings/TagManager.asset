@@ -7,6 +7,8 @@ TagManager:
   - Input
   - Splatoon_Tile
   - SceneBehaviour
+  - BodyPart
+  - Rock
   layers:
   - Default
   - TransparentFX
