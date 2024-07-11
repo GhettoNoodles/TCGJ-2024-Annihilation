@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Input
   - Splatoon_Tile
+  - SceneBehaviour
   layers:
   - Default
   - TransparentFX
