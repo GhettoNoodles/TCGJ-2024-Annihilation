@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SwayBehaviour : MonoBehaviour
 {
     [SerializeField]
@@ -17,6 +18,7 @@ public class SwayBehaviour : MonoBehaviour
     private float SwaySpeed, FormulaBase, TimerReset, TimerCountdown, radius;
     [SerializeField]
     private bool CanMove = true, numPicked = false;
+
     
     // Start is called before the first frame update
     void Start()
