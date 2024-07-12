@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timertxt1;
     [SerializeField] private TextMeshProUGUI timertxt2;
 
-
+    [SerializeField] private GameObject holdPanel;
     [SerializeField] private PLController p1;
     [SerializeField] private PLController p2;
     // Start is called before the first frame update
@@ -40,10 +40,12 @@ public class GameManager : MonoBehaviour
         if (!(Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P1) &&
               Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P2)))
         {
+            holdPanel.SetActive(true);
             Time.timeScale = 0f;
         }
         else
         {
+            holdPanel.SetActive(false);
             Time.timeScale = 1f;
         }
         
