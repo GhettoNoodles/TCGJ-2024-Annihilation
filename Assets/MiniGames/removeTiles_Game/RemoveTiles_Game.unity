@@ -780,7 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50583c1aae63ad24c967417d2ec857be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 0
+  playerNumber: 1
   rb: {fileID: 1627312039}
   Speed: 5
 --- !u!50 &1627312039

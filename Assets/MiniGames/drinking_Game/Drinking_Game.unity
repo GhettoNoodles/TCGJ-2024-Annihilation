@@ -1754,7 +1754,7 @@ MonoBehaviour:
   sway: {fileID: 834392181}
   rb: {fileID: 628601224}
   playerNumber: 0
-  speed: 20
+  speed: 200
   drinkspeed: 7
   TimerCountdown: 0
   TimerReset: 1
@@ -4120,7 +4120,7 @@ MonoBehaviour:
   sway: {fileID: 259786429}
   rb: {fileID: 1708898381}
   playerNumber: 1
-  speed: 20
+  speed: 200
   drinkspeed: 7
   TimerCountdown: 0
   TimerReset: 1

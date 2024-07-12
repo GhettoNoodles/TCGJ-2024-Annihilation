@@ -124,7 +124,6 @@ public class SceneBehaviour : MonoBehaviour
         if (winner == Input_Manager.PlayerNumber.P1)
         {
             p2Health -= damagePerGame;
-            
             //ANimation of planet damage
         }
         else
