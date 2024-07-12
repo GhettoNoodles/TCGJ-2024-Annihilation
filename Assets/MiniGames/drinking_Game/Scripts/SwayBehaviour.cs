@@ -9,11 +9,12 @@ public class SwayBehaviour : MonoBehaviour
     [SerializeField]
     private List<Transform> SwayPositions;
     [SerializeField]
-    private Transform CamPos;
+    private Transform CamPos, RotateTarget;
+    private Vector2 TargetPos;
+    //[SerializeField]
+    //private float AlcoholLevel;
     [SerializeField]
-    private float AlcoholLevel;
-    [SerializeField]
-    private int AmountBeersDrank, Range, MaxSpeed;
+    private int AmountBeersDrank, Range, MaxSpeed, AdjustRotateSpeed;
     [SerializeField]
     private float SwaySpeed, FormulaBase, TimerReset, TimerCountdown, RotateSpeed;
     [SerializeField]
@@ -91,7 +92,19 @@ public class SwayBehaviour : MonoBehaviour
 
     private void RotateCam()
     {
-        transform.Rotate(transform.forward, RotateSpeed * Time.deltaTime);
+        // transform.Rotate(transform.forward, RotateSpeed * Time.deltaTime);
+
+        float moveSpeed = SwaySpeed / AdjustRotateSpeed;
+        RotateTarget.position = Vector2.MoveTowards(RotateTarget.position, TargetPos, moveSpeed * Time.deltaTime);
+
+        Vector2 TarObj = RotateTarget.position;
+        Vector2 Pos = transform.position;
+        transform.up = TarObj - Pos;
+    }
+
+    public void SetRotatePos(Transform BeerposX)
+    {
+        TargetPos = new Vector2(BeerposX.position.x,200f);
     }
 
     //private void HowerAroundPos(Transform transform)
@@ -113,7 +126,7 @@ public class SwayBehaviour : MonoBehaviour
     {
         AmountBeersDrank += 1;
         //AlcoholLevel = Mathf.Pow(2,AmountBeersDrank);
-        AlcoholLevel = AlcoholLevel * 2;
+        //AlcoholLevel = AlcoholLevel * 2;
 
         //SwaySpeed = 1f + (AlcoholLevel / 50);
         float Power = (2*AmountBeersDrank + 1);
