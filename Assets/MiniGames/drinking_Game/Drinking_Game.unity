@@ -510,7 +510,7 @@ MonoBehaviour:
   AlcoholLevel: 1
   AmountBeersDrank: 0
   Range: 0
-  MaxSpeed: 23
+  MaxSpeed: 30
   SwaySpeed: 0
   FormulaBase: 1.1
   TimerReset: 0
@@ -1737,7 +1737,7 @@ MonoBehaviour:
   drinkspeed: 7
   TimerCountdown: 0
   TimerReset: 1
-  DecreaseDrag: 0
+  DecreaseDrag: 1.5
   BeerStartPos: {fileID: 578227220}
   SwayPos: {fileID: 709479121}
   PawStart: {fileID: 1135208876}
@@ -2004,7 +2004,7 @@ MonoBehaviour:
   AlcoholLevel: 1
   AmountBeersDrank: 0
   Range: 0
-  MaxSpeed: 23
+  MaxSpeed: 30
   SwaySpeed: 0
   FormulaBase: 1.1
   TimerReset: 0
@@ -3831,7 +3831,7 @@ MonoBehaviour:
   drinkspeed: 7
   TimerCountdown: 0
   TimerReset: 1
-  DecreaseDrag: 0
+  DecreaseDrag: 1.5
   BeerStartPos: {fileID: 628433705}
   SwayPos: {fileID: 583812843}
   PawStart: {fileID: 906488182}
