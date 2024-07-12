@@ -31,8 +31,7 @@ public class PokeEye : MonoBehaviour
 
     [Space(10)]
     public float moistSpeed;
-
-    [SerializeField] private TextMeshProUGUI timertxt;
+    [SerializeField] private GameObject holdPanel;
     private void Start()
     {
         Finger1.transform.position = new Vector3(Finger1.transform.position.x, startPos.position.y);
@@ -40,7 +39,7 @@ public class PokeEye : MonoBehaviour
     }
     private void Update()
     {
-        timertxt.text = (SceneBehaviour.Instance.GameTime - Time.timeSinceLevelLoad).ToString("F0");
+        
         if (Time.timeSinceLevelLoad>SceneBehaviour.Instance.GameTime)
         {
             if (score_p1>score_p2)
@@ -56,10 +55,12 @@ public class PokeEye : MonoBehaviour
         if (!(Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P1) &&
               Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P2)))
         {
+            holdPanel.SetActive(true);
             Time.timeScale = 0f;
         }
         else
         {
+            holdPanel.SetActive(false);
             Time.timeScale = 1f;
 
             if (Input_Manager.Instance.Get_Action_Tap(Input_Manager.PlayerNumber.P1))

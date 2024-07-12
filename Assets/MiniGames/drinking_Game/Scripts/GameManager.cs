@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI timertxt1;
 
     [SerializeField] private GameObject holdPanel;
     [SerializeField] private PLController p1;
@@ -19,7 +18,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timertxt1.text = (SceneBehaviour.Instance.GameTime - Time.timeSinceLevelLoad).ToString("F0");
+        
         
         if (Time.timeSinceLevelLoad>SceneBehaviour.Instance.GameTime)
         {
