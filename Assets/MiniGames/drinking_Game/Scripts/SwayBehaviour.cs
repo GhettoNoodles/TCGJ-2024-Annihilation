@@ -25,7 +25,7 @@ public class SwayBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      //  CamPos.position = SwayPositions[0].position;
+       CamPos.position = SwayPositions[0].position;
 
 
     }
@@ -43,6 +43,11 @@ public class SwayBehaviour : MonoBehaviour
             Swaying(SwayPositions[Range]);
         }
 
+
+        if (CamPos.position == SwayPositions[Range].position)
+        {
+            PickSwayPos();
+        }
 
         //if (CamPos.position == SwayPositions[Range].position ||
         //    CanMove == false)
@@ -72,10 +77,10 @@ public class SwayBehaviour : MonoBehaviour
         //}
 
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            DrankBeer();
-        }
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    DrankBeer();
+        //}
     }
 
     //private void HowerAroundPos(Transform transform)

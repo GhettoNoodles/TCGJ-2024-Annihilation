@@ -8,29 +8,32 @@ public class PLController : MonoBehaviour
     [SerializeField]
     private Input_Manager _inputManager;
     [SerializeField]
+    UI_Manager ui_Manager;
+    [SerializeField]
     private SwayBehaviour sway;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Input_Manager.PlayerNumber playerNumber;
-    [SerializeField] private float speed, drinkspeed, TimerCountdown, TimerReset;
-    [SerializeField] private Transform startpos, SwayPos;
+    [SerializeField] private float speed, drinkspeed, TimerCountdown, TimerReset, DecreaseDrag;
+    [SerializeField] private Transform BeerStartPos, SwayPos, PawStart;
     [SerializeField] private bool CanGrab = false, ThereIsBeer = true, TimerReseted = false;
     [SerializeField] private GameObject Beer, BeerPrefab, CamParent;
     [SerializeField]
     private int minX, maxX, Ypos;
+    public int TotalBeersDrank;
 
     // Start is called before the first frame update
     void Start()
     {
         _inputManager = Input_Manager.Instance;
-        transform.position = startpos.position;
+        transform.position = PawStart.position;
+        ui_Manager.Set_Score(playerNumber);
     }
 
     // Update is called once per frame
     void Update()
     {
       
-        
-            var velocity = _inputManager.Get_Stick(playerNumber);
+        var velocity = _inputManager.Get_Stick(playerNumber);
 
             // rb.velocity = velocity.normalized * speed;
             // transform.rotation = (Quaternion.LookRotation(Vector3.forward, velocity));
@@ -46,10 +49,7 @@ public class PLController : MonoBehaviour
         {
             if (CanGrab == true)
             {
-                Destroy(Beer);
-                sway.DrankBeer();
-                ThereIsBeer = false;
-                rb.drag -= 0.5f;
+                DrinkBeer();
             }
         }
         if (ThereIsBeer == false)
@@ -72,22 +72,38 @@ public class PLController : MonoBehaviour
             }
         }
         
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DrinkBeer();
+        }
         
+    }
+
+    private void DrinkBeer()
+    {
+        Destroy(Beer);
+        sway.DrankBeer();
+        ThereIsBeer = false;
+        rb.drag -= DecreaseDrag;
+        TotalBeersDrank += 1;
+        ui_Manager.Set_Score(playerNumber);
     }
 
     private void SpawwnBeer()
     {
         float checkX = CamParent.transform.position.x;
         float RandomX;
-        if (checkX <= startpos.position.x)
+        if (checkX <= BeerStartPos.position.x)
         {
-            RandomX = UnityEngine.Random.Range(CamParent.transform.position.x, maxX);
+            float UpperLimit = BeerStartPos.position.x + maxX;
+            RandomX = UnityEngine.Random.Range(CamParent.transform.position.x, UpperLimit);
 
         }
 
         else
         {
-            RandomX = UnityEngine.Random.Range(minX, CamParent.transform.position.x);
+            float LowerLimit = BeerStartPos.position.x - maxX;
+            RandomX = UnityEngine.Random.Range(LowerLimit, CamParent.transform.position.x);
         }
 
         Vector2 SpawnPos = new Vector2(RandomX, Ypos);
