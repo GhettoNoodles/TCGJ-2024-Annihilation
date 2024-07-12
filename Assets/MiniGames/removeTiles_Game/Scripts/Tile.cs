@@ -27,7 +27,7 @@ public class Tile : MonoBehaviour
         SetSprite();
     }
 
-    private void SetSprite()
+    public void SetSprite()
     {
         switch (tileState)
         {
@@ -36,9 +36,18 @@ public class Tile : MonoBehaviour
                 break;
             case TileState.Burning:
                 spriteRenderer.sprite = S_Burning;
+                if (transform.childCount > 0)
+                {
+                    Destroy(transform.GetChild(0).gameObject);
+                }
                 break;
             case TileState.Destroyed:
                 spriteRenderer.sprite = S_Destroyed;
+
+                if (transform.childCount > 0)
+                {
+                    Destroy(transform.GetChild(0).gameObject);
+                }
                 break;
         }
     }
@@ -84,16 +93,10 @@ public class Tile : MonoBehaviour
 
                 break;
             case TileState.Burning:
-                if (collision.gameObject.tag == "Player")
-                {
-                    Dead();
-                }
+                
                 break;
             case TileState.Destroyed:
-                if (collision.gameObject.tag == "Player")
-                {
-                    Dead();
-                }
+                
                 break;
         }
     }

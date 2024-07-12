@@ -17,6 +17,7 @@ TagManager:
   - Floor
   - Player1
   - Player2
+  - GridManager
   layers:
   - Default
   - TransparentFX

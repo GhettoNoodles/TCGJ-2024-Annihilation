@@ -33,14 +33,14 @@ public class PLController : MonoBehaviour
     void Update()
     {
       
-        var velocity = _inputManager.Get_Stick(playerNumber);
+        //var velocity = _inputManager.Get_Stick(playerNumber);
 
-            // rb.velocity = velocity.normalized * speed;
-            // transform.rotation = (Quaternion.LookRotation(Vector3.forward, velocity));
-            if (velocity.magnitude > 0.1f)
-            {
-                rb.AddForce(velocity * speed);
-            }
+        //    // rb.velocity = velocity.normalized * speed;
+        //    // transform.rotation = (Quaternion.LookRotation(Vector3.forward, velocity));
+        //    if (velocity.magnitude > 0.1f)
+        //    {
+        //        rb.AddForce(velocity * speed);
+        //    }
         
         
 
@@ -77,6 +77,18 @@ public class PLController : MonoBehaviour
             DrinkBeer();
         }
         
+    }
+
+    private void FixedUpdate()
+    {
+        var velocity = _inputManager.Get_Stick(playerNumber);
+
+        // rb.velocity = velocity.normalized * speed;
+        // transform.rotation = (Quaternion.LookRotation(Vector3.forward, velocity));
+        if (velocity.magnitude > 0.1f)
+        {
+            rb.AddForce(velocity * speed);
+        }
     }
 
     private void DrinkBeer()

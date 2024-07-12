@@ -115,4 +115,21 @@ public class GridManager : MonoBehaviour
             SpawnCollectabile(SpawnPos.gameObject);
         }
     }
+
+    public void DestroyTile_PL1(int num)
+    {
+        GameObject destroyTile = GridStart_PL2.transform.GetChild(num).gameObject;
+        NormalGrid_PL2.Remove(destroyTile);
+        destroyTile.GetComponent<Tile>().tileState = Tile.TileState.Destroyed;
+        destroyTile.GetComponent<Tile>().SetSprite();
+
+    }
+
+    public void DestroyTile_PL2(int num)
+    {
+        GameObject destroyTile = GridStart_PL1.transform.GetChild(num).gameObject;
+        NormalGrid_PL1.Remove(destroyTile);
+        destroyTile.GetComponent<Tile>().tileState = Tile.TileState.Destroyed;
+        destroyTile.GetComponent<Tile>().SetSprite();
+    }
 }
