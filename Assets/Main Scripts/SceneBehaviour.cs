@@ -124,10 +124,15 @@ public class SceneBehaviour : MonoBehaviour
         if (winner == Input_Manager.PlayerNumber.P1)
         {
             p2Health -= damagePerGame;
+            
+            //ANimation of planet damage
         }
         else
         {
             p1Health -= damagePerGame;
+            //Animation of planet damage
+            
+            
         }
 
         if (p1Health <= 0)
@@ -150,6 +155,7 @@ public class SceneBehaviour : MonoBehaviour
 
     private void GameOver(Input_Manager.PlayerNumber loser)
     {
+        
     }
 
     public void ChangeGame()
