@@ -7,6 +7,8 @@ using UnityEngine.SocialPlatforms.Impl;
 public class ManagerBalance : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timertxt;
+    [SerializeField] private TextMeshProUGUI p1text;
+    [SerializeField] private TextMeshProUGUI p2text;
     [SerializeField] private GameObject holdPanel;
     private int p1Score;
 
@@ -34,10 +36,12 @@ public class ManagerBalance : MonoBehaviour
         if (loser == Input_Manager.PlayerNumber.P1)
         {
             p2Score++;
+            p2text.text = p2Score.ToString();
         }
         else
         {
             p1Score++;
+            p1text.text = p1Score.ToString();
         }
     }
 

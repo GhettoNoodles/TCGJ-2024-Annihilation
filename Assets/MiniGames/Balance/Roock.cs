@@ -11,5 +11,11 @@ public class Roock : MonoBehaviour
       {
          ManagerBalance.Instance.IncreaseScore(other.gameObject.GetComponentInParent<Balance_Player>().playerNumber);
       }
+      else if (other.gameObject.CompareTag("Floor"))
+      {
+         Destroy(gameObject);
+
+      }
+      
    }
 }
