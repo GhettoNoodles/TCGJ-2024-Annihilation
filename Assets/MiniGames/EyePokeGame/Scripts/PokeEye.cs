@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using TMPro;
 using UnityEngine;
 
 public class PokeEye : MonoBehaviour
@@ -31,6 +32,7 @@ public class PokeEye : MonoBehaviour
     [Space(10)]
     public float moistSpeed;
 
+    [SerializeField] private TextMeshProUGUI timertxt;
     private void Start()
     {
         Finger1.transform.position = new Vector3(Finger1.transform.position.x, startPos.position.y);
@@ -38,40 +40,64 @@ public class PokeEye : MonoBehaviour
     }
     private void Update()
     {
-        if (Input_Manager.Instance.Get_Action_Tap(Input_Manager.PlayerNumber.P1))
+        timertxt.text = (SceneBehaviour.Instance.GameTime - Time.timeSinceLevelLoad).ToString("F0");
+        if (Time.timeSinceLevelLoad>SceneBehaviour.Instance.GameTime)
         {
-            score_p1++;
-            PokeEyeAction(Finger1, finger1_sprite);
+            if (score_p1>score_p2)
+            {
+                SceneBehaviour.Instance.EndGameSession(Input_Manager.PlayerNumber.P1);
+            }
+            else
+            {
+                SceneBehaviour.Instance.EndGameSession(Input_Manager.PlayerNumber.P2);
+            }
+           
+        }
+        if (!(Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P1) &&
+              Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P2)))
+        {
+            Time.timeScale = 0f;
         }
         else
         {
-            Finger1.transform.position = new Vector3(Finger1.transform.position.x, startPos.position.y);
-            Finger1.GetComponentInChildren<SpriteRenderer>().sprite = finger1_sprite[0];
-        }
+            Time.timeScale = 1f;
+
+            if (Input_Manager.Instance.Get_Action_Tap(Input_Manager.PlayerNumber.P1))
+            {
+                score_p1++;
+                PokeEyeAction(Finger1, finger1_sprite);
+            }
+            else
+            {
+                Finger1.transform.position = new Vector3(Finger1.transform.position.x, startPos.position.y);
+                Finger1.GetComponentInChildren<SpriteRenderer>().sprite = finger1_sprite[0];
+            }
 
 
-        if (Input_Manager.Instance.Get_Action_Tap(Input_Manager.PlayerNumber.P2))
-        {
-            score_p2++;
-            PokeEyeAction(Finger2, finger2_sprite);
-        }
-        else
-        {
-            Finger2.transform.position = new Vector3(Finger2.transform.position.x, startPos.position.y);
-            Finger2.GetComponentInChildren<SpriteRenderer>().sprite = finger2_sprite[0];
-        }
-        
-        if (Input_Manager.Instance.Get_Action(Input_Manager.PlayerNumber.P1))
-        {
-            PokeEyeAction(Finger1, finger1_sprite);
-        }
-        if (Input_Manager.Instance.Get_Action(Input_Manager.PlayerNumber.P2))
-        {
-            PokeEyeAction(Finger2, finger2_sprite);
-        }
+            if (Input_Manager.Instance.Get_Action_Tap(Input_Manager.PlayerNumber.P2))
+            {
+                score_p2++;
+                PokeEyeAction(Finger2, finger2_sprite);
+            }
+            else
+            {
+                Finger2.transform.position = new Vector3(Finger2.transform.position.x, startPos.position.y);
+                Finger2.GetComponentInChildren<SpriteRenderer>().sprite = finger2_sprite[0];
+            }
 
-        MoistEyes();
-        ChangeMouth();
+            if (Input_Manager.Instance.Get_Action(Input_Manager.PlayerNumber.P1))
+            {
+                PokeEyeAction(Finger1, finger1_sprite);
+            }
+
+            if (Input_Manager.Instance.Get_Action(Input_Manager.PlayerNumber.P2))
+            {
+                PokeEyeAction(Finger2, finger2_sprite);
+            }
+
+            MoistEyes();
+            ChangeMouth();
+        }
     }
 
     private void MoistEyes()

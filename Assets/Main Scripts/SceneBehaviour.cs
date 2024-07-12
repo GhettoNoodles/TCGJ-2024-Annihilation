@@ -14,6 +14,9 @@ public class SceneBehaviour : MonoBehaviour
     [SerializeField] private int startHealth;
     [SerializeField] private int damagePerGame;
     [SerializeField] private int gameSceneStartIndex;
+    [SerializeField] private int FirstGameTimer;
+    [SerializeField] private int GameTimeDecrement;
+    public int GameTime;
     public Input_Manager.PlayerNumber recentWinner;
     void Awake()
     {
@@ -38,6 +41,7 @@ public class SceneBehaviour : MonoBehaviour
 
     private void Start()
     {
+        GameTime = FirstGameTimer;
         p1Health = startHealth;
         p2Health = startHealth;
         GetGameScenes();
@@ -92,6 +96,7 @@ public class SceneBehaviour : MonoBehaviour
     }
     public void ChangeGame()
     {
+        GameTime -= GameTimeDecrement;
         int randNum = Random.Range(2, SceneManager.sceneCountInBuildSettings);
 
         loadedScenes.Add(SceneManager.GetSceneByBuildIndex(randNum));

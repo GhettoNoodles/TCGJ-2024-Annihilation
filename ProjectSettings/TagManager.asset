@@ -14,6 +14,7 @@ TagManager:
   - Goblin
   - Power-Up
   - tooth
+  - Floor
   layers:
   - Default
   - TransparentFX
