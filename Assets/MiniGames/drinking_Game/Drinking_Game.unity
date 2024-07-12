@@ -4487,6 +4487,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 391630530}
     m_Modifications:
+    - target: {fileID: 609853155305075862, guid: b84615507fcf32945afd454b89395ba3, type: 3}
+      propertyPath: m_text
+      value: Move Hand
+      objectReference: {fileID: 0}
     - target: {fileID: 615725479254123537, guid: b84615507fcf32945afd454b89395ba3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4566,6 +4570,14 @@ PrefabInstance:
     - target: {fileID: 615725479254123537, guid: b84615507fcf32945afd454b89395ba3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635097704778190745, guid: b84615507fcf32945afd454b89395ba3, type: 3}
+      propertyPath: m_text
+      value: Annihilate your Liver.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6445251744525369409, guid: b84615507fcf32945afd454b89395ba3, type: 3}
+      propertyPath: m_text
+      value: Grab Beer
       objectReference: {fileID: 0}
     - target: {fileID: 7155531601558333588, guid: b84615507fcf32945afd454b89395ba3, type: 3}
       propertyPath: m_Name
