@@ -7,8 +7,8 @@ public class SceneBehaviour : MonoBehaviour
 {
     public static SceneBehaviour Instance { get; private set; }
 
-    public List<Scene> gameScenes = new List<Scene>();
-    public List<Scene> loadedScenes = new List<Scene>();
+    public List<int> gameScenes = new List<int>();
+    public List<int> loadedScenes = new List<int>();
     private int p1Health;
     private int p2Health;
     [SerializeField] private int startHealth;
@@ -18,6 +18,7 @@ public class SceneBehaviour : MonoBehaviour
     [SerializeField] private int GameTimeDecrement;
     public int GameTime;
     public Input_Manager.PlayerNumber recentWinner;
+
     void Awake()
     {
         if (Instance != null)
@@ -45,7 +46,6 @@ public class SceneBehaviour : MonoBehaviour
         p1Health = startHealth;
         p2Health = startHealth;
         GetGameScenes();
-      
     }
 
     private void Update()
@@ -58,10 +58,12 @@ public class SceneBehaviour : MonoBehaviour
 
     private void GetGameScenes()
     {
-        for (int i = gameSceneStartIndex; i < SceneManager.sceneCountInBuildSettings; i++)
+        for (int i = 2; i < SceneManager.sceneCountInBuildSettings; i++)
         {
-            gameScenes.Add(SceneManager.GetSceneByBuildIndex(i));
+            gameScenes.Add(i);
         }
+
+        Debug.Log("refreshed list");
     }
 
     public void EndGameSession(Input_Manager.PlayerNumber winner)
@@ -76,11 +78,11 @@ public class SceneBehaviour : MonoBehaviour
             p1Health -= damagePerGame;
         }
 
-        if (p1Health<=0)
+        if (p1Health <= 0)
         {
             GameOver(Input_Manager.PlayerNumber.P2);
         }
-        else if (p2Health<=0)
+        else if (p2Health <= 0)
         {
             GameOver(Input_Manager.PlayerNumber.P1);
         }
@@ -89,23 +91,25 @@ public class SceneBehaviour : MonoBehaviour
             SceneManager.LoadScene(1);
         }
     }
-    
+
     private void GameOver(Input_Manager.PlayerNumber loser)
     {
-        
     }
+
     public void ChangeGame()
     {
         GameTime -= GameTimeDecrement;
-        int randNum = Random.Range(2, SceneManager.sceneCountInBuildSettings);
-
-        loadedScenes.Add(SceneManager.GetSceneByBuildIndex(randNum));
-        gameScenes.Remove(SceneManager.GetSceneByBuildIndex(randNum));
-        if (gameScenes.Count==0)
+        int randNum = Random.Range(0, gameScenes.Count);
+        Debug.Log("changing game");
+        SceneManager.LoadScene(gameScenes[randNum]);
+        loadedScenes.Add(gameScenes[randNum]);
+        gameScenes.RemoveAt(randNum);
+       
+        if (gameScenes.Count == 0)
         {
+            gameScenes.Clear();
             GetGameScenes();
             loadedScenes.Clear();
         }
-        SceneManager.LoadScene(randNum);
     }
 }
