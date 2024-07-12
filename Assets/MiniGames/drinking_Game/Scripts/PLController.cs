@@ -110,6 +110,7 @@ public class PLController : MonoBehaviour
         GameObject SetLocation = Instantiate(BeerPrefab, SpawnPos, Quaternion.identity);
         SwayPos.position = SetLocation.transform.position;
         sway.PickSwayPos();
+        sway.SetRotatePos(SetLocation.transform);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
