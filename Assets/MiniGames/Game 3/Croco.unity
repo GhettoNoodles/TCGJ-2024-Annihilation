@@ -286,8 +286,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.1, y: 2.33, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5.5, y: 5.5, z: 1.1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 656356018}
   - {fileID: 1621154804}
@@ -325,7 +325,7 @@ Transform:
   m_GameObject: {fileID: 456109642}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.57905054, w: 0.81529164}
-  m_LocalPosition: {x: -0.23, y: -0.13, z: 0}
+  m_LocalPosition: {x: 0.02, y: -0.06, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1669,6 +1669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OneScore: 0
   TwoScore: 0
+  teeth: 7
 --- !u!4 &1238423665
 Transform:
   m_ObjectHideFlags: 0
@@ -2192,7 +2193,7 @@ Transform:
   m_GameObject: {fileID: 1621154803}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.102233514, w: 0.99476045}
-  m_LocalPosition: {x: -0.21130688, y: -0.23017386, z: 0}
+  m_LocalPosition: {x: -0.195, y: -0.232, z: 0}
   m_LocalScale: {x: 0.12542993, y: 0.11157574, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2372,7 +2373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 1
   rb: {fileID: 1622706019}
-  speed: 3
+  speed: 4
   InPickUpRange: 0
   PickedUp: 0
   isStunned: 0
@@ -2637,7 +2638,7 @@ Transform:
   m_GameObject: {fileID: 1680099791}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.10140035, w: 0.9948457}
-  m_LocalPosition: {x: 0.17, y: -0.19, z: 0}
+  m_LocalPosition: {x: 0.02, y: -0.07, z: 0}
   m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2809,7 +2810,7 @@ Transform:
   m_GameObject: {fileID: 1971143079}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.005756703, w: 0.99998343}
-  m_LocalPosition: {x: -0.402, y: 0.037, z: 0}
+  m_LocalPosition: {x: -0.431, y: 0.033, z: 0}
   m_LocalScale: {x: 0.12542993, y: 0.11157574, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3153,8 +3154,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2052360371}
   - component: {fileID: 2052360370}
-  - component: {fileID: 2052360372}
   - component: {fileID: 2052360373}
+  - component: {fileID: 2052360374}
   m_Layer: 0
   m_Name: croc_closed
   m_TagString: Untagged
@@ -3224,14 +3225,33 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.1298, y: 2.2594, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5.5, y: 5.5, z: 1.1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1392952872}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &2052360372
-CircleCollider2D:
+--- !u!114 &2052360373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052360369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951ce005d5f81044bb10b516fbccc602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  play_one: {fileID: 894185378}
+  play_two: {fileID: 1622706015}
+  crocodileClosed: {fileID: 2052360369}
+  knockbackForce: 10
+  stunDuration: 1
+  PlayerScript: {fileID: 894185379}
+  mouthTimer: {fileID: 2049058404}
+--- !u!60 &2052360374
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3259,31 +3279,42 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &2052360373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052360369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 951ce005d5f81044bb10b516fbccc602, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  play_one: {fileID: 894185378}
-  play_two: {fileID: 1622706015}
-  crocodileClosed: {fileID: 2052360369}
-  knockbackForce: 10
-  stunDuration: 1
-  PlayerScript: {fileID: 894185379}
-  mouthTimer: {fileID: 2049058404}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.009383654, y: 0.5703774}
+      - {x: -0.13826828, y: 0.5805682}
+      - {x: -0.60262924, y: 0.5759414}
+      - {x: -0.6228596, y: 0.25074232}
+      - {x: -0.59464365, y: 0.016280755}
+      - {x: -0.58914465, y: -0.12667936}
+      - {x: -0.54772544, y: -0.31186587}
+      - {x: -0.4164192, y: -0.42433995}
+      - {x: -0.27420145, y: -0.4727211}
+      - {x: -0.15234375, y: -0.47265625}
+      - {x: 0, y: -0.5}
+      - {x: 0.15234375, y: -0.47265625}
+      - {x: 0.29296875, y: -0.40234375}
+      - {x: 0.42111105, y: -0.38211355}
+      - {x: 0.5524173, y: -0.29309848}
+      - {x: 0.6501384, y: -0.014075518}
+      - {x: 0.65563756, y: 0.2555639}
+      - {x: 0.6510106, y: 0.56978655}
+      - {x: 0.27420142, y: 0.57124937}
+      - {x: 0.1429601, y: 0.589952}
+  m_UseDelaunayMesh: 0
 --- !u!1 &2078597824
 GameObject:
   m_ObjectHideFlags: 0
