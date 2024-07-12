@@ -6,7 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timertxt1;
-    [SerializeField] private TextMeshProUGUI timertxt2;
 
     [SerializeField] private GameObject holdPanel;
     [SerializeField] private PLController p1;
@@ -21,7 +20,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         timertxt1.text = (SceneBehaviour.Instance.GameTime - Time.timeSinceLevelLoad).ToString("F0");
-        timertxt2.text = timertxt1.text;
+        
         if (Time.timeSinceLevelLoad>SceneBehaviour.Instance.GameTime)
         {
             if (p1.TotalBeersDrank>p2.TotalBeersDrank)
