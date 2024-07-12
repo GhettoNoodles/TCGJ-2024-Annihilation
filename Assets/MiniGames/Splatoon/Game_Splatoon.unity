@@ -1391,6 +1391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellPrefab: {fileID: 4847454787309547722, guid: c2e564248fd33f948baa06335d6f4935, type: 3}
+  ediblePrefab: {fileID: 3349070227208324781, guid: 0ca67ac97b8861246b410b9675b00bfa, type: 3}
   gridSizeX: 72
   cellSize: 0.5
   gridSizeY: 40
