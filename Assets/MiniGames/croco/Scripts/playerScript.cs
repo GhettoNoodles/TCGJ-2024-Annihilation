@@ -35,6 +35,7 @@ public class playerScript : MonoBehaviour
         {
             var velocity = _inputManager.Get_Stick(playerNumber);
             rb.velocity = velocity.normalized * speed;
+            
         }
 
         if (InPickUpRange)
