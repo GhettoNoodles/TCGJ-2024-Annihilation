@@ -15,9 +15,9 @@ public class SwayBehaviour : MonoBehaviour
     [SerializeField]
     private int AmountBeersDrank, Range, MaxSpeed;
     [SerializeField]
-    private float SwaySpeed, FormulaBase, TimerReset, TimerCountdown, radius;
+    private float SwaySpeed, FormulaBase, TimerReset, TimerCountdown, RotateSpeed;
     [SerializeField]
-    private bool CanMove = true, numPicked = false;
+    private bool CanMove = true, numPicked = false, Rotating = false;
     [SerializeField]
     private Camera PlCam;
     
@@ -48,6 +48,12 @@ public class SwayBehaviour : MonoBehaviour
         {
             PickSwayPos();
         }
+
+        if (Rotating == true)
+        {
+            RotateCam();
+        }
+
 
         //if (CamPos.position == SwayPositions[Range].position ||
         //    CanMove == false)
@@ -81,6 +87,11 @@ public class SwayBehaviour : MonoBehaviour
         //{
         //    DrankBeer();
         //}
+    }
+
+    private void RotateCam()
+    {
+        transform.Rotate(transform.forward, RotateSpeed * Time.deltaTime);
     }
 
     //private void HowerAroundPos(Transform transform)
