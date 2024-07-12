@@ -21,6 +21,8 @@ public class Balance_Player : MonoBehaviour
     private JointMotor2D ShoulderMotor;
     private GameObject currentRock;
 
+    public Sprite[] rockSprites;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,9 @@ public class Balance_Player : MonoBehaviour
             currentRock.GetComponent<CircleCollider2D>().enabled = false;
             pickup.Grab(currentRock.GetComponent<Rigidbody2D>());
             currentRock.GetComponent<Rigidbody2D>().mass = 1;
+
+            if (playerNumber == Input_Manager.PlayerNumber.P1) GetComponentInChildren<SpriteRenderer>().sprite = rockSprites[0];
+            else GetComponentInChildren<SpriteRenderer>().sprite = rockSprites[1];
         }
 
         if (_inputManager.Get_Action(playerNumber))
