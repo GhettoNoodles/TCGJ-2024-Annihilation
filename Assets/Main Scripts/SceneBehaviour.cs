@@ -48,12 +48,9 @@ public class SceneBehaviour : MonoBehaviour
         GetGameScenes();
     }
 
-    private void Update()
+    public void NextGame()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ChangeGame();
-        }
+        
     }
 
     private void GetGameScenes()

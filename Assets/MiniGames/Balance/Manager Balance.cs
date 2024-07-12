@@ -6,7 +6,6 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class ManagerBalance : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI timertxt;
     [SerializeField] private TextMeshProUGUI p1text;
     [SerializeField] private TextMeshProUGUI p2text;
     [SerializeField] private GameObject holdPanel;
@@ -48,7 +47,6 @@ public class ManagerBalance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timertxt.text = (SceneBehaviour.Instance.GameTime - Time.timeSinceLevelLoad).ToString("F0");
         if (Time.timeSinceLevelLoad > SceneBehaviour.Instance.GameTime)
         {
             if (p1Score > p2Score)
