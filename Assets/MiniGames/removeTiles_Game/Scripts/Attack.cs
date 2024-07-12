@@ -31,8 +31,7 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Floor" &&
-            collision.gameObject.GetComponent<Tile>().tileState == Tile.TileState.Normal)
+        if (collision.gameObject.tag == "Floor")
         {
             TilesInRange.Remove(collision.gameObject);
         }
