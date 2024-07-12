@@ -1,18 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class score : MonoBehaviour
 {
     [SerializeField] private int OneScore = 0, TwoScore = 0;
     private Input_Manager.PlayerNumber winner;
+    [SerializeField] private GameObject holdPanel;
+    [SerializeField] private TextMeshProUGUI p1text;
+    [SerializeField] private TextMeshProUGUI p2text;
     public int teeth = 7;
     
     public void AddOneToOne()
     {
         OneScore++;
         teeth--;
+        p1text.text = OneScore.ToString();
         Debug.Log(OneScore);
     }
     
@@ -20,11 +26,38 @@ public class score : MonoBehaviour
     {
         TwoScore++;
         teeth--;
+        p2text.text = TwoScore.ToString();
         Debug.Log(TwoScore);
     }
 
     private void Update()
     {
+        if (Time.timeSinceLevelLoad>SceneBehaviour.Instance.GameTime)
+        {
+            if (OneScore>TwoScore)
+            {
+                SceneBehaviour.Instance.EndGameSession(Input_Manager.PlayerNumber.P1);
+            }
+            else if (TwoScore>OneScore)
+            {
+                SceneBehaviour.Instance.EndGameSession(Input_Manager.PlayerNumber.P2);
+            }
+            else
+            {
+                SceneBehaviour.Instance.EndGameSession((Input_Manager.PlayerNumber)Random.Range(0, 2));
+            }
+        }
+        if (!(Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P1) &&
+              Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P2)))
+        {
+            holdPanel.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            holdPanel.SetActive(false);
+            Time.timeScale = 1f;
+        }
         if (teeth == 0)
         {
             if (OneScore > TwoScore)
