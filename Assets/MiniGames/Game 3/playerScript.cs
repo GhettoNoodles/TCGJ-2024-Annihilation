@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System.Collections;
+using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class playerScript : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class playerScript : MonoBehaviour
     [SerializeField] private bool InPickUpRange;
     public bool isStunned = false;
     public GameObject tooth, pickingUptooth;
+    public Vector2 ogPos;
 
     void Start()
     {
@@ -51,29 +54,29 @@ public class playerScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-       if (other == tooth.GetComponent<CircleCollider2D>())
+       if (other.CompareTag("tooth"))
        {
            InPickUpRange = true;
            pickingUptooth = other.gameObject;
-           Debug.Log("can pick up");
+           ogPos = pickingUptooth.transform.position;
+           //Debug.Log("can pick up");
        }
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other == tooth.GetComponent<CircleCollider2D>())
+        if (other.CompareTag("tooth"))
         {
             InPickUpRange = false;
             pickingUptooth = null;
-            Debug.Log("no more");
+            //Debug.Log("no more");
         }
     }
     private void PickUp()
     {
-        
         if (pickingUptooth != null && _inputManager.Get_Action(playerNumber))
         {
-            Debug.Log("Picking up tooth!");
+            //Debug.Log("Picking up tooth!");
             pickingUptooth.transform.SetParent(this.transform);
             pickingUptooth.transform.localPosition = Vector3.zero; 
         }

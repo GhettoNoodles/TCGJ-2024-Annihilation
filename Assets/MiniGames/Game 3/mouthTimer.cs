@@ -11,6 +11,8 @@ public class CrocodileMouthController : MonoBehaviour
     public float stunDuration = 1.0f; 
     public GameObject playerOne;
     public GameObject playerTwo;
+    public float boundaryRadius = 2.5f;
+    public playerScript PlayerScript;
 
     private void Start()
     {
@@ -30,6 +32,7 @@ public class CrocodileMouthController : MonoBehaviour
             crocodileOpen.SetActive(false);
             crocodileClosed.SetActive(true);
             ApplyKnockbackToPlayers();
+            ReturnTeethToMouth();
             yield return new WaitForSeconds(closedDuration);
         }
     }
@@ -50,5 +53,24 @@ public class CrocodileMouthController : MonoBehaviour
                 }
             }
         }
+    }
+    
+    private void ReturnTeethToMouth()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(crocodileClosed.transform.position, boundaryRadius);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("tooth"))
+            {
+                collider.gameObject.transform.position = PlayerScript.ogPos;
+                collider.transform.SetParent(crocodileOpen.transform);
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(crocodileClosed.transform.position, boundaryRadius);
     }
 }

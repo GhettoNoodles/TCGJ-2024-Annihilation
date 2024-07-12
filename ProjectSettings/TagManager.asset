@@ -7,6 +7,7 @@ TagManager:
   - Input
   - Splatoon_Tile
   - SceneBehaviour
+  - tooth
   layers:
   - Default
   - TransparentFX
