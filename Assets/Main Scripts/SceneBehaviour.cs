@@ -154,8 +154,8 @@ public class SceneBehaviour : MonoBehaviour
 
     public void ChangeGame()
     {
-        readyPanel.SetActive(false);
-        ingame = true;
+        
+        
         GameTime -= GameTimeDecrement;
         int randNum = Random.Range(0, gameScenes.Count);
         Debug.Log("changing game");
@@ -163,11 +163,19 @@ public class SceneBehaviour : MonoBehaviour
         loadedScenes.Add(gameScenes[randNum]);
         gameScenes.RemoveAt(randNum);
 
+      
         if (gameScenes.Count == 0)
         {
             gameScenes.Clear();
             GetGameScenes();
             loadedScenes.Clear();
         }
+        
+    }
+
+    public void GameLoaded()
+    {
+        ingame = true;
+        readyPanel.SetActive(false);
     }
 }

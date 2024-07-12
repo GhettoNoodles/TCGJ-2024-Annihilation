@@ -28,6 +28,7 @@ public class ManagerBalance : MonoBehaviour
     } // Start is called before the first frame update
     void Start()
     {
+        SceneBehaviour.Instance.GameLoaded();
     }
 
     public void IncreaseScore(Input_Manager.PlayerNumber loser)

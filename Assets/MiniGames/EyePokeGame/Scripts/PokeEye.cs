@@ -34,6 +34,7 @@ public class PokeEye : MonoBehaviour
     [SerializeField] private GameObject holdPanel;
     private void Start()
     {
+        SceneBehaviour.Instance.GameLoaded();
         Finger1.transform.position = new Vector3(Finger1.transform.position.x, startPos.position.y);
         Finger2.transform.position = new Vector3(Finger2.transform.position.x, startPos.position.y);
     }

@@ -30,6 +30,11 @@ public class score : MonoBehaviour
         Debug.Log(TwoScore);
     }
 
+    private void Start()
+    {
+        SceneBehaviour.Instance.GameLoaded();
+    }
+
     private void Update()
     {
         if (Time.timeSinceLevelLoad>SceneBehaviour.Instance.GameTime)
