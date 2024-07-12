@@ -52,10 +52,8 @@ public class Input_Manager : MonoBehaviour
 
         L_Horizontal = Input.GetAxis("P1_Horizontal");
         L_Vertical = Input.GetAxis("P1_Vertical");
-
-        R_Horizontal = Input.GetAxis("P2_Horizontal_0");
-        R_Vertical = Input.GetAxis("P2_Vertical_0");
-
+        R_Horizontal = Input.GetAxis("P2_Horizontal");
+        R_Vertical = Input.GetAxis("P2_Vertical");
     }
 
     public bool Get_Action(PlayerNumber player)
@@ -107,6 +105,4 @@ public class Input_Manager : MonoBehaviour
 
         return new Vector2(R_Horizontal, R_Vertical);
     }
-
-
 }
