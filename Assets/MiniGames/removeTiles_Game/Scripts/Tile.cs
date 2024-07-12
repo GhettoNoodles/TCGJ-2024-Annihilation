@@ -71,19 +71,31 @@ public class Tile : MonoBehaviour
                 
                 break;
             case TileState.Burning:
-                if (collision.gameObject.tag == "Player")
+                if (collision.gameObject.tag == "Player1")
                 {
-                    Dead();
+                    KillPlayer1();
+                }
+
+                else if (collision.gameObject.tag == "Player2")
+                {
+                    KillPlayer2();
                 }
                 break;
             case TileState.Destroyed:
-                if (collision.gameObject.tag == "Player")
+                if (collision.gameObject.tag == "Player1")
                 {
-                    Dead();
+                    KillPlayer1();
+                }
+
+                else if (collision.gameObject.tag == "Player2")
+                {
+                    KillPlayer2();
                 }
                 break;
         }
     }
+
+    
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -93,16 +105,37 @@ public class Tile : MonoBehaviour
 
                 break;
             case TileState.Burning:
-                
+                if (collision.gameObject.tag == "Player1")
+                {
+                    KillPlayer1();
+                }
+
+                else if (collision.gameObject.tag == "Player2")
+                {
+                    KillPlayer2();
+                }
                 break;
             case TileState.Destroyed:
-                
+                if (collision.gameObject.tag == "Player1")
+                {
+                    KillPlayer1();
+                }
+
+                else if (collision.gameObject.tag == "Player2")
+                {
+                    KillPlayer2();
+                }
                 break;
         }
     }
 
-    private void Dead()
+    private void KillPlayer1()
     {
-        
+        Debug.Log("Player 2 Wins");
+    }
+
+    private void KillPlayer2()
+    {
+        Debug.Log("Player 1 Wins");
     }
 }
