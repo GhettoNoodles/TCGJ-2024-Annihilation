@@ -1379,7 +1379,7 @@ MonoBehaviour:
   p1ready: {fileID: 0}
   p2ready: {fileID: 0}
   timertxt: {fileID: 0}
-  readyPanel: {fileID: 0}
+  readyPanel: {fileID: 1002384376159185916, guid: 84631a90cf6520349927c408f357a3e8, type: 3}
 --- !u!4 &1190697533
 Transform:
   m_ObjectHideFlags: 0
