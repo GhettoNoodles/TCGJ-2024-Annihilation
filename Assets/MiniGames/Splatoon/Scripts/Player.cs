@@ -78,5 +78,17 @@ public class Player : MonoBehaviour
             other.GetComponent<Splatoon_Tile>().Paint(playerNumber);
             game.UpdateScore();
         }
+
+        if (other.CompareTag("Power-Up"))
+        {
+           SizeUp(); 
+           Destroy(other.gameObject);
+        }
+    }
+
+    private void SizeUp()
+    {
+        transform.localScale += new Vector3(0.3f,0.3f,0.3f);
+        speed -= 0.2f;
     }
 }

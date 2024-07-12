@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 public class Splatoongame : MonoBehaviour
 {
     [SerializeField] private GameObject cellPrefab;
+    [SerializeField] private GameObject ediblePrefab;
 
     [SerializeField] private int gridSizeX;
     [SerializeField] private float cellSize;
@@ -20,26 +21,28 @@ public class Splatoongame : MonoBehaviour
     [SerializeField] private Color p1;
     [SerializeField] private Color p2;
     private float GameTime = 60;
-    private float p1Score =0 ;
-    private float p2Score =0;
+    private float p1Score = 0;
+    private float p2Score = 0;
+    private bool gameOver = false;
 
     private List<Splatoon_Tile> cells;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         cells = new List<Splatoon_Tile>();
-      GenerateGrid();  
+        GenerateGrid();
+        StartCoroutine(TimerRoutine());
     }
 
     // Update is called once per frame
     void Update()
     {
-        texttimer.text = (GameTime- Time.timeSinceLevelLoad).ToString("F0");
-        if (Time.timeSinceLevelLoad>=GameTime)
+        texttimer.text = (GameTime - Time.timeSinceLevelLoad).ToString("F0");
+        if (Time.timeSinceLevelLoad >= GameTime)
         {
             Input_Manager.PlayerNumber winner;
-            if (p1Score>p2Score)
+            if (p1Score > p2Score)
             {
                 winner = Input_Manager.PlayerNumber.P1;
             }
@@ -51,8 +54,10 @@ public class Splatoongame : MonoBehaviour
             {
                 winner = (Input_Manager.PlayerNumber)Random.Range(0, 2);
             }
+
             SceneBehaviour.Instance.EndGameSession(winner);
         }
+
         if (!(Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P1) &&
               Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P2)))
         {
@@ -74,11 +79,12 @@ public class Splatoongame : MonoBehaviour
             {
                 p1Count++;
             }
-            else if (cell.currentDominance==Splatoon_Tile.Dominance.p2)
+            else if (cell.currentDominance == Splatoon_Tile.Dominance.p2)
             {
                 p2Count++;
             }
         }
+
         p1Score = p1Count / cells.Count;
         p2Score = p2Count / cells.Count;
         Debug.Log(p1Score);
@@ -94,13 +100,28 @@ public class Splatoongame : MonoBehaviour
             {
                 var pos = new Vector2(x, y);
                 pos *= cellSize;
-                var cell=
-                Instantiate(cellPrefab, pos, quaternion.identity);
+                var cell =
+                    Instantiate(cellPrefab, pos, quaternion.identity);
                 cell.transform.localScale *= cellSize;
                 cells.Add(cell.GetComponent<Splatoon_Tile>());
             }
         }
     }
-    
+
+    IEnumerator TimerRoutine()
+    {
+        while (!gameOver)
+        {
+            SpawnEdible();
+            yield return new WaitForSeconds(5f);
+        }
+    }
+
+    private void SpawnEdible()
+    {
+        var rand = Random.Range(0, cells.Count);
+        Instantiate(ediblePrefab, cells[rand].gameObject.transform.position, quaternion.identity);
+    }
 }
+
 

@@ -12,6 +12,7 @@ TagManager:
   - Rock
   - Kill
   - Goblin
+  - Power-Up
   layers:
   - Default
   - TransparentFX
