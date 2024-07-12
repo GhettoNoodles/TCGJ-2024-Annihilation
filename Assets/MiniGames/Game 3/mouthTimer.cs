@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class CrocodileMouthController : MonoBehaviour
     public GameObject playerTwo;
     public float boundaryRadius = 2.5f;
     public playerScript PlayerScript;
+    
 
     private void Start()
     {
@@ -50,11 +52,15 @@ public class CrocodileMouthController : MonoBehaviour
                     Vector2 knockbackDirection = (collider.transform.position - crocodileClosed.transform.position).normalized;
                     rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
                     collider.GetComponent<playerScript>().StunPlayer(stunDuration);
+                    PlayerScript = collider.GetComponent<playerScript>();
+                    PlayerScript.dropWhenStun();
                 }
             }
         }
     }
+
     
+
     private void ReturnTeethToMouth()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(crocodileClosed.transform.position, boundaryRadius);
