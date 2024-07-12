@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using TMPro;
 using UnityEngine;
 
 public class PokeEye : MonoBehaviour
@@ -31,6 +32,7 @@ public class PokeEye : MonoBehaviour
     [Space(10)]
     public float moistSpeed;
 
+    [SerializeField] private TextMeshProUGUI timertxt;
     private void Start()
     {
         Finger1.transform.position = new Vector3(Finger1.transform.position.x, startPos.position.y);
@@ -38,6 +40,19 @@ public class PokeEye : MonoBehaviour
     }
     private void Update()
     {
+        timertxt.text = (SceneBehaviour.Instance.GameTime - Time.timeSinceLevelLoad).ToString("F0");
+        if (Time.timeSinceLevelLoad>SceneBehaviour.Instance.GameTime)
+        {
+            if (score_p1>score_p2)
+            {
+                SceneBehaviour.Instance.EndGameSession(Input_Manager.PlayerNumber.P1);
+            }
+            else
+            {
+                SceneBehaviour.Instance.EndGameSession(Input_Manager.PlayerNumber.P2);
+            }
+           
+        }
         if (Input_Manager.Instance.Get_Action_Tap(Input_Manager.PlayerNumber.P1))
         {
             score_p1++;

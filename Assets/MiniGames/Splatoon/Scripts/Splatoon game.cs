@@ -38,8 +38,8 @@ public class Splatoongame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        texttimer.text = (GameTime - Time.timeSinceLevelLoad).ToString("F0");
-        if (Time.timeSinceLevelLoad >= GameTime)
+        texttimer.text = (SceneBehaviour.Instance.GameTime - Time.timeSinceLevelLoad).ToString("F0");
+        if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.GameTime)
         {
             Input_Manager.PlayerNumber winner;
             if (p1Score > p2Score)

@@ -249,6 +249,9 @@ MonoBehaviour:
   startHealth: 5
   damagePerGame: 1
   gameSceneStartIndex: 0
+  FirstGameTimer: 65
+  GameTimeDecrement: 5
+  GameTime: 65
   recentWinner: 0
 --- !u!4 &771742472
 Transform:
