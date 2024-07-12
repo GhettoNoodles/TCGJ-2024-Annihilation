@@ -53,40 +53,51 @@ public class PokeEye : MonoBehaviour
             }
            
         }
-        if (Input_Manager.Instance.Get_Action_Tap(Input_Manager.PlayerNumber.P1))
+        if (!(Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P1) &&
+              Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P2)))
         {
-            score_p1++;
-            PokeEyeAction(Finger1, finger1_sprite);
+            Time.timeScale = 0f;
         }
         else
         {
-            Finger1.transform.position = new Vector3(Finger1.transform.position.x, startPos.position.y);
-            Finger1.GetComponentInChildren<SpriteRenderer>().sprite = finger1_sprite[0];
-        }
+            Time.timeScale = 1f;
+
+            if (Input_Manager.Instance.Get_Action_Tap(Input_Manager.PlayerNumber.P1))
+            {
+                score_p1++;
+                PokeEyeAction(Finger1, finger1_sprite);
+            }
+            else
+            {
+                Finger1.transform.position = new Vector3(Finger1.transform.position.x, startPos.position.y);
+                Finger1.GetComponentInChildren<SpriteRenderer>().sprite = finger1_sprite[0];
+            }
 
 
-        if (Input_Manager.Instance.Get_Action_Tap(Input_Manager.PlayerNumber.P2))
-        {
-            score_p2++;
-            PokeEyeAction(Finger2, finger2_sprite);
-        }
-        else
-        {
-            Finger2.transform.position = new Vector3(Finger2.transform.position.x, startPos.position.y);
-            Finger2.GetComponentInChildren<SpriteRenderer>().sprite = finger2_sprite[0];
-        }
-        
-        if (Input_Manager.Instance.Get_Action(Input_Manager.PlayerNumber.P1))
-        {
-            PokeEyeAction(Finger1, finger1_sprite);
-        }
-        if (Input_Manager.Instance.Get_Action(Input_Manager.PlayerNumber.P2))
-        {
-            PokeEyeAction(Finger2, finger2_sprite);
-        }
+            if (Input_Manager.Instance.Get_Action_Tap(Input_Manager.PlayerNumber.P2))
+            {
+                score_p2++;
+                PokeEyeAction(Finger2, finger2_sprite);
+            }
+            else
+            {
+                Finger2.transform.position = new Vector3(Finger2.transform.position.x, startPos.position.y);
+                Finger2.GetComponentInChildren<SpriteRenderer>().sprite = finger2_sprite[0];
+            }
 
-        MoistEyes();
-        ChangeMouth();
+            if (Input_Manager.Instance.Get_Action(Input_Manager.PlayerNumber.P1))
+            {
+                PokeEyeAction(Finger1, finger1_sprite);
+            }
+
+            if (Input_Manager.Instance.Get_Action(Input_Manager.PlayerNumber.P2))
+            {
+                PokeEyeAction(Finger2, finger2_sprite);
+            }
+
+            MoistEyes();
+            ChangeMouth();
+        }
     }
 
     private void MoistEyes()

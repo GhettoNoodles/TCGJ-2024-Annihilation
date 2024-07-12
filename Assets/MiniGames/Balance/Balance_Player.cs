@@ -30,6 +30,15 @@ public class Balance_Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!(Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P1) &&
+              Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P2)))
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
         var velocity = _inputManager.Get_Stick(playerNumber).x;
         rb.AddForce(new Vector2(velocity*speed,0));
         if (_inputManager.Get_Action_Tap(playerNumber))

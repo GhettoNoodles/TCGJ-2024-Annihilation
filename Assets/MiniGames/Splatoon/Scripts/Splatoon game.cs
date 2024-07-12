@@ -12,6 +12,7 @@ public class Splatoongame : MonoBehaviour
     [SerializeField] private GameObject cellPrefab;
     [SerializeField] private GameObject ediblePrefab;
 
+    [SerializeField] private GameObject holdPanel;
     [SerializeField] private int gridSizeX;
     [SerializeField] private float cellSize;
     [SerializeField] private int gridSizeY;
@@ -61,10 +62,12 @@ public class Splatoongame : MonoBehaviour
         if (!(Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P1) &&
               Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P2)))
         {
+            holdPanel.SetActive(true);
             Time.timeScale = 0f;
         }
         else
         {
+            holdPanel.SetActive(false);
             Time.timeScale = 1f;
         }
     }
@@ -87,7 +90,6 @@ public class Splatoongame : MonoBehaviour
 
         p1Score = p1Count / cells.Count;
         p2Score = p2Count / cells.Count;
-        Debug.Log(p1Score);
         imgP1.fillAmount = p1Score;
         imgP2.fillAmount = p2Score;
     }
