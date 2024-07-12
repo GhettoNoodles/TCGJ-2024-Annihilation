@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Input Tester/Input Test 1.unity
     guid: 7f6e6c97e3631fe45b9a56ecf0a9dadc
+  - enabled: 0
+    path: Assets/MiniGames/drinking_Game/Drinking_Game.unity
+    guid: 0460a631e7de5984cb6dd51f7a9a5ceb
   m_configObjects: {}
