@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class FistScript : MonoBehaviour
 {
+    public static FistScript Instance { get; private set; }
+
+    public int Player1_score;
+    public int Player2_score;
+
     public GameObject fist_1;
     public GameObject fist_2;
 
@@ -18,6 +23,11 @@ public class FistScript : MonoBehaviour
     public Rigidbody2D rb_2;
 
     public float speedMulti;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         rb_1 = fist_1.GetComponent<Rigidbody2D>();
