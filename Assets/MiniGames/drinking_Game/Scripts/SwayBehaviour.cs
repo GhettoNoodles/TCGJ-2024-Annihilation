@@ -13,60 +13,85 @@ public class SwayBehaviour : MonoBehaviour
     [SerializeField]
     private float AlcoholLevel;
     [SerializeField]
-    private int AmountBeersDrank, Range;
+    private int AmountBeersDrank, Range, MaxSpeed;
     [SerializeField]
-    private float SwaySpeed, FormulaBase, TimerReset, TimerCountdown, radius;
+    private float SwaySpeed, FormulaBase, TimerReset, TimerCountdown, RotateSpeed;
     [SerializeField]
-    private bool CanMove = true, numPicked = false;
-
+    private bool CanMove = true, numPicked = false, Rotating = false;
+    [SerializeField]
+    private Camera PlCam;
+    
     
     // Start is called before the first frame update
     void Start()
     {
-        CamPos.position = SwayPositions[0].position;
+       CamPos.position = SwayPositions[0].position;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       if (CanMove == true)
+
+
+
+
+
+        if (CanMove == true)
         {
             Swaying(SwayPositions[Range]);
         }
-        
 
-        if (CamPos.position == SwayPositions[Range].position ||
-            CanMove == false)
+
+        if (CamPos.position == SwayPositions[Range].position)
         {
-           
-            CanMove = false;
-            if (CanMove== false)
-            {
-                //HowerAroundPos(SwayPositions[Range]);
-                if (numPicked == false)
-                {
+            PickSwayPos();
+        }
 
-                    TimerReset = UnityEngine.Random.Range(0.3f,0.8f);
-                    TimerCountdown = TimerReset;
-                    numPicked = true;
-                }
-
-                TimerCountdown -= Time.deltaTime;
-                if(TimerCountdown <= 0)
-                {
-                    PickSwayPos();
-                }
-                
-            }
-            
-            
+        if (Rotating == true)
+        {
+            RotateCam();
         }
 
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            DrankBeer();
-        }
+        //if (CamPos.position == SwayPositions[Range].position ||
+        //    CanMove == false)
+        //{
+
+        //    CanMove = false;
+        //    if (CanMove == false)
+        //    {
+        //        //HowerAroundPos(SwayPositions[Range]);
+        //        if (numPicked == false)
+        //        {
+
+        //            TimerReset = UnityEngine.Random.Range(0.3f, 0.8f);
+        //            TimerCountdown = TimerReset;
+        //            numPicked = true;
+        //        }
+
+        //        TimerCountdown -= Time.deltaTime;
+        //        if (TimerCountdown <= 0)
+        //        {
+        //            PickSwayPos();
+        //        }
+
+        //    }
+
+
+        //}
+
+
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    DrankBeer();
+        //}
+    }
+
+    private void RotateCam()
+    {
+        transform.Rotate(transform.forward, RotateSpeed * Time.deltaTime);
     }
 
     //private void HowerAroundPos(Transform transform)
@@ -93,6 +118,11 @@ public class SwayBehaviour : MonoBehaviour
         //SwaySpeed = 1f + (AlcoholLevel / 50);
         float Power = (2*AmountBeersDrank + 1);
         SwaySpeed = Mathf.Pow(FormulaBase, Power);
+
+        if (SwaySpeed > MaxSpeed)
+        {
+            SwaySpeed = MaxSpeed;
+        }
     } 
 
     public void PickSwayPos()
