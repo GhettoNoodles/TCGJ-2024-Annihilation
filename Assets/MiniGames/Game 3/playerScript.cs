@@ -9,20 +9,24 @@ using UnityEngine.UIElements;
 
 public class playerScript : MonoBehaviour
 {
+    
     private Input_Manager _inputManager;
 
     [SerializeField] private Input_Manager.PlayerNumber playerNumber;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
-    [SerializeField] private bool InPickUpRange;
+    [SerializeField] private bool InPickUpRange, PickedUp;
     public bool isStunned = false;
-    public GameObject tooth, pickingUptooth;
+    public GameObject pickingUptooth;
     public Vector2 ogPos;
+    public tooth toothScript;
+    
 
     void Start()
     {
         _inputManager = Input_Manager.Instance;
         InPickUpRange = false;
+        PickedUp = false;
     }
 
     void FixedUpdate()
@@ -37,6 +41,8 @@ public class playerScript : MonoBehaviour
         {
             PickUp();
         }
+        
+        NotpickedUp();
         
     }
 
@@ -59,27 +65,47 @@ public class playerScript : MonoBehaviour
            InPickUpRange = true;
            pickingUptooth = other.gameObject;
            ogPos = pickingUptooth.transform.position;
-           //Debug.Log("can pick up");
+           Debug.Log("can pick up");
        }
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("tooth"))
+        if (other.CompareTag("tooth") && !toothScript.pickedUpbyPlayer)
         {
             InPickUpRange = false;
             pickingUptooth = null;
-            //Debug.Log("no more");
+            Debug.Log("no more");
         }
+       
     }
     private void PickUp()
     {
         if (pickingUptooth != null && _inputManager.Get_Action(playerNumber))
         {
-            //Debug.Log("Picking up tooth!");
+            Debug.Log("Picking up tooth!");
+            toothScript = pickingUptooth.GetComponent<tooth>();
+            toothScript.pickedUpbyPlayer = true;
             pickingUptooth.transform.SetParent(this.transform);
-            pickingUptooth.transform.localPosition = Vector3.zero; 
+            pickingUptooth.transform.localPosition = Vector3.zero;
+            
         }
+    }
+
+    private void NotpickedUp()
+    {
+        if (!_inputManager.Get_Action(playerNumber))
+        {
+            //toothScript = pickingUptooth.GetComponent<tooth>();
+            toothScript.pickedUpbyPlayer = false;
+            //pickingUptooth.transform.parent = null;
+        }
+    }
+
+    public void dropWhenStun()
+    {
+        toothScript.pickedUpbyPlayer = false;
+        InPickUpRange = false;
     }
     
 }
