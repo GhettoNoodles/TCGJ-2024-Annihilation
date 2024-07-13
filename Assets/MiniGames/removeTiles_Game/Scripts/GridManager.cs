@@ -34,10 +34,15 @@ public class GridManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateGride();
+       
         SpawnCountdown = SpawnReset;
         TextScore1.text = Score_PL1.ToString();
         TextScore2.text = Score_PL2.ToString();
+    }
+
+    private void Awake()
+    {
+        GenerateGride();
     }
 
     private void GenerateGride()
@@ -186,35 +191,20 @@ public class GridManager : MonoBehaviour
 
     private void GameReset()
     {
+        
         TextScore1.text = Score_PL1.ToString();
         TextScore2.text = Score_PL2.ToString();
 
-        for (int i = 0; i < GridStart_PL1.childCount; i++)
-        {
-            GridStart_PL1.GetChild(i).gameObject.GetComponent<Tile>().tileState = Tile.TileState.Normal;
-            GridStart_PL2.GetChild(i).gameObject.GetComponent<Tile>().tileState = Tile.TileState.Normal;
-
-        }
-
-        PLC1.ResetAttack();
-        PLC2.ResetAttack();
-
         if (DecreaseMap == true)
         {
-            PLC1.gameObject.transform.position = new Vector2(0, 0);
-            //PLC1.attack.TilesInRange.Clear();
-            PLC2.gameObject.transform.position = new Vector2(100, 0);
-           // PLC2.attack.TilesInRange.Clear();
 
-            if ( MinSizereached == false)
+            if (MinSizereached == false)
             {
-                GridStart_PL1.position = new Vector2(GridStart_PL1.position.x + 1, GridStart_PL1.position.y - 1);
-                GridStart_PL2.position = new Vector2(GridStart_PL2.position.x - 1, GridStart_PL2.position.y - 1);
 
                 Width -= 1;
                 Height -= 1;
 
-                GenerateGride();
+
 
                 if (Width == MinWidth &&
                     Height == MinHeight)
@@ -223,10 +213,82 @@ public class GridManager : MonoBehaviour
                 }
             }
         }
+
+        NormalGrid_PL1.Clear();
+        NormalGrid_PL2.Clear();
+        ResetGrid_PL1();
+        ResetGrid_PL2();
+     
+
+        PLC1.ResetAttack();
+        PLC2.ResetAttack();
+
+        //for (int i = 0; i < GridStart_PL1.childCount; i++)
+        //{
+        //    Debug.Log("Hello");
+        //    //GridStart_PL1.GetChild(i).gameObject.GetComponent<Tile>().tileState = Tile.TileState.Normal;
+        //    Destroy(GridStart_PL1.GetChild(0).gameObject);
+        //    //GridStart_PL2.GetChild(i).gameObject.GetComponent<Tile>().tileState = Tile.TileState.Normal;
+        //    Destroy(GridStart_PL2.GetChild(0).gameObject);
+        //}
+
+       
+        SetPlayerPos();
+
+        
             
 
     }
 
+    private void ResetGrid_PL2()
+    {
+        for (int i = 0; i < GridStart_PL2.childCount; i++)
+        {
+            GameObject ResetTile = GridStart_PL2.GetChild(i).gameObject;
+            if (ResetTile.GetComponent<Tile>().tileState != Tile.TileState.Destroyed)
+            {
+                ResetTile.GetComponent<Tile>().tileState = Tile.TileState.Normal;
+                NormalGrid_PL2.Add(ResetTile);
+            }
+
+        }
+    }
+
+    private void ResetGrid_PL1()
+    {
+        for (int i = 0; i < GridStart_PL1.childCount; i++)
+        {
+           GameObject ResetTile = GridStart_PL1.GetChild(i).gameObject;
+           if (ResetTile.GetComponent<Tile>().tileState != Tile.TileState.Destroyed)
+            {
+                ResetTile.GetComponent<Tile>().tileState = Tile.TileState.Normal;
+                NormalGrid_PL1.Add(ResetTile);
+            }
+
+        }
+    }
+
+    private void DestroyGrid()
+    {
+        for (int i = 0; i < GridStart_PL1.childCount; i++)
+        {
+            Debug.Log("Hello");
+            //GridStart_PL1.GetChild(i).gameObject.GetComponent<Tile>().tileState = Tile.TileState.Normal;
+            Destroy(GridStart_PL1.GetChild(0).gameObject);
+            //GridStart_PL2.GetChild(i).gameObject.GetComponent<Tile>().tileState = Tile.TileState.Normal;
+            Destroy(GridStart_PL2.GetChild(0).gameObject);
+        }
+    }
+
+    private void SetPlayerPos()
+    {
+        PLC1.gameObject.transform.position = new Vector2(0, 0);
+        PLC1.ScoreOnce = true;
+        PLC2.gameObject.transform.position = new Vector2(100, 0);
+        PLC2.ScoreOnce = true;
+        // PLC1.gameObject.transform.position = new Vector2(GridStart_PL1.position.x + 4, GridStart_PL1.position.y + 4);
+        // PLC2.gameObject.transform.position = new Vector2(GridStart_PL1.position.x - 4, GridStart_PL1.position.y + 4);
+    }
 
     public void DeclareWinner()
     {

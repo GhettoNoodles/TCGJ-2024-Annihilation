@@ -6,7 +6,7 @@ public class Attack : MonoBehaviour
 {
     public List<GameObject> TilesInRange;
     [SerializeField]
-    private Material Highlight, normal;
+    private Sprite Highlight, normal;
     [SerializeField]
     private Transform Grid1, Grid2;
     
@@ -27,19 +27,28 @@ public class Attack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Floor" &&
-            collision.gameObject.GetComponent<Tile>().tileState == Tile.TileState.Normal)
+            collision.gameObject.GetComponent<Tile>().CloneTile.GetComponent<Tile>().tileState == Tile.TileState.Normal)
         {
             TilesInRange.Add(collision.gameObject);
-            //int num = collision.gameObject.GetComponent<Tile>().Tilenum;
-            //if (transform.parent.gameObject.tag == "Player1")
-            //{
-            //    Grid2.GetChild(num).gameObject.GetComponent<Renderer>().material = Highlight;
-            //}
-            //else
-            //{
-            //    Grid1.GetChild(num).gameObject.GetComponent<Renderer>().material = Highlight;
-            //}
-            
+            int num = collision.gameObject.GetComponent<Tile>().Tilenum;
+            if (transform.parent.gameObject.tag == "Player1")
+            {
+                Grid2.GetChild(num).gameObject.GetComponent<SpriteRenderer>().sprite = Highlight;
+            }
+            else if (transform.parent.gameObject.tag == "Player2")
+            {
+                Grid1.GetChild(num).gameObject.GetComponent<SpriteRenderer>().sprite = Highlight;
+            }
+
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Floor" &&
+            collision.gameObject.GetComponent<Tile>().CloneTile.GetComponent<Tile>().tileState != Tile.TileState.Normal)
+        {
+            TilesInRange.Remove(collision.gameObject);
         }
     }
 
@@ -47,16 +56,18 @@ public class Attack : MonoBehaviour
     {
         if (collision.gameObject.tag == "Floor")
         {
+
+           
             TilesInRange.Remove(collision.gameObject);
-            //int num = collision.gameObject.GetComponent<Tile>().Tilenum;
-            //if (transform.parent.gameObject.tag == "Player1")
-            //{
-            //    Grid2.GetChild(num).gameObject.GetComponent<Renderer>().material = normal;
-            //}
-            //else
-            //{
-            //    Grid1.GetChild(num).gameObject.GetComponent<Renderer>().material = normal;
-            //}
+            int num = collision.gameObject.GetComponent<Tile>().Tilenum;
+            if (transform.parent.gameObject.tag == "Player1")
+            {
+                Grid2.GetChild(num).gameObject.GetComponent<SpriteRenderer>().sprite = normal;
+            }
+            else if (transform.parent.gameObject.tag == "Player2")
+            {
+               Grid1.GetChild(num).gameObject.GetComponent<SpriteRenderer>().sprite = normal;
+            }
         }
         
     }

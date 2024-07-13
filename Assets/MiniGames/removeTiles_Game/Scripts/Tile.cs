@@ -16,8 +16,9 @@ public class Tile : MonoBehaviour
     private GridManager gridManager;
     [SerializeField]
     private float burningCountdown, burningReset;
-    
-    
+    [SerializeField] private bool Player1Side;
+    public GameObject CloneTile;
+
     public enum TileState
     {
         Normal,
@@ -32,6 +33,23 @@ public class Tile : MonoBehaviour
         SetSprite();
         gridManager = GameObject.FindGameObjectWithTag("GridManager").GetComponent<GridManager>();
         burningCountdown = burningReset;
+
+        if (gameObject.transform.root == gridManager.GridStart_PL1)
+        {
+            Player1Side = true;
+            CloneTile = gridManager.GridStart_PL2.GetChild(Tilenum).gameObject;
+        }
+
+        else
+        {
+            Player1Side = false;
+            CloneTile = gridManager.GridStart_PL1.GetChild(Tilenum).gameObject;
+        }
+    }
+
+    private void Awake()
+    {
+        
     }
 
     public void SetSprite()
@@ -74,7 +92,7 @@ public class Tile : MonoBehaviour
                 break;
             case TileState.Burning:
                 burningCountdown -= Time.deltaTime;
-
+                spriteRenderer.sprite = S_Burning;
                 if (burningCountdown <= 0)
                 {
                     
@@ -92,7 +110,7 @@ public class Tile : MonoBehaviour
                 }
                 break;
             case TileState.Destroyed:
-                
+                spriteRenderer.sprite = S_Destroyed;
                 break;
         }
 
