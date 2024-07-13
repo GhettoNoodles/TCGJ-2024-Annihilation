@@ -1916,6 +1916,10 @@ PrefabInstance:
       propertyPath: holdPanel
       value: 
       objectReference: {fileID: 1114138301}
+    - target: {fileID: 3655444442891878489, guid: 3840b3f89b085304ab650182691f716e, type: 3}
+      propertyPath: minGameTime
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6622237195630339120, guid: 3840b3f89b085304ab650182691f716e, type: 3}
       propertyPath: m_Name
       value: scoreMn

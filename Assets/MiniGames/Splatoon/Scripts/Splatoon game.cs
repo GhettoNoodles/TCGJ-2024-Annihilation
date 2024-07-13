@@ -26,22 +26,25 @@ public class Splatoongame : MonoBehaviour
     private float p2Score = 0;
     private bool gameOver = false;
 
-    private List<Splatoon_Tile> cells;
+    private List<Splatoon_Tile> cells;[SerializeField] private float minGameTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        minGameTime += SceneBehaviour.Instance.GameTime;
+        SceneBehaviour.Instance.currentGameTime = minGameTime;
         SceneBehaviour.Instance.GameLoaded();
         cells = new List<Splatoon_Tile>();
         GenerateGrid();
         StartCoroutine(TimerRoutine());
     }
+    
 
     // Update is called once per frame
     void Update()
     {
         
-        if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.GameTime)
+        if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.currentGameTime)
         {
             Input_Manager.PlayerNumber winner;
             if (p1Score > p2Score)

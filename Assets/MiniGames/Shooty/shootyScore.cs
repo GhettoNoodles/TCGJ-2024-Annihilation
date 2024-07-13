@@ -11,7 +11,17 @@ public class shootyScore : MonoBehaviour
     [SerializeField] private TextMeshProUGUI p1text;
     [SerializeField] private TextMeshProUGUI p2text;
     public static shootyScore Instance { get; private set; }
-    public int playerOne = 0, playerTwo = 0;
+    public int playerOne = 0, playerTwo = 0;[SerializeField] private float minGameTime;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        minGameTime += SceneBehaviour.Instance.GameTime;
+        SceneBehaviour.Instance.currentGameTime = minGameTime;
+        SceneBehaviour.Instance.GameLoaded();
+        playerOne = 0;
+        playerTwo = 0;
+    }
     // Start is called before the first frame update
     private void Awake()
     {
@@ -24,17 +34,11 @@ public class shootyScore : MonoBehaviour
             Instance = this;
         }
     }
-
-    void Start()
-    {
-        SceneBehaviour.Instance.GameLoaded();
-        playerOne = 0;
-        playerTwo = 0;
-    }
+    
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.GameTime)
+        if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.currentGameTime)
         {
             Input_Manager.PlayerNumber winner;
             if (playerOne > playerTwo)
