@@ -38,7 +38,7 @@ public class shootyScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.GameTime)
+        if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.currentGameTime)
         {
             Input_Manager.PlayerNumber winner;
             if (playerOne > playerTwo)

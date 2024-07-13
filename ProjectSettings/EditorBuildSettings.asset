@@ -35,7 +35,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/MiniGames/Balance Duplicate/Balance Duplicate.unity
     guid: af3d3b15f82cc034aa708f5d80e384f0
-  - enabled: 1
+  - enabled: 0
     path: Assets/MiniGames/Shooty/shooty.unity
     guid: 78cd95071daa4e04c86cbf810c13af1d
+  - enabled: 1
+    path: Assets/MiniGames/TomatoGame/TomatoGame.unity
+    guid: f44e92570b162ee4dbe1531faa7f05c1
   m_configObjects: {}

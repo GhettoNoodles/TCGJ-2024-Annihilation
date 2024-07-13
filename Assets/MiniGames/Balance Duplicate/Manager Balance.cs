@@ -53,7 +53,7 @@ public class ManagerBalance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeSinceLevelLoad > SceneBehaviour.Instance.GameTime)
+        if (Time.timeSinceLevelLoad > SceneBehaviour.Instance.currentGameTime)
         {
             if (p1Score > p2Score)
             {

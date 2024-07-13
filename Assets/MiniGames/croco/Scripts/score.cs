@@ -41,7 +41,7 @@ public class score : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeSinceLevelLoad>SceneBehaviour.Instance.GameTime)
+        if (Time.timeSinceLevelLoad>SceneBehaviour.Instance.currentGameTime)
         {
             if (OneScore>TwoScore)
             {

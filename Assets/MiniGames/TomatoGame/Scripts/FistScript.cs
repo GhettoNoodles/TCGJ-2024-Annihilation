@@ -43,7 +43,7 @@ public class FistScript : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.GameTime)
+        if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.currentGameTime)
         {
             Input_Manager.PlayerNumber winner;
             if (Player1_score > Player2_score)

@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeSinceLevelLoad > minGameTime)
+        if (Time.timeSinceLevelLoad > SceneBehaviour.Instance.currentGameTime)
         {
             if (p1.TotalBeersDrank > p2.TotalBeersDrank)
             {

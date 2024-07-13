@@ -47,7 +47,7 @@ public class PokeEye : MonoBehaviour
     private void Update()
     {
         
-        if (Time.timeSinceLevelLoad>SceneBehaviour.Instance.GameTime)
+        if (Time.timeSinceLevelLoad>SceneBehaviour.Instance.currentGameTime)
         {
             if (score_p1>score_p2)
             {
