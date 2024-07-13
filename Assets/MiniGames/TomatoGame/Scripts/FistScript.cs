@@ -37,8 +37,6 @@ public class FistScript : MonoBehaviour
     private void Update()
     {
         GetRelHeight();
-        Debug.Log(rb_2.velocity.y);
-
     }
 
     private void FixedUpdate()
