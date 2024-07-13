@@ -44,6 +44,7 @@ public class SceneBehaviour : MonoBehaviour
     [SerializeField] private GameObject redLaser;
     [SerializeField] private GameObject blueLaser;
     [SerializeField] private GameObject endPanel;
+    [SerializeField] private GameObject explosion;
     [SerializeField] private TextMeshProUGUI loserText;
 
     void Awake()
@@ -168,6 +169,16 @@ public class SceneBehaviour : MonoBehaviour
 
     private void GameOver(Input_Manager.PlayerNumber loser)
     {
+        if(loser == Input_Manager.PlayerNumber.P1)
+        {
+            Instantiate(explosion,planet1.transform.position, Quaternion.identity);
+            Debug.Log("P1");
+        }
+        else
+        {
+            Instantiate(explosion, planet2.transform.position, Quaternion.identity);
+            Debug.Log("P2");
+        }
         loserText.text = loser == Input_Manager.PlayerNumber.P1 ? "Player 1 has been" : "Player 2 has been";
         endPanel.SetActive(true);
     }
