@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Tile : MonoBehaviour
 {
     public int Tilenum;
@@ -11,6 +12,10 @@ public class Tile : MonoBehaviour
     private Sprite S_Normal, S_Burning, S_Destroyed;
     public TileState tileState;
     public bool hasCollectabile = false;
+    [SerializeField]
+    private GridManager gridManager;
+    [SerializeField]
+    private float burningCountdown, burningReset;
     
     
     public enum TileState
@@ -25,6 +30,8 @@ public class Tile : MonoBehaviour
         tileState = TileState.Normal;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         SetSprite();
+        gridManager = GameObject.FindGameObjectWithTag("GridManager").GetComponent<GridManager>();
+        burningCountdown = burningReset;
     }
 
     public void SetSprite()
@@ -35,11 +42,15 @@ public class Tile : MonoBehaviour
                 spriteRenderer.sprite = S_Normal;
                 break;
             case TileState.Burning:
+                burningCountdown = burningReset;
                 spriteRenderer.sprite = S_Burning;
+
                 if (transform.childCount > 0)
                 {
                     Destroy(transform.GetChild(0).gameObject);
                 }
+
+                
                 break;
             case TileState.Destroyed:
                 spriteRenderer.sprite = S_Destroyed;
@@ -55,12 +66,36 @@ public class Tile : MonoBehaviour
     
     // Update is called once per frame
         void Update()
-    { 
-
-        if (Input.GetKeyDown(KeyCode.Space))
+    {
+        switch (tileState)
         {
-            SetSprite();
+            case TileState.Normal:
+                
+                break;
+            case TileState.Burning:
+                burningCountdown -= Time.deltaTime;
+
+                if (burningCountdown <= 0)
+                {
+                    
+                     if (transform.parent == gridManager.GridStart_PL1)
+                    {
+                        gridManager.NormalGrid_PL1.Add(gameObject);
+                    }
+                     else
+                    {
+                        gridManager.NormalGrid_PL2.Add(gameObject);
+                    }
+
+                    tileState = TileState.Normal;
+                    SetSprite();
+                }
+                break;
+            case TileState.Destroyed:
+                
+                break;
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -129,13 +164,19 @@ public class Tile : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        
+    }
+
     private void KillPlayer1()
     {
-        Debug.Log("Player 2 Wins");
+        
+        gridManager.PL2_Scores();
     }
 
     private void KillPlayer2()
     {
-        Debug.Log("Player 1 Wins");
+        gridManager.PL1_Scores();
     }
 }

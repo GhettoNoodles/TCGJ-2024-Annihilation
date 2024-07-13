@@ -10,13 +10,13 @@ public class PlayerController_RT : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb;
     [SerializeField]
-    private float Speed, IncreaseSpeed, AttackReset, AttackCooldown;
+    private float Speed, IncreaseSpeed, AttackReset, AttackCooldown, MaxSpeed;
     [SerializeField]
-    private Attack attack;
+    public Attack attack;
     [SerializeField]
     private GridManager gridManager;
     [SerializeField]
-    private bool CanAttack = true;
+    private bool CanAttack = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,22 +24,50 @@ public class PlayerController_RT : MonoBehaviour
         _inputManager = Input_Manager.Instance;
         attack = transform.GetChild(0).gameObject.GetComponent<Attack>();
         gridManager = GameObject.FindGameObjectWithTag("GridManager").GetComponent<GridManager>();
+        ResetAttack();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Speed += IncreaseSpeed * Time.deltaTime;
-        
-        
-        var velocity = _inputManager.Get_Stick(playerNumber);
-        rb.velocity = velocity.normalized * Speed;
 
-        if (_inputManager.Get_Action_Tap(playerNumber) &&
+        var velocity = _inputManager.Get_Stick(playerNumber);
+        float NewSpeed = Speed + IncreaseSpeed* Time.deltaTime;
+        
+        if (NewSpeed < MaxSpeed)
+        {
+            rb.velocity = velocity.normalized * NewSpeed;
+        }
+        
+        else if (NewSpeed >= MaxSpeed)
+        {
+            rb.velocity = velocity.normalized * MaxSpeed;
+        }
+        
+
+        
+
+        if ((_inputManager.Get_Action_Tap(playerNumber) ||
+            Input.GetKeyDown(KeyCode.Space)) &&
             CanAttack == true) 
         {
             Attack_OtherPlayer();
+            CanAttack = false;
+            ResetAttack();
         }
+
+        if (AttackCooldown >= 0 &&
+            CanAttack == false)
+        {
+            AttackCooldown -= Time.deltaTime;
+        }
+
+        if (AttackCooldown < 0)
+        {
+            CanAttack = true;
+        }
+
+        
     }
 
     private void Attack_OtherPlayer()
@@ -52,7 +80,7 @@ public class PlayerController_RT : MonoBehaviour
             for (int i = 0; i < TheseTiles.Count; i++)
             {
                 int num = TheseTiles[i].GetComponent<Tile>().Tilenum;
-                gridManager.DestroyTile_PL1(num);
+                gridManager.SetTileOnFire_PL1(num);
             }
         }
 
@@ -61,8 +89,16 @@ public class PlayerController_RT : MonoBehaviour
             for (int i = 0; i < TheseTiles.Count; i++)
             {
                 int num = TheseTiles[i].GetComponent<Tile>().Tilenum;
-                gridManager.DestroyTile_PL2(num);
+                gridManager.SetTileOnFire_PL2(num);
             }
         }
+
+        
+    }
+
+    public void ResetAttack()
+    {
+        attack.TilesInRange.Clear();
+        AttackCooldown = AttackReset;
     }
 }
