@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
@@ -33,6 +34,7 @@ public class SceneBehaviour : MonoBehaviour
     private float timer = 0;
     private bool ready;
     [SerializeField] private GameObject readyPanel;
+    [SerializeField] private Sprite[] planet1Sprite;
 
     void Awake()
     {
@@ -157,12 +159,10 @@ public class SceneBehaviour : MonoBehaviour
         
     }
 
-    public void ChangeGame()
+    private void ChangeGame()
     {
-        
-        
         GameTime -= GameTimeDecrement;
-        int randNum = Random.Range(0, gameScenes.Count);
+        var randNum = Random.Range(0, gameScenes.Count);
         Debug.Log("changing game");
         SceneManager.LoadScene(gameScenes[randNum]);
         loadedScenes.Add(gameScenes[randNum]);
@@ -182,5 +182,10 @@ public class SceneBehaviour : MonoBehaviour
     {
         ingame = true;
         readyPanel.SetActive(false);
+    }
+    
+    private void PlanetSpriteCheck(GameObject planet, float health)
+    {
+        
     }
 }
