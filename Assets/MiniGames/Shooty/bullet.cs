@@ -3,8 +3,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float lifeTime = 2f;
+    public Input_Manager.PlayerNumber whoseBulletisIt;
 
     void Start()
+        
     {
         Destroy(gameObject, lifeTime);
     }

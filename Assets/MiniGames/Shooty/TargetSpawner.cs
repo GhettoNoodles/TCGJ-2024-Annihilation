@@ -5,7 +5,7 @@ using UnityEngine;
 public class TargetSpawner : MonoBehaviour
 {
     public GameObject targetPrefab;
-    public float spawnInterval = 2f;
+    public float spawnInterval = 4f;
     public float xMin, xMax, yMin, yMax;
 
     void Start()
