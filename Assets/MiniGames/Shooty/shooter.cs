@@ -36,6 +36,9 @@ public class shooter : MonoBehaviour
             Shoot();
             shootCooldown = shootRate;
         }
+
+        transform.rotation = (Quaternion.LookRotation(Vector3.forward, _inputManager.Get_Stick(playerNumber)));
+
     }
 
     void Shoot()
