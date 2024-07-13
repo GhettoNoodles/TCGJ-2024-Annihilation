@@ -19,6 +19,7 @@ TagManager:
   - Player2
   - ReadyPanel
   - GridManager
+  - Target
   layers:
   - Default
   - TransparentFX

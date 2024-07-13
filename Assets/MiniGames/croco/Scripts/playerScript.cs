@@ -18,6 +18,8 @@ public class playerScript : MonoBehaviour
     public GameObject pickingUptooth;
     public Vector2 ogPos;
     public tooth toothScript;
+    private Vector2 minBoundary;
+    private Vector2 maxBoundary;
     
 
     void Start()
@@ -25,6 +27,10 @@ public class playerScript : MonoBehaviour
         _inputManager = Input_Manager.Instance;
         InPickUpRange = false;
         PickedUp = false;
+        
+        Camera cam = Camera.main;
+        minBoundary = cam.ViewportToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
+        maxBoundary = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));
     }
 
     void FixedUpdate()
@@ -33,6 +39,13 @@ public class playerScript : MonoBehaviour
         {
             var velocity = _inputManager.Get_Stick(playerNumber);
             rb.velocity = velocity.normalized * speed;
+
+            // Clamp the player's position within the boundaries
+            Vector2 clampedPosition = new Vector2(
+                Mathf.Clamp(rb.position.x, minBoundary.x, maxBoundary.x),
+                Mathf.Clamp(rb.position.y, minBoundary.y, maxBoundary.y)
+            );
+            rb.position = clampedPosition;
         }
 
         if (InPickUpRange)

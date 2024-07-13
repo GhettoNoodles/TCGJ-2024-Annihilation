@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/MiniGames/drinking_Game/Drinking_Game.unity
     guid: 0460a631e7de5984cb6dd51f7a9a5ceb
   - enabled: 1
-    path: Assets/MiniGames/Game 3/Croco.unity
+    path: Assets/MiniGames/croco/Croco.unity
     guid: 881bc35819bff1849a165a7be0c76c69
   - enabled: 1
     path: Assets/MiniGames/Balance Duplicate/Balance Duplicate.unity
