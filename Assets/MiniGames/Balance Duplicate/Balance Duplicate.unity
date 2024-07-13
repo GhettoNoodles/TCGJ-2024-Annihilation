@@ -2063,10 +2063,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 977640086444426509, guid: 316c595f6f16e5b45a0591d8adf701b6, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 41914dfe75c625c4b80f43909b2ba7a5, type: 3}
     - target: {fileID: 991350399868519678, guid: 316c595f6f16e5b45a0591d8adf701b6, type: 3}
       propertyPath: m_Name
       value: AudioMan
