@@ -214,8 +214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TilesInRange: []
-  Highlight: {fileID: 2100000, guid: d692515615dd5c047a44630e6d0f2a16, type: 2}
-  normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  Highlight: {fileID: 21300000, guid: a609f8f712bda064bb271e39d7892ab0, type: 3}
+  normal: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   Grid1: {fileID: 881534729}
   Grid2: {fileID: 1303957808}
 --- !u!1 &316380556
@@ -309,8 +309,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TilesInRange: []
-  Highlight: {fileID: 2100000, guid: 7970bf5050e513049b0e2d4d368f6c39, type: 2}
-  normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  Highlight: {fileID: 21300000, guid: a609f8f712bda064bb271e39d7892ab0, type: 3}
+  normal: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   Grid1: {fileID: 881534729}
   Grid2: {fileID: 1303957808}
 --- !u!1 &495268261
@@ -846,7 +846,7 @@ MonoBehaviour:
   IncreaseSpeed: 0.04
   AttackReset: 3
   AttackCooldown: 3
-  MaxSpeed: 0
+  MaxSpeed: 30
   attack: {fileID: 0}
   gridManager: {fileID: 0}
   CanAttack: 1
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   IncreaseSpeed: 0.04
   AttackReset: 3
   AttackCooldown: 3
-  MaxSpeed: 0
+  MaxSpeed: 30
   attack: {fileID: 0}
   gridManager: {fileID: 0}
   CanAttack: 1

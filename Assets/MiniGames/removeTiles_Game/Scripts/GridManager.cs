@@ -189,11 +189,13 @@ public class GridManager : MonoBehaviour
         TextScore1.text = Score_PL1.ToString();
         TextScore2.text = Score_PL2.ToString();
 
+
         for (int i = 0; i < GridStart_PL1.childCount; i++)
         {
-            GridStart_PL1.GetChild(i).gameObject.GetComponent<Tile>().tileState = Tile.TileState.Normal;
-            GridStart_PL2.GetChild(i).gameObject.GetComponent<Tile>().tileState = Tile.TileState.Normal;
-
+            //GridStart_PL1.GetChild(i).gameObject.GetComponent<Tile>().tileState = Tile.TileState.Normal;
+            Destroy(GridStart_PL1.GetChild(0).gameObject);
+            //GridStart_PL2.GetChild(i).gameObject.GetComponent<Tile>().tileState = Tile.TileState.Normal;
+            Destroy(GridStart_PL2.GetChild(0).gameObject);
         }
 
         PLC1.ResetAttack();
@@ -208,8 +210,8 @@ public class GridManager : MonoBehaviour
 
             if ( MinSizereached == false)
             {
-                GridStart_PL1.position = new Vector2(GridStart_PL1.position.x + 1, GridStart_PL1.position.y - 1);
-                GridStart_PL2.position = new Vector2(GridStart_PL2.position.x - 1, GridStart_PL2.position.y - 1);
+                GridStart_PL1.position = new Vector2(GridStart_PL1.position.x + 1, GridStart_PL1.position.y + 1);
+                GridStart_PL2.position = new Vector2(GridStart_PL2.position.x - 1, GridStart_PL2.position.y + 1);
 
                 Width -= 1;
                 Height -= 1;
