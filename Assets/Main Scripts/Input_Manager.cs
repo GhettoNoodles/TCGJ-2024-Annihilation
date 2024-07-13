@@ -10,8 +10,8 @@ public class Input_Manager : MonoBehaviour
     private float L_Vertical;
     private float R_Horizontal;
     private float R_Vertical;
-    private float L_Hold;
-    private float R_Hold;
+    private bool L_Hold;
+    private bool R_Hold;
     private bool L_Action;
     private bool R_Action;
 
@@ -47,8 +47,8 @@ public class Input_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        L_Hold = Input.GetAxis("P1_Hold");
-        R_Hold = Input.GetAxis("P2_Hold");
+        L_Hold = Input.GetButton("P1_Hold");
+        R_Hold = Input.GetButton("P2_Hold");
 
         L_Horizontal = Input.GetAxis("P1_Horizontal");
         L_Vertical = Input.GetAxis("P1_Vertical");
@@ -80,10 +80,10 @@ public class Input_Manager : MonoBehaviour
     {
         if (player == PlayerNumber.P1)
         {
-            return L_Hold > 0;
+            return L_Hold;
         }
 
-        return R_Hold > 0;
+        return R_Hold;
     }
 
     public bool Get_Action_Release(PlayerNumber player)
