@@ -17,7 +17,7 @@ public class Splatoongame : MonoBehaviour
     [SerializeField] private float cellSize;
     [SerializeField] private int gridSizeY;
     [SerializeField] private Image imgP1;
-    [SerializeField] private TextMeshProUGUI texttimer;
+    
     [SerializeField] private Image imgP2;
     [SerializeField] private Color p1;
     [SerializeField] private Color p2;
@@ -40,7 +40,7 @@ public class Splatoongame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        texttimer.text = (SceneBehaviour.Instance.GameTime - Time.timeSinceLevelLoad).ToString("F0");
+        
         if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.GameTime)
         {
             Input_Manager.PlayerNumber winner;

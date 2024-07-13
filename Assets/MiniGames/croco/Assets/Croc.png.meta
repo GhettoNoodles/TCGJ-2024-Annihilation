@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9458684924f55714e90674068a194d18
+guid: 4e37bd5b2e1996f4fa675c92da33bba3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,30 +119,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CrocidileGame_0
+      name: Croc_0
       rect:
         serializedVersion: 2
-        x: 80
-        y: 2427
-        width: 186
-        height: 131
+        x: 206
+        y: 113
+        width: 582
+        height: 715
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,145 +137,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38d7d8350e95f0647bb8917bea1c15c8
-      internalID: -1142140014
+      spriteID: d429381826dca264e9e954fe524694d6
+      internalID: 1140290552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrocidileGame_1
+      name: Croc_1
       rect:
         serializedVersion: 2
-        x: 342
-        y: 2408
-        width: 140
-        height: 190
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f4d1e101e2a8b8a42847479718308e0c
-      internalID: -895010738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CrocidileGame_2
-      rect:
-        serializedVersion: 2
-        x: 982
-        y: 1373
-        width: 1627
-        height: 1281
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f674577fb151764fae86204200c03a8
-      internalID: -1943068988
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CrocidileGame_3
-      rect:
-        serializedVersion: 2
-        x: 57
-        y: 2197
-        width: 252
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa15e6a439ae73c4994333e810d16c3d
-      internalID: -783609579
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CrocidileGame_4
-      rect:
-        serializedVersion: 2
-        x: 379
-        y: 2187
-        width: 163
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07be331c041b4fd408aeea4b9212dab0
-      internalID: 341039833
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CrocidileGame_5
-      rect:
-        serializedVersion: 2
-        x: 28
-        y: 900
-        width: 398
-        height: 1027
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 974239b4536391c41aad71f2a769aa0d
-      internalID: 1373334983
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CrocidileGame_6
-      rect:
-        serializedVersion: 2
-        x: 522
-        y: 895
-        width: 376
-        height: 1033
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c53b57f98ae07e24199329506b93896e
-      internalID: 1481777751
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CrocidileGame_7
-      rect:
-        serializedVersion: 2
-        x: 3368
-        y: 1891
-        width: 7
+        x: 317
+        y: 109
+        width: 9
         height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -297,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af115405e41e4a3408f632b32ac85002
-      internalID: 282938750
+      spriteID: 69b839e0b3952734990c93b9486622bd
+      internalID: 1568517532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrocidileGame_8
+      name: Croc_2
       rect:
         serializedVersion: 2
-        x: 993
-        y: 0
-        width: 1632
-        height: 1378
+        x: 328
+        y: 111
+        width: 4
+        height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,8 +179,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d19790e497e7cd34fb098f5de79e0703
-      internalID: -478957619
+      spriteID: b37d63cfecaad114b894a6c92b91bc96
+      internalID: 2017001932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Croc_3
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 107
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 785305f47d20c7f429a9a304b58bb5fe
+      internalID: -257524883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Croc_4
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 111
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 799d339d400f27b479d919efb126a2a4
+      internalID: 668476415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Croc_5
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 112
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9cc455a0b1c37b40b5a492fb0e8257e
+      internalID: -787158784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Croc_6
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 96
+        width: 657
+        height: 712
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 031c9649a515f1c46a84c8be87301103
+      internalID: 1063036108
       vertices: []
       indices: 
       edges: []
@@ -335,15 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CrocidileGame_0: -1142140014
-      CrocidileGame_1: -895010738
-      CrocidileGame_2: -1943068988
-      CrocidileGame_3: -783609579
-      CrocidileGame_4: 341039833
-      CrocidileGame_5: 1373334983
-      CrocidileGame_6: 1481777751
-      CrocidileGame_7: 282938750
-      CrocidileGame_8: -478957619
+      Croc_0: 1140290552
+      Croc_1: 1568517532
+      Croc_2: 2017001932
+      Croc_3: -257524883
+      Croc_4: 668476415
+      Croc_5: -787158784
+      Croc_6: 1063036108
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

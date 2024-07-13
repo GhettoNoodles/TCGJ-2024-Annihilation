@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9458684924f55714e90674068a194d18
+guid: b0e11ef2772e2644fbb39bedc638803f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,30 +119,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CrocidileGame_0
+      name: Arson Game_0
       rect:
         serializedVersion: 2
-        x: 80
-        y: 2427
-        width: 186
-        height: 131
+        x: 44
+        y: 2080
+        width: 366
+        height: 360
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38d7d8350e95f0647bb8917bea1c15c8
-      internalID: -1142140014
+      spriteID: 10fc79478670b9b448a4061c86b77ca9
+      internalID: 1667646601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrocidileGame_1
+      name: Arson Game_1
       rect:
         serializedVersion: 2
-        x: 342
-        y: 2408
-        width: 140
-        height: 190
+        x: 457
+        y: 2092
+        width: 363
+        height: 348
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4d1e101e2a8b8a42847479718308e0c
-      internalID: -895010738
+      spriteID: 2ad5546d466cb4c4d998cfdc1c00e188
+      internalID: 1533130718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrocidileGame_2
+      name: Arson Game_2
       rect:
         serializedVersion: 2
-        x: 982
-        y: 1373
-        width: 1627
-        height: 1281
+        x: 905
+        y: 2078
+        width: 358
+        height: 358
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f674577fb151764fae86204200c03a8
-      internalID: -1943068988
+      spriteID: 71b055275837a3341972ed8ac75d1916
+      internalID: 1978048231
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrocidileGame_3
+      name: Arson Game_3
       rect:
         serializedVersion: 2
-        x: 57
-        y: 2197
-        width: 252
-        height: 173
+        x: 1453
+        y: 2066
+        width: 184
+        height: 360
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa15e6a439ae73c4994333e810d16c3d
-      internalID: -783609579
+      spriteID: c0f235dff1eced741b52ce641b5942f2
+      internalID: -1083531729
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrocidileGame_4
+      name: Arson Game_4
       rect:
         serializedVersion: 2
-        x: 379
-        y: 2187
-        width: 163
-        height: 206
+        x: 1846
+        y: 2065
+        width: 203
+        height: 364
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07be331c041b4fd408aeea4b9212dab0
-      internalID: 341039833
+      spriteID: d86485d4d0557184e808b6d5fe5e94a1
+      internalID: -1548281603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrocidileGame_5
+      name: Arson Game_5
       rect:
         serializedVersion: 2
-        x: 28
-        y: 900
-        width: 398
-        height: 1027
+        x: 27
+        y: 1708
+        width: 366
+        height: 358
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 974239b4536391c41aad71f2a769aa0d
-      internalID: 1373334983
+      spriteID: e6867157486d6e943b6d98274295f3c9
+      internalID: -715672031
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrocidileGame_6
+      name: Arson Game_6
       rect:
         serializedVersion: 2
-        x: 522
-        y: 895
-        width: 376
-        height: 1033
+        x: 472
+        y: 1695
+        width: 360
+        height: 365
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c53b57f98ae07e24199329506b93896e
-      internalID: 1481777751
+      spriteID: 05eece7c74368a048a93df86066a7489
+      internalID: 1685602183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrocidileGame_7
+      name: Arson Game_7
       rect:
         serializedVersion: 2
-        x: 3368
-        y: 1891
-        width: 7
-        height: 7
+        x: 897
+        y: 1679
+        width: 351
+        height: 374
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af115405e41e4a3408f632b32ac85002
-      internalID: 282938750
+      spriteID: a861fd43366d34840860c10d5132005b
+      internalID: 1051324060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrocidileGame_8
+      name: Arson Game_8
       rect:
         serializedVersion: 2
-        x: 993
-        y: 0
-        width: 1632
-        height: 1378
+        x: 1395
+        y: 1718
+        width: 258
+        height: 342
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,8 +305,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d19790e497e7cd34fb098f5de79e0703
-      internalID: -478957619
+      spriteID: db8c118892936034ab529c86e29d894e
+      internalID: 2028310892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arson Game_9
+      rect:
+        serializedVersion: 2
+        x: 1789
+        y: 1726
+        width: 310
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fb8c3e3f4c431641a8188551497085f
+      internalID: 575705104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arson Game_10
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 1305
+        width: 306
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc980176f845664288171a552c212a4
+      internalID: -517127815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arson Game_11
+      rect:
+        serializedVersion: 2
+        x: 1426
+        y: 1332
+        width: 230
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a971228a7415f8c48b06a6edb67773e8
+      internalID: 1499750014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arson Game_12
+      rect:
+        serializedVersion: 2
+        x: 1835
+        y: 1369
+        width: 240
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b75a5f00af942549a38bccedf7ad1a2
+      internalID: 833430686
       vertices: []
       indices: 
       edges: []
@@ -335,15 +406,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CrocidileGame_0: -1142140014
-      CrocidileGame_1: -895010738
-      CrocidileGame_2: -1943068988
-      CrocidileGame_3: -783609579
-      CrocidileGame_4: 341039833
-      CrocidileGame_5: 1373334983
-      CrocidileGame_6: 1481777751
-      CrocidileGame_7: 282938750
-      CrocidileGame_8: -478957619
+      Arson Game_0: 1667646601
+      Arson Game_1: 1533130718
+      Arson Game_10: -517127815
+      Arson Game_11: 1499750014
+      Arson Game_12: 833430686
+      Arson Game_2: 1978048231
+      Arson Game_3: -1083531729
+      Arson Game_4: -1548281603
+      Arson Game_5: -715672031
+      Arson Game_6: 1685602183
+      Arson Game_7: 1051324060
+      Arson Game_8: 2028310892
+      Arson Game_9: 575705104
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

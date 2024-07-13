@@ -17,6 +17,15 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Target"))
         {
             Destroy(collision.gameObject);
+            if (this.GetComponent<Bullet>().whoseBulletisIt == Input_Manager.PlayerNumber.P1)
+            {
+                shootyScore.Instance.incOne();
+            }
+            else if (this.GetComponent<Bullet>().whoseBulletisIt == Input_Manager.PlayerNumber.P2)
+            {
+                shootyScore.Instance.incTwo();
+            }
+            
         }
         Destroy(gameObject);
     }
