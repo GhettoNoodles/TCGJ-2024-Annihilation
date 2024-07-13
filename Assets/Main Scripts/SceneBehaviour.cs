@@ -221,6 +221,7 @@ public class SceneBehaviour : MonoBehaviour
             redLaser.SetActive(false);
             blueLaser.SetActive(true);
             planet1.GetComponentInChildren<SpriteRenderer>().sprite = planet1Sprite[spritenum];
+            Invoke("NextGame",3f);
         }
         else
 
@@ -228,6 +229,7 @@ public class SceneBehaviour : MonoBehaviour
             blueLaser.SetActive(false);
             redLaser.SetActive(true);
             planet2.GetComponentInChildren<SpriteRenderer>().sprite = planet2Sprite[spritenum];
+            Invoke("NextGame",3f);
         }
     }
 }
