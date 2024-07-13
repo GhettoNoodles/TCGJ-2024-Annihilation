@@ -282,9 +282,12 @@ public class GridManager : MonoBehaviour
 
     private void SetPlayerPos()
     {
-        PLC1.gameObject.transform.position = new Vector2(0, 0);
+
+        int num1 = UnityEngine.Random.Range(0, NormalGrid_PL1.Count);
+        PLC1.gameObject.transform.position = NormalGrid_PL1[num1].transform.position;
         PLC1.ScoreOnce = true;
-        PLC2.gameObject.transform.position = new Vector2(100, 0);
+        int num2 = UnityEngine.Random.Range(0, NormalGrid_PL2.Count);
+        PLC2.gameObject.transform.position = NormalGrid_PL2[num2].transform.position;
         PLC2.ScoreOnce = true;
         // PLC1.gameObject.transform.position = new Vector2(GridStart_PL1.position.x + 4, GridStart_PL1.position.y + 4);
         // PLC2.gameObject.transform.position = new Vector2(GridStart_PL1.position.x - 4, GridStart_PL1.position.y + 4);
