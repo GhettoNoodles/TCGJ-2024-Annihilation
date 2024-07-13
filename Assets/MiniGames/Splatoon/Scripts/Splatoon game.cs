@@ -31,6 +31,7 @@ public class Splatoongame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SceneBehaviour.Instance.GameLoaded();
         cells = new List<Splatoon_Tile>();
         GenerateGrid();
         StartCoroutine(TimerRoutine());

@@ -18,6 +18,7 @@ TagManager:
   - Player1
   - Player2
   - ReadyPanel
+  - GridManager
   - Target
   layers:
   - Default

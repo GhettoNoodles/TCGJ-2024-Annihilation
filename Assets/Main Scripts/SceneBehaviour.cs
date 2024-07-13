@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
@@ -33,6 +34,7 @@ public class SceneBehaviour : MonoBehaviour
     private float timer = 0;
     private bool ready;
     [SerializeField] private GameObject readyPanel;
+    [SerializeField] private Sprite[] planet1Sprite;
 
     void Awake()
     {
@@ -124,10 +126,14 @@ public class SceneBehaviour : MonoBehaviour
         if (winner == Input_Manager.PlayerNumber.P1)
         {
             p2Health -= damagePerGame;
+            //ANimation of planet damage
         }
         else
         {
             p1Health -= damagePerGame;
+            //Animation of planet damage
+            
+            
         }
 
         if (p1Health <= 0)
@@ -150,24 +156,36 @@ public class SceneBehaviour : MonoBehaviour
 
     private void GameOver(Input_Manager.PlayerNumber loser)
     {
+        
     }
 
-    public void ChangeGame()
+    private void ChangeGame()
     {
-        readyPanel.SetActive(false);
-        ingame = true;
         GameTime -= GameTimeDecrement;
-        int randNum = Random.Range(0, gameScenes.Count);
+        var randNum = Random.Range(0, gameScenes.Count);
         Debug.Log("changing game");
         SceneManager.LoadScene(gameScenes[randNum]);
         loadedScenes.Add(gameScenes[randNum]);
         gameScenes.RemoveAt(randNum);
 
+      
         if (gameScenes.Count == 0)
         {
             gameScenes.Clear();
             GetGameScenes();
             loadedScenes.Clear();
         }
+        
+    }
+
+    public void GameLoaded()
+    {
+        ingame = true;
+        readyPanel.SetActive(false);
+    }
+    
+    private void PlanetSpriteCheck(GameObject planet, float health)
+    {
+        
     }
 }
