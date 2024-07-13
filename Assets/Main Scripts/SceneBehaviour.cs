@@ -41,6 +41,8 @@ public class SceneBehaviour : MonoBehaviour
     [SerializeField] private GameObject inbetweeners;
     [SerializeField] private GameObject redLaser;
     [SerializeField] private GameObject blueLaser;
+    [SerializeField] private GameObject endPanel;
+    [SerializeField] private TextMeshProUGUI loserText;
 
     void Awake()
     {
@@ -131,22 +133,26 @@ public class SceneBehaviour : MonoBehaviour
         {
             p2Health -= damagePerGame;
             //ANimation of planet damage
-            PlanetSpriteCheck(Input_Manager.PlayerNumber.P2,p2Health);
+            PlanetSpriteCheck(Input_Manager.PlayerNumber.P2, p2Health);
         }
         else
         {
             p1Health -= damagePerGame;
             //Animation of planet damage
-            PlanetSpriteCheck(Input_Manager.PlayerNumber.P1,p1Health);
+            PlanetSpriteCheck(Input_Manager.PlayerNumber.P1, p1Health);
         }
 
         if (p1Health <= 0)
         {
-            GameOver(Input_Manager.PlayerNumber.P2);
+            SceneManager.LoadScene(0);
+            readyPanel.SetActive(false);
+            GameOver(Input_Manager.PlayerNumber.P1);
         }
         else if (p2Health <= 0)
         {
-            GameOver(Input_Manager.PlayerNumber.P1);
+            SceneManager.LoadScene(0);
+            readyPanel.SetActive(false);
+            GameOver(Input_Manager.PlayerNumber.P2);
         }
         else
         {
@@ -160,6 +166,8 @@ public class SceneBehaviour : MonoBehaviour
 
     private void GameOver(Input_Manager.PlayerNumber loser)
     {
+        loserText.text = loser == Input_Manager.PlayerNumber.P1 ? "Player 1 has been" : "Player 2 has been";
+        endPanel.SetActive(true);
     }
 
     private void ChangeGame()
@@ -198,12 +206,11 @@ public class SceneBehaviour : MonoBehaviour
             planet1.GetComponentInChildren<SpriteRenderer>().sprite = planet1Sprite[spritenum];
         }
         else
-        
-        { 
+
+        {
             blueLaser.SetActive(false);
             redLaser.SetActive(true);
             planet2.GetComponentInChildren<SpriteRenderer>().sprite = planet2Sprite[spritenum];
         }
-        
     }
 }
