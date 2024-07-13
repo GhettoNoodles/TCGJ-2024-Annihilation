@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/InBetweenScene.unity
     guid: 19762fe8ecb2c8543b736f1f1a66b715
-  - enabled: 0
+  - enabled: 1
     path: Assets/MiniGames/EyePokeGame/EyePoke.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
     path: Assets/MiniGames/Splatoon/Game_Splatoon.unity
     guid: 9b214611f747f8349bb8c0647aa30af5
   - enabled: 0
@@ -26,19 +26,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Input Tester/Input Test 1.unity
     guid: 7f6e6c97e3631fe45b9a56ecf0a9dadc
-  - enabled: 0
+  - enabled: 1
     path: Assets/MiniGames/drinking_Game/Drinking_Game.unity
     guid: 0460a631e7de5984cb6dd51f7a9a5ceb
-  - enabled: 0
+  - enabled: 1
     path: Assets/MiniGames/croco/Croco.unity
     guid: 881bc35819bff1849a165a7be0c76c69
-  - enabled: 0
+  - enabled: 1
     path: Assets/MiniGames/Balance Duplicate/Balance Duplicate.unity
     guid: af3d3b15f82cc034aa708f5d80e384f0
-  - enabled: 0
+  - enabled: 1
     path: Assets/MiniGames/Shooty/shooty.unity
     guid: 78cd95071daa4e04c86cbf810c13af1d
-  - enabled: 0
+  - enabled: 1
     path: Assets/MiniGames/TomatoGame/TomatoGame.unity
     guid: f44e92570b162ee4dbe1531faa7f05c1
   - enabled: 1
