@@ -19,6 +19,7 @@ public class PlayerController_RT : MonoBehaviour
     private bool CanAttack = false, RunTest = false;
     [SerializeField]
     private List<GameObject> TestAttack;
+    public bool ScoreOnce = true;
 
     // Start is called before the first frame update
     void Start()
@@ -49,8 +50,7 @@ public class PlayerController_RT : MonoBehaviour
 
         
 
-        if ((_inputManager.Get_Action_Tap(playerNumber) ||
-            Input.GetKeyDown(KeyCode.Space)) &&
+        if (_inputManager.Get_Action_Tap(playerNumber) &&
             CanAttack == true) 
         {
             Attack_OtherPlayer();
@@ -133,14 +133,18 @@ public class PlayerController_RT : MonoBehaviour
            (collision.GetComponent<Tile>().tileState == Tile.TileState.Burning ||
            collision.GetComponent<Tile>().tileState == Tile.TileState.Destroyed))
         {
-            if (playerNumber == Input_Manager.PlayerNumber.P1)
+            if (playerNumber == Input_Manager.PlayerNumber.P1 &&
+                ScoreOnce == true)
             {
                 gridManager.PL2_Scores();
+                ScoreOnce = false;
             }
 
-            else if(playerNumber == Input_Manager.PlayerNumber.P2)
+            else if(playerNumber == Input_Manager.PlayerNumber.P2 &&
+                ScoreOnce == true)
             {
                 gridManager.PL1_Scores();
+                ScoreOnce = false;
             }
         }
     }
@@ -148,17 +152,21 @@ public class PlayerController_RT : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Floor" &&
-          (collision.GetComponent<Tile>().tileState == Tile.TileState.Burning ||
-          collision.GetComponent<Tile>().tileState == Tile.TileState.Destroyed))
+           (collision.GetComponent<Tile>().tileState == Tile.TileState.Burning ||
+           collision.GetComponent<Tile>().tileState == Tile.TileState.Destroyed))
         {
-            if (playerNumber == Input_Manager.PlayerNumber.P1)
+            if (playerNumber == Input_Manager.PlayerNumber.P1 &&
+                ScoreOnce == true)
             {
                 gridManager.PL2_Scores();
+                ScoreOnce = false;
             }
 
-            else if (playerNumber == Input_Manager.PlayerNumber.P2)
+            else if (playerNumber == Input_Manager.PlayerNumber.P2 &&
+                ScoreOnce == true)
             {
                 gridManager.PL1_Scores();
+                ScoreOnce = false;
             }
         }
     }
