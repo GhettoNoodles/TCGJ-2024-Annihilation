@@ -1934,7 +1934,7 @@ MonoBehaviour:
   GridStart_PL2: {fileID: 1303957808}
   NormalGrid_PL1: []
   NormalGrid_PL2: []
-  DecreaseMap: 1
+  DecreaseMap: 0
   MinSizereached: 0
   SpawnCountdown: 5
   SpawnReset: 5
