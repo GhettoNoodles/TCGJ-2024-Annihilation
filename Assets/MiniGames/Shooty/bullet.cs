@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
     public float lifeTime = 2f;
     public Input_Manager.PlayerNumber whoseBulletisIt;
-
+    public shootyScore scorescript;
     void Start()
         
     {
@@ -17,6 +17,15 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Target"))
         {
             Destroy(collision.gameObject);
+            if (this.GetComponent<Bullet>().whoseBulletisIt == Input_Manager.PlayerNumber.P1)
+            {
+                scorescript.incOne();
+            }
+            else if (this.GetComponent<Bullet>().whoseBulletisIt == Input_Manager.PlayerNumber.P2)
+            {
+                scorescript.incTwo();
+            }
+            
         }
         Destroy(gameObject);
     }
