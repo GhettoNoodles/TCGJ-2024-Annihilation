@@ -214,6 +214,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TilesInRange: []
+  Highlight: {fileID: 2100000, guid: d692515615dd5c047a44630e6d0f2a16, type: 2}
+  normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  Grid1: {fileID: 881534729}
+  Grid2: {fileID: 1303957808}
 --- !u!1 &316380556
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +309,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TilesInRange: []
+  Highlight: {fileID: 2100000, guid: 7970bf5050e513049b0e2d4d368f6c39, type: 2}
+  normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  Grid1: {fileID: 881534729}
+  Grid2: {fileID: 1303957808}
 --- !u!1 &495268261
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +850,8 @@ MonoBehaviour:
   attack: {fileID: 0}
   gridManager: {fileID: 0}
   CanAttack: 1
+  RunTest: 0
+  TestAttack: []
 --- !u!50 &1133224443
 Rigidbody2D:
   serializedVersion: 4
@@ -1295,6 +1305,8 @@ MonoBehaviour:
   attack: {fileID: 0}
   gridManager: {fileID: 0}
   CanAttack: 1
+  RunTest: 0
+  TestAttack: []
 --- !u!50 &1627312039
 Rigidbody2D:
   serializedVersion: 4

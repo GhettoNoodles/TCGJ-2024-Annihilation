@@ -180,7 +180,7 @@ public class GridManager : MonoBehaviour
 
     public void PL2_Scores()
     {
-        Score_PL2 += 2;
+        Score_PL2 += 1;
         GameReset();
     }
 

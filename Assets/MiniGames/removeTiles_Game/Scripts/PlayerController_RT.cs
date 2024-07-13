@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController_RT : MonoBehaviour
 {
     private Input_Manager _inputManager;
-    [SerializeField] Input_Manager.PlayerNumber playerNumber;
+    public Input_Manager.PlayerNumber playerNumber;
     [SerializeField]
     private Rigidbody2D rb;
     [SerializeField]
@@ -16,7 +16,9 @@ public class PlayerController_RT : MonoBehaviour
     [SerializeField]
     private GridManager gridManager;
     [SerializeField]
-    private bool CanAttack = false;
+    private bool CanAttack = false, RunTest = false;
+    [SerializeField]
+    private List<GameObject> TestAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +69,30 @@ public class PlayerController_RT : MonoBehaviour
             CanAttack = true;
         }
 
+       //if (RunTest == true)
+       // {
+       //     if (playerNumber == Input_Manager.PlayerNumber.P1)
+       //     {
+       //         for (int i = 0; i < TestAttack.Count; i++)
+       //         {
+       //             int num = TestAttack[i].GetComponent<Tile>().Tilenum;
+
+       //         }
+       //     }
+
+       //     else if (playerNumber == Input_Manager.PlayerNumber.P2)
+       //     {
+       //         for (int i = 0; i < TestAttack.Count; i++)
+       //         {
+       //             int num = TestAttack[i].GetComponent<Tile>().Tilenum;
+
+       //         }
+       //     }
+       // }
         
+        
+
+
     }
 
     private void Attack_OtherPlayer()
@@ -100,5 +125,41 @@ public class PlayerController_RT : MonoBehaviour
     {
         attack.TilesInRange.Clear();
         AttackCooldown = AttackReset;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Floor" &&
+           (collision.GetComponent<Tile>().tileState == Tile.TileState.Burning ||
+           collision.GetComponent<Tile>().tileState == Tile.TileState.Destroyed))
+        {
+            if (playerNumber == Input_Manager.PlayerNumber.P1)
+            {
+                gridManager.PL2_Scores();
+            }
+
+            else if(playerNumber == Input_Manager.PlayerNumber.P2)
+            {
+                gridManager.PL1_Scores();
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Floor" &&
+          (collision.GetComponent<Tile>().tileState == Tile.TileState.Burning ||
+          collision.GetComponent<Tile>().tileState == Tile.TileState.Destroyed))
+        {
+            if (playerNumber == Input_Manager.PlayerNumber.P1)
+            {
+                gridManager.PL2_Scores();
+            }
+
+            else if (playerNumber == Input_Manager.PlayerNumber.P2)
+            {
+                gridManager.PL1_Scores();
+            }
+        }
     }
 }

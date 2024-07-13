@@ -17,12 +17,12 @@ public class CollectabileScript : MonoBehaviour
 
         if (Player1Side == true)
         {
-            MirrorTile = gridManager.GridStart_PL1.GetChild(TilePos).gameObject;
+            MirrorTile = gridManager.GridStart_PL2.GetChild(TilePos).gameObject;
         }
 
         else
         {
-            MirrorTile = gridManager.GridStart_PL2.GetChild(TilePos).gameObject;
+            MirrorTile = gridManager.GridStart_PL1.GetChild(TilePos).gameObject;
         }
     }
 

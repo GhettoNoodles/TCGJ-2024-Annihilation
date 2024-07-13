@@ -98,85 +98,85 @@ public class Tile : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        switch (tileState)
-        {
-            case TileState.Normal:
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    switch (tileState)
+    //    {
+    //        case TileState.Normal:
                 
-                break;
-            case TileState.Burning:
-                if (collision.gameObject.tag == "Player1")
-                {
-                    KillPlayer1();
-                }
+    //            break;
+    //        case TileState.Burning:
+    //            if (collision.gameObject.tag == "Player1")
+    //            {
+    //                KillPlayer1();
+    //            }
 
-                else if (collision.gameObject.tag == "Player2")
-                {
-                    KillPlayer2();
-                }
-                break;
-            case TileState.Destroyed:
-                if (collision.gameObject.tag == "Player1")
-                {
-                    KillPlayer1();
-                }
+    //            else if (collision.gameObject.tag == "Player2")
+    //            {
+    //                KillPlayer2();
+    //            }
+    //            break;
+    //        case TileState.Destroyed:
+    //            if (collision.gameObject.tag == "Player1")
+    //            {
+    //                KillPlayer1();
+    //            }
 
-                else if (collision.gameObject.tag == "Player2")
-                {
-                    KillPlayer2();
-                }
-                break;
-        }
-    }
+    //            else if (collision.gameObject.tag == "Player2")
+    //            {
+    //                KillPlayer2();
+    //            }
+    //            break;
+    //    }
+    //}
 
     
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        switch (tileState)
-        {
-            case TileState.Normal:
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    switch (tileState)
+    //    {
+    //        case TileState.Normal:
 
-                break;
-            case TileState.Burning:
-                if (collision.gameObject.tag == "Player1")
-                {
-                    KillPlayer1();
-                }
+    //            break;
+    //        case TileState.Burning:
+    //            if (collision.gameObject.tag == "Player1")
+    //            {
+    //                KillPlayer1();
+    //            }
 
-                else if (collision.gameObject.tag == "Player2")
-                {
-                    KillPlayer2();
-                }
-                break;
-            case TileState.Destroyed:
-                if (collision.gameObject.tag == "Player1")
-                {
-                    KillPlayer1();
-                }
+    //            else if (collision.gameObject.tag == "Player2")
+    //            {
+    //                KillPlayer2();
+    //            }
+    //            break;
+    //        case TileState.Destroyed:
+    //            if (collision.gameObject.tag == "Player1")
+    //            {
+    //                KillPlayer1();
+    //            }
 
-                else if (collision.gameObject.tag == "Player2")
-                {
-                    KillPlayer2();
-                }
-                break;
-        }
-    }
+    //            else if (collision.gameObject.tag == "Player2")
+    //            {
+    //                KillPlayer2();
+    //            }
+    //            break;
+    //    }
+    //}
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
         
-    }
+    //}
 
-    private void KillPlayer1()
-    {
+    //private void KillPlayer1()
+    //{
         
-        gridManager.PL2_Scores();
-    }
+    //    gridManager.PL2_Scores();
+    //}
 
-    private void KillPlayer2()
-    {
-        gridManager.PL1_Scores();
-    }
+    //private void KillPlayer2()
+    //{
+    //    gridManager.PL1_Scores();
+    //}
 }
