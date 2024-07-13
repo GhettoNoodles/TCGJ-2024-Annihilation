@@ -197,11 +197,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4506cfe064501d2468874e6b7d93a14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputManager: {fileID: 0}
   playerNumber: 0
   bulletPrefab: {fileID: 6791439025641041860, guid: 4c5b7e91263948a4b8f368c2f598f8d6, type: 3}
   bulletSpawn: {fileID: 22061346}
   bulletSpeed: 10
   shootRate: 0.5
+  shootCooldown: 0
   pointer: {x: 0, y: 0}
 --- !u!212 &22061345
 SpriteRenderer:
@@ -300,11 +302,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4506cfe064501d2468874e6b7d93a14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputManager: {fileID: 0}
   playerNumber: 1
   bulletPrefab: {fileID: 5870580861032899238, guid: 6a24673df8fdecb4d9ef824e2597d2b7, type: 3}
   bulletSpawn: {fileID: 844032592}
   bulletSpeed: 10
   shootRate: 0.5
+  shootCooldown: 0
   pointer: {x: 0, y: 0}
 --- !u!212 &844032591
 SpriteRenderer:
