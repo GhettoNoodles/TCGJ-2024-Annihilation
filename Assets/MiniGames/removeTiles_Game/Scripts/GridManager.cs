@@ -283,6 +283,7 @@ public class GridManager : MonoBehaviour
             if (ResetTile.GetComponent<Tile>().tileState != Tile.TileState.Destroyed)
             {
                 ResetTile.GetComponent<Tile>().tileState = Tile.TileState.Normal;
+                ResetTile.GetComponent<Tile>().SetSprite();
                 NormalGrid_PL2.Add(ResetTile);
             }
 
@@ -297,6 +298,7 @@ public class GridManager : MonoBehaviour
            if (ResetTile.GetComponent<Tile>().tileState != Tile.TileState.Destroyed)
             {
                 ResetTile.GetComponent<Tile>().tileState = Tile.TileState.Normal;
+                ResetTile.GetComponent<Tile>().SetSprite();
                 NormalGrid_PL1.Add(ResetTile);
             }
 

@@ -96,10 +96,12 @@ public class Tile : MonoBehaviour
                 
                 break;
             case TileState.Burning:
-                burningCountdown -= Time.deltaTime;
                 int nommer = UnityEngine.Random.Range(0, S_Burning.Length);
                 spriteRenderer.sprite = S_Burning[nommer];
                 spriteRenderer.color = Color.white;
+
+                burningCountdown -= Time.deltaTime;
+                
                 if (burningCountdown <= 0)
                 {
                     
