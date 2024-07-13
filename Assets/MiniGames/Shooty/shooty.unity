@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4506cfe064501d2468874e6b7d93a14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputManager: {fileID: 0}
   playerNumber: 0
   bulletPrefab: {fileID: 6791439025641041860, guid: 4c5b7e91263948a4b8f368c2f598f8d6, type: 3}
   bulletSpawn: {fileID: 22061346}
@@ -617,6 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4506cfe064501d2468874e6b7d93a14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputManager: {fileID: 0}
   playerNumber: 1
   bulletPrefab: {fileID: 6791439025641041860, guid: 4c5b7e91263948a4b8f368c2f598f8d6, type: 3}
   bulletSpawn: {fileID: 844032592}

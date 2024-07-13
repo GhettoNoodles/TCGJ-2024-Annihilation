@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GridManager : MonoBehaviour
 {
@@ -9,22 +10,34 @@ public class GridManager : MonoBehaviour
     [SerializeField]
     private GameObject TilePrefab;
     [SerializeField]
-    private int Width, Height, TileCount_Pl1, TileCount_Pl2;
+    private int Width, Height, TileCount_Pl1, TileCount_Pl2, MinWidth, MinHeight;
+    public Transform GridStart_PL1, GridStart_PL2;
+    public List<GameObject> NormalGrid_PL1, NormalGrid_PL2;
     [SerializeField]
-    private Transform GridStart_PL1, GridStart_PL2;
-    [SerializeField]
-    private List<GameObject> NormalGrid_PL1, NormalGrid_PL2;
+    private bool DecreaseMap, MinSizereached;
 
     [Header("SpawnCollectabile")]
     [SerializeField]
     private float SpawnCountdown, SpawnReset;
     [SerializeField]
     private GameObject CollectabilePrefab;
+
+    [Header("Score")]
+    [SerializeField]
+    public int Score_PL1, Score_PL2;
+    [SerializeField]
+    private TextMeshProUGUI TextScore1, TextScore2;
+    [SerializeField]
+    private PlayerController_RT PLC1, PLC2;
+
     
     // Start is called before the first frame update
     void Start()
     {
         GenerateGride();
+        SpawnCountdown = SpawnReset;
+        TextScore1.text = Score_PL1.ToString();
+        TextScore2.text = Score_PL2.ToString();
     }
 
     private void GenerateGride()
@@ -79,6 +92,16 @@ public class GridManager : MonoBehaviour
     {
         var Col = Instantiate(CollectabilePrefab, SelectedTile.transform.position, Quaternion.identity, SelectedTile.transform);
         Col.gameObject.GetComponent<CollectabileScript>().TilePos = SelectedTile.GetComponent<Tile>().Tilenum;
+        
+        if (Col.gameObject.transform.root == GridStart_PL1)
+        {
+            Col.gameObject.GetComponent<CollectabileScript>().Player1Side = true;
+        }
+
+        else
+        {
+            Col.gameObject.GetComponent<CollectabileScript>().Player1Side = false;
+        }
         SelectedTile.gameObject.GetComponent<Tile>().hasCollectabile = true;
     }
 
@@ -131,5 +154,90 @@ public class GridManager : MonoBehaviour
         NormalGrid_PL1.Remove(destroyTile);
         destroyTile.GetComponent<Tile>().tileState = Tile.TileState.Destroyed;
         destroyTile.GetComponent<Tile>().SetSprite();
+    }
+
+    public void SetTileOnFire_PL1(int num)
+    {
+        GameObject destroyTile = GridStart_PL2.transform.GetChild(num).gameObject;
+        NormalGrid_PL2.Remove(destroyTile);
+        destroyTile.GetComponent<Tile>().tileState = Tile.TileState.Burning;
+        destroyTile.GetComponent<Tile>().SetSprite();
+    }
+
+    public void SetTileOnFire_PL2(int num)
+    {
+        GameObject destroyTile = GridStart_PL1.transform.GetChild(num).gameObject;
+        NormalGrid_PL1.Remove(destroyTile);
+        destroyTile.GetComponent<Tile>().tileState = Tile.TileState.Burning;
+        destroyTile.GetComponent<Tile>().SetSprite();
+    }
+
+    public void PL1_Scores()
+    {
+        Score_PL1 += 1;
+        GameReset();
+    }
+
+    public void PL2_Scores()
+    {
+        Score_PL2 += 1;
+        GameReset();
+    }
+
+    private void GameReset()
+    {
+        TextScore1.text = Score_PL1.ToString();
+        TextScore2.text = Score_PL2.ToString();
+
+        for (int i = 0; i < GridStart_PL1.childCount; i++)
+        {
+            GridStart_PL1.GetChild(i).gameObject.GetComponent<Tile>().tileState = Tile.TileState.Normal;
+            GridStart_PL2.GetChild(i).gameObject.GetComponent<Tile>().tileState = Tile.TileState.Normal;
+
+        }
+
+        PLC1.ResetAttack();
+        PLC2.ResetAttack();
+
+        if (DecreaseMap == true)
+        {
+            PLC1.gameObject.transform.position = new Vector2(0, 0);
+            //PLC1.attack.TilesInRange.Clear();
+            PLC2.gameObject.transform.position = new Vector2(100, 0);
+           // PLC2.attack.TilesInRange.Clear();
+
+            if ( MinSizereached == false)
+            {
+                GridStart_PL1.position = new Vector2(GridStart_PL1.position.x + 1, GridStart_PL1.position.y - 1);
+                GridStart_PL2.position = new Vector2(GridStart_PL2.position.x - 1, GridStart_PL2.position.y - 1);
+
+                Width -= 1;
+                Height -= 1;
+
+                GenerateGride();
+
+                if (Width == MinWidth &&
+                    Height == MinHeight)
+                {
+                    MinSizereached = true;
+                }
+            }
+        }
+            
+
+    }
+
+
+    public void DeclareWinner()
+    {
+        if (Score_PL1 > Score_PL2)
+        {
+
+        }
+
+        else if (Score_PL2 > Score_PL1)
+        {
+
+        }
     }
 }

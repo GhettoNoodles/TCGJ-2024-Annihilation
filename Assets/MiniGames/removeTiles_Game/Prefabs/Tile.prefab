@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7209847863762373986}
   m_Layer: 0
   m_Name: Tile
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,6 +104,9 @@ MonoBehaviour:
   S_Destroyed: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   tileState: 0
   hasCollectabile: 0
+  gridManager: {fileID: 0}
+  burningCountdown: 5
+  burningReset: 5
 --- !u!61 &7209847863762373986
 BoxCollider2D:
   m_ObjectHideFlags: 0
