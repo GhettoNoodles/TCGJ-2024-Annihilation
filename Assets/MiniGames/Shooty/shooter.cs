@@ -11,6 +11,7 @@ public class shooter : MonoBehaviour
     public float bulletSpeed = 10f;
     public float shootRate = 0.5f;
     private float shootCooldown;
+    public Bullet bulletscripty;
 
     [SerializeField] private Vector2 pointer;
 
@@ -41,7 +42,8 @@ public class shooter : MonoBehaviour
     {
         // Instantiate the bullet at the bulletSpawn position
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
-
+        bulletscripty = bullet.GetComponent<Bullet>();
+        bulletscripty.whoseBulletisIt = playerNumber;
         // Get the Rigidbody2D component of the bullet and set its velocity
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = pointer.normalized * bulletSpeed;

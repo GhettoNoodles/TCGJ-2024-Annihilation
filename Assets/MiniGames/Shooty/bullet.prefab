@@ -162,3 +162,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 2
+  whoseBulletisIt: 0
+  scorescript: {fileID: 3655444442891878489, guid: 3840b3f89b085304ab650182691f716e, type: 3}
