@@ -18,24 +18,61 @@ public class FistScript : MonoBehaviour
 
     [SerializeField] private Transform maxHeight;
     [SerializeField] private Transform minHeight;
+    [SerializeField] private GameObject holdPanel;
 
     public Rigidbody2D rb_1;
     public Rigidbody2D rb_2;
 
     public float speedMulti;
+    [SerializeField] private float minGameTime;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb_1 = fist_1.GetComponent<Rigidbody2D>();
+        rb_2 = fist_2.GetComponent<Rigidbody2D>();
+        minGameTime += SceneBehaviour.Instance.GameTime;
+        SceneBehaviour.Instance.currentGameTime = minGameTime;
+        SceneBehaviour.Instance.GameLoaded();
+    }
 
     private void Awake()
     {
         Instance = this;
     }
-    private void Start()
-    {
-        rb_1 = fist_1.GetComponent<Rigidbody2D>();
-        rb_2 = fist_2.GetComponent<Rigidbody2D>();
-    }
 
     private void Update()
     {
+        if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.GameTime)
+        {
+            Input_Manager.PlayerNumber winner;
+            if (Player1_score > Player2_score)
+            {
+                winner = Input_Manager.PlayerNumber.P1;
+            }
+            else if (Player1_score < Player2_score)
+            {
+                winner = Input_Manager.PlayerNumber.P2;
+            }
+            else
+            {
+                winner = (Input_Manager.PlayerNumber)Random.Range(0, 2);
+            }
+
+            SceneBehaviour.Instance.EndGameSession(winner);
+        }
+
+        if (!(Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P1) &&
+              Input_Manager.Instance.Get_Hold(Input_Manager.PlayerNumber.P2)))
+        {
+            holdPanel.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            holdPanel.SetActive(false);
+            Time.timeScale = 1f;
+        }
         GetRelHeight();
     }
 

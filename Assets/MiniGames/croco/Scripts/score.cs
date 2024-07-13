@@ -13,7 +13,15 @@ public class score : MonoBehaviour
     [SerializeField] private TextMeshProUGUI p1text;
     [SerializeField] private TextMeshProUGUI p2text;
     public int teeth = 7;
-    
+    [SerializeField] private float minGameTime;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        minGameTime += SceneBehaviour.Instance.GameTime;
+        SceneBehaviour.Instance.currentGameTime = minGameTime;
+        SceneBehaviour.Instance.GameLoaded();
+    }
     public void AddOneToOne()
     {
         OneScore++;
@@ -29,11 +37,7 @@ public class score : MonoBehaviour
         p2text.text = TwoScore.ToString();
         Debug.Log(TwoScore);
     }
-
-    private void Start()
-    {
-        SceneBehaviour.Instance.GameLoaded();
-    }
+    
 
     private void Update()
     {

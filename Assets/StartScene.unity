@@ -623,9 +623,10 @@ MonoBehaviour:
   startHealth: 4
   damagePerGame: 1
   gameSceneStartIndex: 0
-  FirstGameTimer: 10
-  GameTimeDecrement: 1
+  FirstGameTimeplus: 15
+  GameTimeDecrement: 2
   GameTime: 65
+  currentGameTime: 0
   recentWinner: 0
   p1ready: {fileID: 1332817593}
   p2ready: {fileID: 1622262486}

@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
@@ -21,9 +22,10 @@ public class SceneBehaviour : MonoBehaviour
     [SerializeField] private int startHealth;
     [SerializeField] private int damagePerGame;
     [SerializeField] private int gameSceneStartIndex;
-    [SerializeField] private int FirstGameTimer;
+    [SerializeField] private int FirstGameTimeplus;
     [SerializeField] private int GameTimeDecrement;
     public int GameTime;
+    public float currentGameTime;
     public Input_Manager.PlayerNumber recentWinner;
     private Color p1Color;
     private Color p2Color = new Color(131f, 202f, 255f, 255f);
@@ -67,7 +69,7 @@ public class SceneBehaviour : MonoBehaviour
 
     private void Start()
     {
-        GameTime = FirstGameTimer;
+        GameTime = FirstGameTimeplus;
         p1Health = startHealth;
         p2Health = startHealth;
         GetGameScenes();
@@ -173,6 +175,10 @@ public class SceneBehaviour : MonoBehaviour
     private void ChangeGame()
     {
         GameTime -= GameTimeDecrement;
+        if (GameTime<0)
+        {
+            GameTime = 0;
+        }
         var randNum = Random.Range(0, gameScenes.Count);
         Debug.Log("changing game");
         SceneManager.LoadScene(gameScenes[randNum]);

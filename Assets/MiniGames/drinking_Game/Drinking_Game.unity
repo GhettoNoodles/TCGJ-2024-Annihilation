@@ -172,6 +172,7 @@ MonoBehaviour:
   holdPanel: {fileID: 2113036550}
   p1: {fileID: 628601228}
   p2: {fileID: 1708898380}
+  minGameTime: 40
 --- !u!1 &51583022
 GameObject:
   m_ObjectHideFlags: 0

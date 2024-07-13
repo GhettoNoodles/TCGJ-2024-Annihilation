@@ -1553,6 +1553,7 @@ MonoBehaviour:
   imgP2: {fileID: 1636528398}
   p1: {r: 0, g: 0, b: 0, a: 0}
   p2: {r: 0, g: 0, b: 0, a: 0}
+  minGameTime: 10
 --- !u!4 &1905122344
 Transform:
   m_ObjectHideFlags: 0
