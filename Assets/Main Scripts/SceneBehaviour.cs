@@ -46,6 +46,7 @@ public class SceneBehaviour : MonoBehaviour
     [SerializeField] private GameObject endPanel;
     [SerializeField] private GameObject explosion;
     [SerializeField] private TextMeshProUGUI loserText;
+    private bool gameover = false;
 
     void Awake()
     {
@@ -169,6 +170,7 @@ public class SceneBehaviour : MonoBehaviour
 
     private void GameOver(Input_Manager.PlayerNumber loser)
     {
+        gameover = true;
         if(loser == Input_Manager.PlayerNumber.P1)
         {
             Instantiate(explosion,planet1.transform.position, Quaternion.identity);
@@ -221,6 +223,10 @@ public class SceneBehaviour : MonoBehaviour
             redLaser.SetActive(false);
             blueLaser.SetActive(true);
             planet1.GetComponentInChildren<SpriteRenderer>().sprite = planet1Sprite[spritenum];
+            if (!gameover)
+            {
+                Invoke("NextGame",3f);
+            }
             Invoke("NextGame",3f);
         }
         else
@@ -229,7 +235,12 @@ public class SceneBehaviour : MonoBehaviour
             blueLaser.SetActive(false);
             redLaser.SetActive(true);
             planet2.GetComponentInChildren<SpriteRenderer>().sprite = planet2Sprite[spritenum];
-            Invoke("NextGame",3f);
+            if (!gameover)
+            {
+                Invoke("NextGame",3f);
+            }
+
+         
         }
     }
 }
