@@ -1,12 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class shootyScore : MonoBehaviour
 {
     [SerializeField] private GameObject holdPanel;
+    [SerializeField] private TextMeshProUGUI p1text;
+    [SerializeField] private TextMeshProUGUI p2text;
+    public static shootyScore Instance { get; private set; }
     public int playerOne = 0, playerTwo = 0;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     void Start()
     {
         SceneBehaviour.Instance.GameLoaded();
@@ -51,12 +69,14 @@ public class shootyScore : MonoBehaviour
     public void incOne()
     {
         playerOne++;
+        p1text.text = playerOne.ToString();
         Debug.Log("ONE: " + playerOne);
     }
 
     public void incTwo()
     {
         playerTwo++;
+        p2text.text = playerTwo.ToString();
         Debug.Log("TWO: " + playerTwo);
     }
     
