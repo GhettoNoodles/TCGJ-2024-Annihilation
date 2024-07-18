@@ -158,15 +158,17 @@ public class PlayerController_RT : MonoBehaviour
             if (playerNumber == Input_Manager.PlayerNumber.P1 &&
                 ScoreOnce == true)
             {
-                gridManager.PL2_Scores();
                 ScoreOnce = false;
+                gridManager.PL2_Scores();
+                
             }
 
             else if (playerNumber == Input_Manager.PlayerNumber.P2 &&
                 ScoreOnce == true)
             {
-                gridManager.PL1_Scores();
                 ScoreOnce = false;
+                gridManager.PL1_Scores();
+                
             }
         }
     }
