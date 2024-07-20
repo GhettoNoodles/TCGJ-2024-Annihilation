@@ -33,11 +33,11 @@ public class Attack : MonoBehaviour
             int num = collision.gameObject.GetComponent<Tile>().Tilenum;
             if (transform.parent.gameObject.tag == "Player1")
             {
-                Grid2.GetChild(num).gameObject.GetComponent<SpriteRenderer>().sprite = Highlight;
+                Grid2.GetChild(num).gameObject.GetComponent<Tile>().spriteRenderer.color = Color.red;
             }
             else if (transform.parent.gameObject.tag == "Player2")
             {
-                Grid1.GetChild(num).gameObject.GetComponent<SpriteRenderer>().sprite = Highlight;
+                Grid1.GetChild(num).gameObject.GetComponent<Tile>().spriteRenderer.color = Color.blue;
             }
 
         }
@@ -62,11 +62,11 @@ public class Attack : MonoBehaviour
             int num = collision.gameObject.GetComponent<Tile>().Tilenum;
             if (transform.parent.gameObject.tag == "Player1")
             {
-                Grid2.GetChild(num).gameObject.GetComponent<SpriteRenderer>().sprite = normal;
+                Grid2.GetChild(num).gameObject.GetComponent<Tile>().spriteRenderer.color = Color.white;
             }
             else if (transform.parent.gameObject.tag == "Player2")
             {
-               Grid1.GetChild(num).gameObject.GetComponent<SpriteRenderer>().sprite = normal;
+               Grid1.GetChild(num).gameObject.GetComponent<Tile>().spriteRenderer.color = Color.white;
             }
         }
         

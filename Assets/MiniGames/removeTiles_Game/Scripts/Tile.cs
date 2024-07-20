@@ -7,9 +7,9 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public int Tilenum;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     [SerializeField]
-    private Sprite S_Normal, S_Burning, S_Destroyed;
+    private Sprite[] S_Normal, S_Burning;
     public TileState tileState;
     public bool hasCollectabile = false;
     [SerializeField]
@@ -29,7 +29,7 @@ public class Tile : MonoBehaviour
     void Start()
     {
         tileState = TileState.Normal;
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer = gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
         SetSprite();
         gridManager = GameObject.FindGameObjectWithTag("GridManager").GetComponent<GridManager>();
         burningCountdown = burningReset;
@@ -56,26 +56,31 @@ public class Tile : MonoBehaviour
     {
         switch (tileState)
         {
+
             case TileState.Normal:
-                spriteRenderer.sprite = S_Normal;
+                int num = UnityEngine.Random.Range(0, S_Normal.Length);
+                spriteRenderer.sprite = S_Normal[num];
+                spriteRenderer.color = Color.white;
                 break;
             case TileState.Burning:
                 burningCountdown = burningReset;
-                spriteRenderer.sprite = S_Burning;
-
-                if (transform.childCount > 0)
+                int nommer = UnityEngine.Random.Range(0, S_Burning.Length);
+                spriteRenderer.sprite = S_Burning[nommer];
+                spriteRenderer.color = Color.white;
+                if (transform.childCount > 1)
                 {
-                    Destroy(transform.GetChild(0).gameObject);
+                    Destroy(transform.GetChild(1).gameObject);
                 }
 
                 
                 break;
             case TileState.Destroyed:
-                spriteRenderer.sprite = S_Destroyed;
-
-                if (transform.childCount > 0)
+                int enigeIets = UnityEngine.Random.Range(0, S_Normal.Length);
+                spriteRenderer.sprite = S_Normal[enigeIets];
+                spriteRenderer.color = Color.grey;
+                if (transform.childCount > 1)
                 {
-                    Destroy(transform.GetChild(0).gameObject);
+                    Destroy(transform.GetChild(1).gameObject);
                 }
                 break;
         }
@@ -91,8 +96,12 @@ public class Tile : MonoBehaviour
                 
                 break;
             case TileState.Burning:
+                int nommer = UnityEngine.Random.Range(0, S_Burning.Length);
+                spriteRenderer.sprite = S_Burning[nommer];
+                spriteRenderer.color = Color.white;
+
                 burningCountdown -= Time.deltaTime;
-                spriteRenderer.sprite = S_Burning;
+                
                 if (burningCountdown <= 0)
                 {
                     
@@ -110,7 +119,9 @@ public class Tile : MonoBehaviour
                 }
                 break;
             case TileState.Destroyed:
-                spriteRenderer.sprite = S_Destroyed;
+                int enigeIets = UnityEngine.Random.Range(0, S_Normal.Length);
+                spriteRenderer.sprite = S_Normal[enigeIets];
+                spriteRenderer.color = Color.grey;
                 break;
         }
 
