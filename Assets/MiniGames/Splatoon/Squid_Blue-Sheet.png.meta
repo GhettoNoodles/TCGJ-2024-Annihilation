@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e5389537fab8bca409ad4628f87fb96b
+guid: 1383cd4f4c965e94da38fa580308abfb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,55 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: InkBlots_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 50
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a9c9a97bac89ddd40bb2a1b07ac39ca7
-      internalID: -884397489
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: InkBlots_1
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 50
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8bf5adb14367af346b68e9e88401d0bf
-      internalID: -630226934
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: InkBlots_2
+      name: Squid_Blue-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 50
-        height: 50
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9df91e53994c2645a06dc37dc321554
-      internalID: 1260908677
+      spriteID: fa7b9be0d8d33504e85c45d6049c8b66
+      internalID: -274986504
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: InkBlots_3
+      name: Squid_Blue-Sheet_1
       rect:
         serializedVersion: 2
-        x: 50
+        x: 100
         y: 0
-        width: 50
-        height: 50
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +158,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d765f976a640abc47b30a6f46646e8c4
-      internalID: 1984977094
+      spriteID: c91ee8be28b53b14fac1985fab630f04
+      internalID: 2102023647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Squid_Blue-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1614086d71d8e234499b04b792d20b3e
+      internalID: 2132102727
       vertices: []
       indices: 
       edges: []
@@ -217,10 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      InkBlots_0: -884397489
-      InkBlots_1: -630226934
-      InkBlots_2: 1260908677
-      InkBlots_3: 1984977094
+      Squid_Blue-Sheet_0: -274986504
+      Squid_Blue-Sheet_1: 2102023647
+      Squid_Blue-Sheet_2: 2132102727
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

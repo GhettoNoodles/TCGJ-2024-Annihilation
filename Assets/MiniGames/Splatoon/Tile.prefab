@@ -148,10 +148,30 @@ MonoBehaviour:
   p1: {r: 0.990566, g: 0.31305623, b: 0.31305623, a: 1}
   p2: {r: 0.28773582, g: 0.4357738, b: 1, a: 1}
   scribbles:
-  - {fileID: -884397489, guid: e5389537fab8bca409ad4628f87fb96b, type: 3}
-  - {fileID: -630226934, guid: e5389537fab8bca409ad4628f87fb96b, type: 3}
-  - {fileID: 1260908677, guid: e5389537fab8bca409ad4628f87fb96b, type: 3}
-  - {fileID: 1984977094, guid: e5389537fab8bca409ad4628f87fb96b, type: 3}
+  - {fileID: 1859013358, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: 1471096098, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: -1903732947, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: -1991225415, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: -1493774287, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: -569818266, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: 563513656, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: 1752396084, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: -253146866, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: 1727443532, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: 300427438, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: 447747446, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: 36878402, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: -71351710, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: 1625172620, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: -1911226453, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: 183465164, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: -1903763686, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: -346183278, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: 1095903892, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: 671823822, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: -453846821, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: -463488665, guid: 66c4a2950e919934c825562feef410db, type: 3}
+  - {fileID: -1841390056, guid: 66c4a2950e919934c825562feef410db, type: 3}
   gui: {fileID: 6316828343745682935}
   currentDominance: 0
 --- !u!1 &6946316317463413847
