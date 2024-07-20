@@ -1799,7 +1799,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2105404802}
   - component: {fileID: 2105404801}
-  - component: {fileID: 2105404803}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Input
@@ -1819,14 +1818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe5293fa6a2f9f418fa118a62c4a45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  L_Hold_Ref: {fileID: -5802564044914974941, guid: 8e1939949802dcb4caf38c98e4dde9d8, type: 3}
-  R_Hold_Ref: {fileID: 4934071137803742587, guid: 8e1939949802dcb4caf38c98e4dde9d8, type: 3}
-  L_Stick_Ref: {fileID: 1510830353269232975, guid: 8e1939949802dcb4caf38c98e4dde9d8, type: 3}
-  R_Stick_Ref: {fileID: 7785986137495099625, guid: 8e1939949802dcb4caf38c98e4dde9d8, type: 3}
-  L_Action_Ref: {fileID: 4538050144392576815, guid: 8e1939949802dcb4caf38c98e4dde9d8, type: 3}
-  L_Action_Tap_Ref: {fileID: -9667261792834088, guid: 8e1939949802dcb4caf38c98e4dde9d8, type: 3}
-  R_Action_Tap_Ref: {fileID: 1195060215295585181, guid: 8e1939949802dcb4caf38c98e4dde9d8, type: 3}
-  R_Action_Ref: {fileID: -1797798984898389707, guid: 8e1939949802dcb4caf38c98e4dde9d8, type: 3}
 --- !u!4 &2105404802
 Transform:
   m_ObjectHideFlags: 0
@@ -1842,36 +1833,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2105404803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2105404800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 8e1939949802dcb4caf38c98e4dde9d8, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Main
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
