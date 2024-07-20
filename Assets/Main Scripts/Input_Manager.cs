@@ -90,10 +90,10 @@ public class Input_Manager : MonoBehaviour
     {
         if (player == PlayerNumber.P1)
         {
-            return L_Hold;
+            return L_Hold > 0;
         }
 
-        return R_Hold;
+        return R_Hold > 0;
     }
 
     public bool Get_Action_Release(PlayerNumber player)
