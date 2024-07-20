@@ -145,8 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 2021777252315133081}
-  p1: {r: 0.990566, g: 0.31305623, b: 0.31305623, a: 1}
-  p2: {r: 0.28773582, g: 0.4357738, b: 1, a: 1}
+  p1: {r: 0.93962264, g: 0.60100394, b: 0.69294685, a: 1}
+  p2: {r: 0.59835523, g: 0.732323, b: 0.96981126, a: 1}
   scribbles:
   - {fileID: 1859013358, guid: 66c4a2950e919934c825562feef410db, type: 3}
   - {fileID: 1471096098, guid: 66c4a2950e919934c825562feef410db, type: 3}
