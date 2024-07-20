@@ -148,12 +148,10 @@ MonoBehaviour:
   p1: {r: 0.990566, g: 0.31305623, b: 0.31305623, a: 1}
   p2: {r: 0.28773582, g: 0.4357738, b: 1, a: 1}
   scribbles:
-  - {fileID: -325070359, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
-  - {fileID: -291758695, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
-  - {fileID: 1395329989, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
-  - {fileID: -215678947, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
-  - {fileID: -500062, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
-  - {fileID: -1019839702, guid: 01be34ae9f9ccc64d9e0f8fcbb25851e, type: 3}
+  - {fileID: -884397489, guid: e5389537fab8bca409ad4628f87fb96b, type: 3}
+  - {fileID: -630226934, guid: e5389537fab8bca409ad4628f87fb96b, type: 3}
+  - {fileID: 1260908677, guid: e5389537fab8bca409ad4628f87fb96b, type: 3}
+  - {fileID: 1984977094, guid: e5389537fab8bca409ad4628f87fb96b, type: 3}
   gui: {fileID: 6316828343745682935}
   currentDominance: 0
 --- !u!1 &6946316317463413847
