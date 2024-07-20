@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 
 public class Input_Manager : MonoBehaviour
@@ -10,10 +12,19 @@ public class Input_Manager : MonoBehaviour
     private float L_Vertical;
     private float R_Horizontal;
     private float R_Vertical;
-    private bool L_Hold;
-    private bool R_Hold;
-    private bool L_Action;
-    private bool R_Action;
+    private float L_Hold;
+    private float R_Hold;
+ 
+
+    [SerializeField] private InputActionReference L_Hold_Ref;
+    [SerializeField] private InputActionReference R_Hold_Ref;
+    [SerializeField] private InputActionReference L_Stick_Ref;
+    [SerializeField] private InputActionReference R_Stick_Ref;
+    [SerializeField] private InputActionReference L_Action_Ref;
+    [SerializeField] private InputActionReference L_Action_Tap_Ref;
+    [SerializeField] private InputActionReference R_Action_Tap_Ref;
+    [SerializeField] private InputActionReference R_Action_Ref;
+
 
     public enum PlayerNumber
     {
@@ -47,33 +58,32 @@ public class Input_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        L_Hold = Input.GetButton("P1_Hold");
-        R_Hold = Input.GetButton("P2_Hold");
-
-        L_Horizontal = Input.GetAxis("P1_Horizontal");
-        L_Vertical = Input.GetAxis("P1_Vertical");
-        R_Horizontal = Input.GetAxis("P2_Horizontal");
-        R_Vertical = Input.GetAxis("P2_Vertical");
+        L_Hold = L_Hold_Ref.action.ReadValue<float>();
+        R_Hold = R_Hold_Ref.action.ReadValue<float>();
+        L_Horizontal = L_Stick_Ref.action.ReadValue<Vector2>().x;
+        R_Horizontal = R_Stick_Ref.action.ReadValue<Vector2>().x;
+        L_Vertical = L_Stick_Ref.action.ReadValue<Vector2>().y;
+        R_Vertical = R_Stick_Ref.action.ReadValue<Vector2>().y;
     }
 
     public bool Get_Action(PlayerNumber player)
     {
         if (player == PlayerNumber.P1)
         {
-            return Input.GetButton("P1_Action");
+            return L_Action_Ref.action.IsPressed();
         }
 
-        return Input.GetButton("P2_Action");
+        return R_Action_Ref.action.IsPressed();
     }
 
     public bool Get_Action_Tap(PlayerNumber player)
     {
         if (player == PlayerNumber.P1)
         {
-            return Input.GetButtonDown("P1_Action");
+            return L_Action_Tap_Ref.action.WasPressedThisFrame();
         }
 
-        return Input.GetButtonDown("P2_Action");
+        return R_Action_Tap_Ref.action.WasPressedThisFrame();
     }
 
     public bool Get_Hold(PlayerNumber player)
@@ -90,10 +100,10 @@ public class Input_Manager : MonoBehaviour
     {
         if (player == PlayerNumber.P1)
         {
-            return Input.GetButtonUp("P1_Action");
+            return L_Action_Ref.action.WasReleasedThisFrame();
         }
 
-        return Input.GetButtonUp("P2_Action");
+        return R_Action_Ref.action.WasReleasedThisFrame();
     }
 
     public Vector2 Get_Stick(PlayerNumber player)
