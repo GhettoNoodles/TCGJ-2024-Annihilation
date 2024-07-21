@@ -14,10 +14,14 @@ public class Input_Manager : MonoBehaviour
     private float R_Vertical;
     private float L_Hold;
     private float R_Hold;
- 
 
+    private bool L_holdToggle;
+    private bool R_holdToggle;
+    [SerializeField] private PlayerInput input;
     [SerializeField] private InputActionReference L_Hold_Ref;
     [SerializeField] private InputActionReference R_Hold_Ref;
+    [SerializeField] private InputActionReference L_Hold_Tap_Ref;
+    [SerializeField] private InputActionReference R_Hold_Tap_Ref;
     [SerializeField] private InputActionReference L_Stick_Ref;
     [SerializeField] private InputActionReference R_Stick_Ref;
     [SerializeField] private InputActionReference L_Action_Ref;
@@ -60,6 +64,16 @@ public class Input_Manager : MonoBehaviour
     {
         L_Hold = L_Hold_Ref.action.ReadValue<float>();
         R_Hold = R_Hold_Ref.action.ReadValue<float>();
+        if (L_Hold_Tap_Ref.action.WasPressedThisFrame())
+        {
+            L_holdToggle = !L_holdToggle;
+        }
+
+        if (R_Hold_Tap_Ref.action.WasPressedThisFrame())
+        {
+            R_holdToggle = !R_holdToggle;
+        }
+
         L_Horizontal = L_Stick_Ref.action.ReadValue<Vector2>().x;
         R_Horizontal = R_Stick_Ref.action.ReadValue<Vector2>().x;
         L_Vertical = L_Stick_Ref.action.ReadValue<Vector2>().y;
@@ -90,7 +104,17 @@ public class Input_Manager : MonoBehaviour
     {
         if (player == PlayerNumber.P1)
         {
+            if (input.currentControlScheme == "Keyboard")
+            {
+                return L_holdToggle;
+            }
+
             return L_Hold > 0;
+        }
+
+        if (input.currentControlScheme == "Keyboard")
+        {
+            return R_holdToggle;
         }
 
         return R_Hold > 0;

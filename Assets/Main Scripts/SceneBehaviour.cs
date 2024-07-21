@@ -107,10 +107,7 @@ public class SceneBehaviour : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            NextGame();
-        }
+     
     }
 
     public void NextGame()
