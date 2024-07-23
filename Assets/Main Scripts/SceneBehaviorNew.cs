@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -5,6 +6,7 @@ using System.Net;
 using UnityEngine;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class SessionInfo
 {
@@ -22,6 +24,7 @@ public class SceneBehaviorNew : MonoBehaviour
     [SerializeField] private int playerStartHealth;
     private int _p1Health;
     private int _p2Health;
+    private int nonGameScenes = 2;
     private int _currentGame;
 
     public int[] gameScenes;
@@ -51,11 +54,11 @@ public class SceneBehaviorNew : MonoBehaviour
 
     private void GetGameScenes()
     {
-        gameScenes = new int[SceneManager.sceneCountInBuildSettings - 1];
+        gameScenes = new int[SceneManager.sceneCountInBuildSettings - nonGameScenes];
         var length = gameScenes.Length;
         for (int i = 0; i < length; i++)
         {
-            gameScenes[i] = i + 1;
+            gameScenes[i] = i + nonGameScenes;
         }
 
         for (int i = 0; i < length; i++)
@@ -70,7 +73,7 @@ public class SceneBehaviorNew : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void InitializeSession()
     {
         _p1Health = playerStartHealth;
         _p2Health = playerStartHealth;
@@ -79,16 +82,25 @@ public class SceneBehaviorNew : MonoBehaviour
         SaveSessionInfo();
     }
 
+    private void Start()
+    {
+        _session = new SessionInfo();
+        sessionDataPath = Application.streamingAssetsPath + "/inGameSaves/Session.json";
+        ReadSessionInfo();
+        Debug.Log(_session.gameIndex + "; " + _session.scores[0] + "; " + _session.scores[1]);
+    }
+
     private void SaveSessionInfo()
     {
         _session.games = gameScenes;
         _session.scores = new []{_p1Health,_p2Health};
         _session.gameIndex = _currentGame;
+        string jsonData = JsonConvert.SerializeObject(_session);
+        File.WriteAllText(sessionDataPath,jsonData);
     }
 
     public void EndGame(Input_Manager.PlayerNumber winner)
     {
-        ReadSessionInfo();
         if (winner == Input_Manager.PlayerNumber.P1)
         {
             _p2Health--;
@@ -105,11 +117,11 @@ public class SceneBehaviorNew : MonoBehaviour
             _currentGame = 0;
         }
         SaveSessionInfo();
+        NextGame();
     }
 
     public void NextGame()
     {
-        ReadSessionInfo();
         SceneManager.LoadScene(_currentGame);
     }
     
