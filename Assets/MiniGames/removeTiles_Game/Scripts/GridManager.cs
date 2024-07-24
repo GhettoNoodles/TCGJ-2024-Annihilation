@@ -85,18 +85,6 @@ public class GridManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SpawnCountdown <= 0)
-        {
-            SelectGrid_Pl1();
-            SelectGrid_Pl2();
-            SpawnCountdown = SpawnReset;
-        }
-
-        else
-        {
-            SpawnCountdown -= Time.deltaTime;
-        }
-
         if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.currentGameTime)
         {
             Input_Manager.PlayerNumber winner;
@@ -127,7 +115,17 @@ public class GridManager : MonoBehaviour
             holdPanel.SetActive(false);
             Time.timeScale = 1f;
         }
+        if (SpawnCountdown <= 0)
+        {
+            SelectGrid_Pl1();
+            SelectGrid_Pl2();
+            SpawnCountdown = SpawnReset;
+        }
 
+        else
+        {
+            SpawnCountdown -= Time.deltaTime;
+        }
     }
 
     private void SpawnCollectabile(GameObject SelectedTile)
