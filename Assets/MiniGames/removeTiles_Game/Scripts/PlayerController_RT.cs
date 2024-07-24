@@ -25,7 +25,7 @@ public class PlayerController_RT : MonoBehaviour
     void Start()
     {
         _inputManager = Input_Manager.Instance;
-        attack = transform.GetChild(0).gameObject.GetComponent<Attack>();
+        
         gridManager = GameObject.FindGameObjectWithTag("GridManager").GetComponent<GridManager>();
         ResetAttack();
     }
@@ -54,18 +54,20 @@ public class PlayerController_RT : MonoBehaviour
             CanAttack == true) 
         {
             Attack_OtherPlayer();
-            CanAttack = false;
+           
             ResetAttack();
         }
 
         if (AttackCooldown >= 0 &&
             CanAttack == false)
         {
+            attack.gameObject.SetActive(false);
             AttackCooldown -= Time.deltaTime;
         }
 
         if (AttackCooldown < 0)
         {
+            attack.gameObject.SetActive(true);
             CanAttack = true;
         }
 
@@ -123,6 +125,7 @@ public class PlayerController_RT : MonoBehaviour
 
     public void ResetAttack()
     {
+        CanAttack = false;
         attack.TilesInRange.Clear();
         AttackCooldown = AttackReset;
     }
@@ -136,15 +139,17 @@ public class PlayerController_RT : MonoBehaviour
             if (playerNumber == Input_Manager.PlayerNumber.P1 &&
                 ScoreOnce == true)
             {
-                gridManager.PL2_Scores();
                 ScoreOnce = false;
+                gridManager.PL2_Scores();
+                
             }
 
             else if(playerNumber == Input_Manager.PlayerNumber.P2 &&
                 ScoreOnce == true)
             {
-                gridManager.PL1_Scores();
                 ScoreOnce = false;
+                gridManager.PL1_Scores();
+                
             }
         }
     }
@@ -158,15 +163,17 @@ public class PlayerController_RT : MonoBehaviour
             if (playerNumber == Input_Manager.PlayerNumber.P1 &&
                 ScoreOnce == true)
             {
-                gridManager.PL2_Scores();
                 ScoreOnce = false;
+                gridManager.PL2_Scores();
+                
             }
 
             else if (playerNumber == Input_Manager.PlayerNumber.P2 &&
                 ScoreOnce == true)
             {
-                gridManager.PL1_Scores();
                 ScoreOnce = false;
+                gridManager.PL1_Scores();
+                
             }
         }
     }
