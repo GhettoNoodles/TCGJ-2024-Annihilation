@@ -6,7 +6,8 @@ public class subwayLanes : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public int[] lanes= { 1,2,3,4,5};
+  
+    
     void Start()
     {
             
