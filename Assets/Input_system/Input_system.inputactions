@@ -15,6 +15,24 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "L_Hold_Tap",
+                    "type": "Value",
+                    "id": "bb27a562-eb82-45ac-8600-3fe0c1565e1b",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "R_Hold_Tap",
+                    "type": "Value",
+                    "id": "b5304af5-ad0f-4c63-9c71-28b7f58082e8",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "R_Hold",
                     "type": "Value",
                     "id": "93a82123-f262-4c54-9cdc-3000505df19f",
@@ -340,6 +358,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "R_Action_Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b273e929-2e35-4ea2-9b39-0555fd2f850a",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "L_Hold_Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6c15dfbd-5ae2-4411-b185-9b0adbd8f3e0",
+                    "path": "<Keyboard>/numpad0",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "R_Hold_Tap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
