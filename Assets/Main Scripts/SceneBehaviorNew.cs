@@ -22,13 +22,14 @@ public class SceneBehaviorNew : MonoBehaviour
     private SessionInfo _session;
     [Header("Settings")] [SerializeField] private string sessionDataPath;
     [SerializeField] private int playerStartHealth;
-    private int _p1Health;
-    private int _p2Health;
+    public int _p1Health { get; private set; }
+    public int _p2Health{ get; private set; }
     private int nonGameScenes = 2;
     private int _currentGame;
 
     public int[] gameScenes;
 
+    //General Functions:------------------------------------------------------------------------------------------------
     void Awake()
     {
         if (Instance != null)
@@ -72,16 +73,6 @@ public class SceneBehaviorNew : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    public void InitializeSession()
-    {
-        _p1Health = playerStartHealth;
-        _p2Health = playerStartHealth;
-        GetGameScenes();
-        _currentGame = 0;
-        SaveSessionInfo();
-    }
-
     private void Start()
     {
         _session = new SessionInfo();
@@ -89,7 +80,6 @@ public class SceneBehaviorNew : MonoBehaviour
         ReadSessionInfo();
         Debug.Log(_session.gameIndex + "; " + _session.scores[0] + "; " + _session.scores[1]);
     }
-
     private void SaveSessionInfo()
     {
         _session.games = gameScenes;
@@ -98,8 +88,19 @@ public class SceneBehaviorNew : MonoBehaviour
         string jsonData = JsonConvert.SerializeObject(_session);
         File.WriteAllText(sessionDataPath,jsonData);
     }
-
-    public void EndGame(Input_Manager.PlayerNumber winner)
+    //==================================================================================================================
+    // Beginning of Session---------------------------------------------------------------------------------------------
+    public void InitializeSession()
+    {
+        _p1Health = playerStartHealth;
+        _p2Health = playerStartHealth;
+        GetGameScenes();
+        _currentGame = 0;
+        SaveSessionInfo();
+    }
+    //==================================================================================================================
+    //Minigame Stuff----------------------------------------------------------------------------------------------------
+    public void EndGameSession(Input_Manager.PlayerNumber winner)
     {
         if (winner == Input_Manager.PlayerNumber.P1)
         {
@@ -117,12 +118,23 @@ public class SceneBehaviorNew : MonoBehaviour
             _currentGame = 0;
         }
         SaveSessionInfo();
-        NextGame();
-    }
 
+        if (_p1Health <=0||_p2Health<=0)
+        {
+            Debug.Log("Game Over");
+        }
+        else
+        {
+            SceneManager.LoadScene(nonGameScenes - 1);
+        }
+        
+       
+    }
+    //==================================================================================================================
+   //InBetweeners-------------------------------------------------------------------------------------------------------
     public void NextGame()
     {
         SceneManager.LoadScene(_currentGame);
     }
-    
+    //==================================================================================================================
 }
