@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,20 +12,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PLController p1;
     [SerializeField] private PLController p2;
 
-    [SerializeField] private float minGameTime;
+    [SerializeField] private float gameTime;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
-        minGameTime += SceneBehaviour.Instance.GameTime;
-        SceneBehaviour.Instance.currentGameTime = minGameTime;
-        SceneBehaviour.Instance.GameLoaded();
+        SceneBehaviour.Instance.currentGametimer = gameTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeSinceLevelLoad > SceneBehaviour.Instance.currentGameTime)
+        if (Time.timeSinceLevelLoad >gameTime)
         {
             if (p1.TotalBeersDrank > p2.TotalBeersDrank)
             {

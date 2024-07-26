@@ -2157,6 +2157,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 985228086}
     - target: {fileID: 3655444442891878489, guid: 3840b3f89b085304ab650182691f716e, type: 3}
+      propertyPath: gameTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3655444442891878489, guid: 3840b3f89b085304ab650182691f716e, type: 3}
       propertyPath: holdPanel
       value: 
       objectReference: {fileID: 1114138301}

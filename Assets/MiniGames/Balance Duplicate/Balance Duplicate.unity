@@ -2101,7 +2101,7 @@ MonoBehaviour:
   p1text: {fileID: 1989100011}
   p2text: {fileID: 393149737}
   holdPanel: {fileID: 1558999359}
-  minGameTime: 50
+  gameTime: 60
 --- !u!1001 &1720380688
 PrefabInstance:
   m_ObjectHideFlags: 0

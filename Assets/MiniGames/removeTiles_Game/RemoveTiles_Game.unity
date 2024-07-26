@@ -2016,7 +2016,7 @@ MonoBehaviour:
   PLC1: {fileID: 1133224442}
   PLC2: {fileID: 1627312038}
   holdPanel: {fileID: 506606618}
-  minGameTime: 40
+  gameTime: 45
 --- !u!4 &1270643816
 Transform:
   m_ObjectHideFlags: 0

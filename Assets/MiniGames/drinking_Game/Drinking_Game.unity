@@ -171,7 +171,7 @@ MonoBehaviour:
   holdPanel: {fileID: 2113036550}
   p1: {fileID: 628601228}
   p2: {fileID: 1708898380}
-  minGameTime: 40
+  gameTime: 40
 --- !u!1 &51583022
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,7 +894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &391630527
 MonoBehaviour:
   m_ObjectHideFlags: 0

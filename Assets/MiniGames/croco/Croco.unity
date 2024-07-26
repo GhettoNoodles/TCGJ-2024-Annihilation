@@ -2435,7 +2435,7 @@ MonoBehaviour:
   p1text: {fileID: 1917180270}
   p2text: {fileID: 60985222}
   teeth: 7
-  minGameTime: 30
+  gameTime: 30
 --- !u!4 &1238423665
 Transform:
   m_ObjectHideFlags: 0

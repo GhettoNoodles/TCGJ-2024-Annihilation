@@ -32,14 +32,12 @@ public class PokeEye : MonoBehaviour
     [Space(10)]
     public float moistSpeed;
     [SerializeField] private GameObject holdPanel;
-    [SerializeField] private float minGameTime;
+    [SerializeField] private float gameTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        minGameTime += SceneBehaviour.Instance.GameTime;
-        SceneBehaviour.Instance.currentGameTime = minGameTime;
-        SceneBehaviour.Instance.GameLoaded();
+        SceneBehaviour.Instance.currentGametimer = gameTime;
         Finger1.transform.position = new Vector3(Finger1.transform.position.x, startPos.position.y);
         Finger2.transform.position = new Vector3(Finger2.transform.position.x, startPos.position.y);
     }
@@ -47,7 +45,7 @@ public class PokeEye : MonoBehaviour
     private void Update()
     {
         
-        if (Time.timeSinceLevelLoad>SceneBehaviour.Instance.currentGameTime)
+        if (Time.timeSinceLevelLoad>gameTime)
         {
             if (score_p1>score_p2)
             {

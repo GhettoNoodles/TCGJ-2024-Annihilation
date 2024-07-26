@@ -21,19 +21,17 @@ public class Splatoongame : MonoBehaviour
     [SerializeField] private Image imgP2;
     [SerializeField] private Color p1;
     [SerializeField] private Color p2;
-    private float GameTime = 60;
+    [SerializeField]private float gameTime = 60;
     private float p1Score = 0;
     private float p2Score = 0;
     private bool gameOver = false;
 
-    private List<Splatoon_Tile> cells;[SerializeField] private float minGameTime;
+    private List<Splatoon_Tile> cells;
 
     // Start is called before the first frame update
     void Start()
     {
-        minGameTime += SceneBehaviour.Instance.GameTime;
-        SceneBehaviour.Instance.currentGameTime = minGameTime;
-        SceneBehaviour.Instance.GameLoaded();
+        SceneBehaviour.Instance.currentGametimer = gameTime;
         cells = new List<Splatoon_Tile>();
         GenerateGrid();
         StartCoroutine(TimerRoutine());
@@ -44,7 +42,7 @@ public class Splatoongame : MonoBehaviour
     void Update()
     {
         
-        if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.currentGameTime)
+        if (Time.timeSinceLevelLoad >= gameTime)
         {
             Input_Manager.PlayerNumber winner;
             if (p1Score > p2Score)

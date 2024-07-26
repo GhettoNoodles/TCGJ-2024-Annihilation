@@ -24,16 +24,14 @@ public class FistScript : MonoBehaviour
     public Rigidbody2D rb_2;
 
     public float speedMulti;
-    [SerializeField] private float minGameTime;
+    [SerializeField] private float gameTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        SceneBehaviour.Instance.currentGametimer = gameTime;
         rb_1 = fist_1.GetComponent<Rigidbody2D>();
         rb_2 = fist_2.GetComponent<Rigidbody2D>();
-        minGameTime += SceneBehaviour.Instance.GameTime;
-        SceneBehaviour.Instance.currentGameTime = minGameTime;
-        SceneBehaviour.Instance.GameLoaded();
     }
 
     private void Awake()
@@ -43,7 +41,7 @@ public class FistScript : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.currentGameTime)
+        if (Time.timeSinceLevelLoad >= gameTime)
         {
             Input_Manager.PlayerNumber winner;
             if (Player1_score > Player2_score)

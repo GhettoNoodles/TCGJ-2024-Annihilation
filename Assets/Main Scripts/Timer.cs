@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var percentage = (SceneBehaviour.Instance.currentGameTime- Time.timeSinceLevelLoad) / SceneBehaviour.Instance.currentGameTime;
+        var percentage = (SceneBehaviour.Instance.currentGametimer- Time.timeSinceLevelLoad) / SceneBehaviour.Instance.currentGametimer;
         img.fillAmount = percentage;
         img.color =grad.Evaluate(percentage);
         Debug.Log(percentage);

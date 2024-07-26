@@ -289,7 +289,7 @@ MonoBehaviour:
   rb_1: {fileID: 0}
   rb_2: {fileID: 0}
   speedMulti: 8
-  minGameTime: 0
+  gameTime: 30
 --- !u!1 &132644582
 GameObject:
   m_ObjectHideFlags: 0

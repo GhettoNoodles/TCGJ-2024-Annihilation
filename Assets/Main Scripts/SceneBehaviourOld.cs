@@ -11,9 +11,9 @@ using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
-public class SceneBehaviour : MonoBehaviour
+public class SceneBehaviourOld : MonoBehaviour
 {
-    public static SceneBehaviour Instance { get; private set; }
+    public static SceneBehaviourOld Instance { get; private set; }
 
     public List<int> gameScenes = new List<int>();
     public List<int> loadedScenes = new List<int>();

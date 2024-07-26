@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,15 +13,7 @@ public class ManagerBalance : MonoBehaviour
     private int p1Score;
 
     private int p2Score;
-    [SerializeField] private float minGameTime;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        minGameTime += SceneBehaviour.Instance.GameTime;
-        SceneBehaviour.Instance.currentGameTime = minGameTime;
-        SceneBehaviour.Instance.GameLoaded();
-    }
+    [SerializeField] private float gameTime;
     public static ManagerBalance Instance;
 
     void Awake()
@@ -33,8 +26,13 @@ public class ManagerBalance : MonoBehaviour
         {
             Instance = this;
         }
-    } // Start is called before the first frame update
-  
+    }
+
+    private void Start()
+    {
+        SceneBehaviour.Instance.currentGametimer = gameTime;
+    }
+
 
     public void IncreaseScore(Input_Manager.PlayerNumber loser)
     {
@@ -53,7 +51,7 @@ public class ManagerBalance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeSinceLevelLoad > SceneBehaviour.Instance.currentGameTime)
+        if (Time.timeSinceLevelLoad > gameTime)
         {
             if (p1Score > p2Score)
             {

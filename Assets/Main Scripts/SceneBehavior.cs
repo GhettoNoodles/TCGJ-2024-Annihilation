@@ -8,17 +8,11 @@ using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
-public class SessionInfo
-{
-    [JsonProperty("SessionType")] public string sessionType;
-    [JsonProperty("Scores")] public int[] scores;
-    [JsonProperty("Games")] public int[] games;
-    [JsonProperty("currentGame")] public int gameIndex;
-}
 
-public class SceneBehaviorNew : MonoBehaviour
+
+public class SceneBehaviour : MonoBehaviour
 {
-    public static SceneBehaviorNew Instance { get; private set; }
+    public static SceneBehaviour Instance { get; private set; }
     private SessionInfo _session;
     [Header("Settings")] [SerializeField] private string sessionDataPath;
     [SerializeField] private int playerStartHealth;
@@ -26,7 +20,7 @@ public class SceneBehaviorNew : MonoBehaviour
     public int _p2Health{ get; private set; }
     private int nonGameScenes = 2;
     private int _currentGame;
-
+    public float currentGametimer;
     public int[] gameScenes;
 
     //General Functions:------------------------------------------------------------------------------------------------
@@ -75,6 +69,7 @@ public class SceneBehaviorNew : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("starting");
         _session = new SessionInfo();
         sessionDataPath = Application.streamingAssetsPath + "/inGameSaves/Session.json";
         ReadSessionInfo();
@@ -125,16 +120,28 @@ public class SceneBehaviorNew : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(nonGameScenes - 1);
+            LoadInbetween();
         }
         
        
+    }
+
+    public void LoadInbetween()
+    {
+        SceneManager.LoadScene(nonGameScenes - 1);
     }
     //==================================================================================================================
    //InBetweeners-------------------------------------------------------------------------------------------------------
     public void NextGame()
     {
-        SceneManager.LoadScene(_currentGame);
+        SceneManager.LoadScene(gameScenes[_currentGame]);
     }
     //==================================================================================================================
+}
+public class SessionInfo
+{
+    [JsonProperty("SessionType")] public string sessionType;
+    [JsonProperty("Scores")] public int[] scores;
+    [JsonProperty("Games")] public int[] games;
+    [JsonProperty("currentGame")] public int gameIndex;
 }

@@ -31,15 +31,13 @@ public class GridManager : MonoBehaviour
     [SerializeField]
     private PlayerController_RT PLC1, PLC2;
     [SerializeField] private GameObject holdPanel;
-    [SerializeField] private float minGameTime;
+    [SerializeField] private float gameTime;
     
     // Start is called before the first frame update
     void Start()
     {
-        minGameTime += SceneBehaviour.Instance.GameTime;
-        SceneBehaviour.Instance.currentGameTime = minGameTime;
-        SceneBehaviour.Instance.GameLoaded();
-
+    
+        SceneBehaviour.Instance.currentGametimer = gameTime;
         SpawnCountdown = SpawnReset;
         TextScore1.text = Score_PL1.ToString();
         TextScore2.text = Score_PL2.ToString();
@@ -85,7 +83,7 @@ public class GridManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeSinceLevelLoad >= SceneBehaviour.Instance.currentGameTime)
+        if (Time.timeSinceLevelLoad >=gameTime)
         {
             Input_Manager.PlayerNumber winner;
             if (Score_PL1 > Score_PL2)
