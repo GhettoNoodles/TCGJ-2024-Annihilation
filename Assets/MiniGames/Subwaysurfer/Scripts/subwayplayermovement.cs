@@ -5,77 +5,77 @@ using UnityEngine;
 
 public class subwayplayermovement : MonoBehaviour
 {
+    [SerializeField]
+    private Input_Manager.PlayerNumber player;
 
- 
-    [SerializeField] private Input_Manager inputman;
-    public Input_Manager.PlayerNumber playernum;
     public Rigidbody2D rb;
     public float NewSpeed;
     public Transform[] lanes;
     private Transform target;
-    public int indextarget;
+    [SerializeField]
+    private int indextarget;
     public subwayplayermovement enemymove;
-    bool collide = false;
+    private bool collide = false;
+    private bool canMove = true;
+    private float moveCooldown = 0.75f; // Adjust this value as needed
 
     void Start()
     {
-       /* inputman = Input_Manager.Instance;
-        if (inputman == null)
-        {
-            Debug.LogError("Input_Manager.Instance is null!");
-        }*/
-
         rb = GetComponent<Rigidbody2D>();
-  
 
         if (lanes != null && lanes.Length > 0)
         {
             target = lanes[indextarget];
-            Debug.Log("Target initialized to lane " + indextarget);
+            
         }
-       
     }
 
     private void FixedUpdate()
     {
-        if (target == null)
-        {
-            Debug.LogError("Target is null!");
-            return;
-        }
+        
 
         rb.position = Vector3.MoveTowards(transform.position, target.position, NewSpeed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (canMove)
         {
-            MoveLeft();
-        }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            MoveRight();
+            Vector2 stickInput = Input_Manager.Instance.Get_Stick(player);
+            if (stickInput.x < 0)
+            {
+                MoveLeft();
+              
+               // StartCoroutine(MoveCooldown());
+            }
+            else if (stickInput.x > 0)
+            {
+                MoveRight();
+               
+               // StartCoroutine(MoveCooldown());
+            }
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-            //hit something
-            Debug.Log(gameObject.name + " collided with an obstacle!");
+        //hit something
+        Debug.Log(gameObject.name + " collided with an obstacle!");
     }
+
     private void MoveRight()
     {
-        if (enemymove.indextarget - 1 == indextarget)
+        if (enemymove.indextarget + 1 == indextarget)
         {
             collide = true;
         }
         if ((indextarget + 1 <= 4) && (!collide || enemymove.indextarget + 1 <= 4))
         {
-            indextarget++;
-            target = lanes[indextarget];
+           
             if (collide)
             {
-                enemymove.indextarget++;
+                // enemymove.indextarget++;
+                Debug.Log("right");
             }
-
+            indextarget++;
+            target = lanes[indextarget];
         }
         collide = false;
     }
@@ -88,34 +88,27 @@ public class subwayplayermovement : MonoBehaviour
         }
         if ((indextarget - 1 >= 0) && (!collide || enemymove.indextarget - 1 >= 0))
         {
-            indextarget--;
-            target = lanes[indextarget];
+           
             if (collide)
             {
-                enemymove.indextarget--;
-            }
-
+                //enemymove.indextarget--;
+                Debug.Log("left");
+            } 
+            indextarget--;
+            target = lanes[indextarget];
         }
         collide = false;
+    }
 
+    private IEnumerator MoveCooldown()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(moveCooldown);
+        canMove = true;
     }
 
     void Update()
     {
-        if (inputman == null)
-        {
-            return;
-        }
-
-        var velocity = inputman.Get_Stick(playernum);
-        if (velocity.magnitude != 0)
-        {
-            Debug.Log(velocity);
-        }
-
-        if (rb != null)
-        {
-            rb.velocity = velocity.normalized * NewSpeed;
-        }
+        // Any additional update logic if needed
     }
 }
