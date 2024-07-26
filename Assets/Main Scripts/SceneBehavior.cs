@@ -20,6 +20,7 @@ public class SceneBehaviour : MonoBehaviour
     public int _p2Health{ get; private set; }
     private int nonGameScenes = 2;
     private int _currentGame;
+    public int recentWinner;
     public float currentGametimer;
     public int[] gameScenes;
 
@@ -33,6 +34,11 @@ public class SceneBehaviour : MonoBehaviour
         else
         {
             Instance = this;
+            Debug.Log("starting");
+            _session = new SessionInfo();
+            sessionDataPath = Application.streamingAssetsPath + "/inGameSaves/Session.json";
+            ReadSessionInfo();
+            Debug.Log(_session.gameIndex + "; " + _session.scores[0] + "; " + _session.scores[1]);
         }
     }
 
@@ -44,7 +50,8 @@ public class SceneBehaviour : MonoBehaviour
         _p1Health = _session.scores[0];
         _p2Health = _session.scores[1];
         gameScenes = _session.games;
-        
+        recentWinner = _session.recentWinner;
+
     }
 
     private void GetGameScenes()
@@ -69,17 +76,14 @@ public class SceneBehaviour : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("starting");
-        _session = new SessionInfo();
-        sessionDataPath = Application.streamingAssetsPath + "/inGameSaves/Session.json";
-        ReadSessionInfo();
-        Debug.Log(_session.gameIndex + "; " + _session.scores[0] + "; " + _session.scores[1]);
+      
     }
     private void SaveSessionInfo()
     {
         _session.games = gameScenes;
         _session.scores = new []{_p1Health,_p2Health};
         _session.gameIndex = _currentGame;
+        _session.recentWinner = recentWinner;
         string jsonData = JsonConvert.SerializeObject(_session);
         File.WriteAllText(sessionDataPath,jsonData);
     }
@@ -89,6 +93,7 @@ public class SceneBehaviour : MonoBehaviour
     {
         _p1Health = playerStartHealth;
         _p2Health = playerStartHealth;
+        recentWinner = 0;
         GetGameScenes();
         _currentGame = 0;
         SaveSessionInfo();
@@ -100,10 +105,12 @@ public class SceneBehaviour : MonoBehaviour
         if (winner == Input_Manager.PlayerNumber.P1)
         {
             _p2Health--;
+            recentWinner = 1;
         }
         else
         {
             _p1Health--;
+            recentWinner = 2;
         }
 
         _currentGame++;
@@ -144,4 +151,5 @@ public class SessionInfo
     [JsonProperty("Scores")] public int[] scores;
     [JsonProperty("Games")] public int[] games;
     [JsonProperty("currentGame")] public int gameIndex;
+    [JsonProperty("recentWinner")] public int recentWinner;
 }
