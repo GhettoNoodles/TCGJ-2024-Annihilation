@@ -662,9 +662,25 @@ MonoBehaviour:
   p1ready: {fileID: 4460091087572617615}
   p2ready: {fileID: 8029466593513205135}
   timertxt: {fileID: 1831678312620635850}
+  endtext: {fileID: 8482251151471046986}
+  planet1Sprite:
+  - {fileID: -1083713204, guid: b8ac6850ea9077e40836a57438da0c87, type: 3}
+  - {fileID: -1629062502, guid: b8ac6850ea9077e40836a57438da0c87, type: 3}
+  - {fileID: -1152173807, guid: b8ac6850ea9077e40836a57438da0c87, type: 3}
+  - {fileID: -108410394, guid: b8ac6850ea9077e40836a57438da0c87, type: 3}
+  - {fileID: 21300000, guid: 28c3f59040abd8e4ea1e44093360cd1b, type: 3}
+  planet2Sprite:
+  - {fileID: -765219534, guid: b8ac6850ea9077e40836a57438da0c87, type: 3}
+  - {fileID: -250359015, guid: b8ac6850ea9077e40836a57438da0c87, type: 3}
+  - {fileID: 1304608528, guid: b8ac6850ea9077e40836a57438da0c87, type: 3}
+  - {fileID: 987311002, guid: b8ac6850ea9077e40836a57438da0c87, type: 3}
+  - {fileID: 21300000, guid: 28c3f59040abd8e4ea1e44093360cd1b, type: 3}
+  planet1: {fileID: 5148721525130573215}
+  planet2: {fileID: 6756419874858532199}
   nextPanel: {fileID: 214777201}
   readyPanel: {fileID: 4931033223136955801}
   laserP1: {fileID: 8175488509350234973}
+  endPanel: {fileID: 845172953227510032}
   laserP2: {fileID: 1335675759950164676}
 --- !u!4 &1762896564
 Transform:

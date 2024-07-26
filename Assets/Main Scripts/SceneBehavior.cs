@@ -15,7 +15,7 @@ public class SceneBehaviour : MonoBehaviour
     public static SceneBehaviour Instance { get; private set; }
     private SessionInfo _session;
     [Header("Settings")] [SerializeField] private string sessionDataPath;
-    [SerializeField] private int playerStartHealth;
+    [SerializeField] public int playerStartHealth;
     public int _p1Health { get; private set; }
     public int _p2Health{ get; private set; }
     private int nonGameScenes = 2;
@@ -33,6 +33,7 @@ public class SceneBehaviour : MonoBehaviour
         }
         else
         {
+            playerStartHealth = 4;
             Instance = this;
             Debug.Log("starting");
             _session = new SessionInfo();
@@ -121,14 +122,8 @@ public class SceneBehaviour : MonoBehaviour
         }
         SaveSessionInfo();
 
-        if (_p1Health <=0||_p2Health<=0)
-        {
-            Debug.Log("Game Over");
-        }
-        else
-        {
             LoadInbetween();
-        }
+        
         
        
     }
