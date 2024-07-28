@@ -5,54 +5,77 @@ using UnityEngine;
 
 public class subwayplayermovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-   [SerializeField]private Input_Manager inputman;
-    public Input_Manager.PlayerNumber playernum;
-   public Rigidbody2D rb;
+    [SerializeField]
+    private Input_Manager.PlayerNumber player;
+
+    public Rigidbody2D rb;
     public float NewSpeed;
-
-
     public Transform[] lanes;
     private Transform target;
-    public int indextarget;
-   
-    
+    [SerializeField]
+    private int indextarget;
     public subwayplayermovement enemymove;
-    bool collide = false;
-
+    private bool collide = false;
+    private bool canMove = true;
+    private float moveCooldown = 0.75f; // Adjust this value as needed
 
     void Start()
     {
-        inputman = Input_Manager.Instance;
-      //  rb = this.GetComponent<Rigidbody2D>();
-        
+        rb = GetComponent<Rigidbody2D>();
 
+        if (lanes != null && lanes.Length > 0)
+        {
+            target = lanes[indextarget];
+            
+        }
     }
+
     private void FixedUpdate()
     {
-       rb.position = Vector3.MoveTowards(transform.position, target.position, NewSpeed * Time.deltaTime);
-        //If pressed left
-        MoveLeft();
-        //if pressed right 
-        MoveRight();
-        //if press jump 
+        
+
+        rb.position = Vector3.MoveTowards(transform.position, target.position, NewSpeed * Time.deltaTime);
+
+        if (canMove)
+        {
+            Vector2 stickInput = Input_Manager.Instance.Get_Stick(player);
+            if (stickInput.x < 0)
+            {
+                MoveLeft();
+              
+               // StartCoroutine(MoveCooldown());
+            }
+            else if (stickInput.x > 0)
+            {
+                MoveRight();
+               
+               // StartCoroutine(MoveCooldown());
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //hit something
+        Debug.Log(gameObject.name + " collided with an obstacle!");
     }
 
     private void MoveRight()
     {
-        if(enemymove.indextarget-1==indextarget)
+        if (enemymove.indextarget + 1 == indextarget)
         {
             collide = true;
         }
-        if ((indextarget + 1 <= 4) && (!collide || enemymove.indextarget+1<=4))
+        if ((indextarget + 1 <= 4) && (!collide || enemymove.indextarget + 1 <= 4))
         {
-            indextarget++;
-            target = lanes[indextarget];
+           
             if (collide)
             {
-                enemymove.indextarget++;
+                // enemymove.indextarget++;
+                Debug.Log("right");
             }
-
+            indextarget++;
+            target = lanes[indextarget];
         }
         collide = false;
     }
@@ -65,45 +88,27 @@ public class subwayplayermovement : MonoBehaviour
         }
         if ((indextarget - 1 >= 0) && (!collide || enemymove.indextarget - 1 >= 0))
         {
-            indextarget--;
-            target = lanes[indextarget];
+           
             if (collide)
             {
-                enemymove.indextarget--;
-            }
-
+                //enemymove.indextarget--;
+                Debug.Log("left");
+            } 
+            indextarget--;
+            target = lanes[indextarget];
         }
         collide = false;
-
     }
 
-    // Update is called once per frame
+    private IEnumerator MoveCooldown()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(moveCooldown);
+        canMove = true;
+    }
+
     void Update()
     {
-       
-       
-        var velocity = inputman.Get_Stick(playernum);
-        if (velocity.magnitude != 0)
-        {
-            Debug.Log(velocity);
-
-        }
-       
-
-        rb.velocity = velocity.normalized * NewSpeed;
-
-        /*  if (NewSpeed < MaxSpeed)
-          {
-              rb.velocity = velocity.normalized * NewSpeed;
-          }
-
-          else if (NewSpeed >= MaxSpeed)
-          {
-              rb.velocity = velocity.normalized * MaxSpeed;
-          }*/
-
-
+        // Any additional update logic if needed
     }
-
-
 }
