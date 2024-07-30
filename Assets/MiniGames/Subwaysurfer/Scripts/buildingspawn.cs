@@ -27,14 +27,14 @@ public class buildingspawn : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log("start");
+   
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (canSpawn)
         {
-            Debug.Log("exited");
+           
             StartCoroutine(SpawnBuilding());
         }
     }

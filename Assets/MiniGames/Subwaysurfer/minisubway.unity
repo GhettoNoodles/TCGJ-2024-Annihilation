@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 1
-  exponentialfactor: 1
+  exponentialfactor: 1.00005
 --- !u!1 &408776382
 GameObject:
   m_ObjectHideFlags: 0

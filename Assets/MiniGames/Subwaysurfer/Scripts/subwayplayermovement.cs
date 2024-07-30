@@ -17,7 +17,7 @@ public class subwayplayermovement : MonoBehaviour
     public subwayplayermovement enemymove;
     private bool collide = false;
     private bool canMove = true;
-    private float moveCooldown = 0.75f; // Adjust this value as needed
+    private float moveCooldown = 0.5f; // Adjust this value as needed
 
     void Start()
     {
@@ -26,14 +26,12 @@ public class subwayplayermovement : MonoBehaviour
         if (lanes != null && lanes.Length > 0)
         {
             target = lanes[indextarget];
-            
         }
     }
 
     private void FixedUpdate()
     {
-        
-
+        target = lanes[indextarget];
         rb.position = Vector3.MoveTowards(transform.position, target.position, NewSpeed * Time.deltaTime);
 
         if (canMove)
@@ -42,14 +40,13 @@ public class subwayplayermovement : MonoBehaviour
             if (stickInput.x < 0)
             {
                 MoveLeft();
-              
-               // StartCoroutine(MoveCooldown());
+                Debug.Log(player + " " + "left");
+                
             }
             else if (stickInput.x > 0)
             {
                 MoveRight();
-               
-               // StartCoroutine(MoveCooldown());
+                Debug.Log(player + " " + "right");
             }
         }
     }
@@ -57,47 +54,49 @@ public class subwayplayermovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //hit something
-        Debug.Log(gameObject.name + " collided with an obstacle!");
+     
     }
 
     private void MoveRight()
     {
-        if (enemymove.indextarget + 1 == indextarget)
+        collide = false;
+        if (enemymove.indextarget == indextarget+1)
         {
             collide = true;
         }
         if ((indextarget + 1 <= 4) && (!collide || enemymove.indextarget + 1 <= 4))
         {
-           
             if (collide)
             {
                 // enemymove.indextarget++;
-                Debug.Log("right");
+                Debug.Log(player);
+                enemymove.pushplayer(true);
             }
             indextarget++;
-            target = lanes[indextarget];
+           
+            StartCoroutine(MoveCooldown());
         }
-        collide = false;
     }
 
     private void MoveLeft()
     {
-        if (enemymove.indextarget - 1 == indextarget)
+        collide = false;
+        if (enemymove.indextarget == indextarget-1)
         {
             collide = true;
         }
         if ((indextarget - 1 >= 0) && (!collide || enemymove.indextarget - 1 >= 0))
         {
-           
             if (collide)
             {
                 //enemymove.indextarget--;
-                Debug.Log("left");
-            } 
+                Debug.Log(player);
+               enemymove.pushplayer(false);
+            }
             indextarget--;
-            target = lanes[indextarget];
+           
+            StartCoroutine(MoveCooldown());
         }
-        collide = false;
     }
 
     private IEnumerator MoveCooldown()
@@ -110,5 +109,13 @@ public class subwayplayermovement : MonoBehaviour
     void Update()
     {
         // Any additional update logic if needed
+    }
+
+    public void pushplayer(bool pushright)
+    {
+        if (pushright)
+            indextarget++;
+        else
+            indextarget--;
     }
 }
